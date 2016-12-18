@@ -1,0 +1,16 @@
+PODS:
+  - LYPopView (0.1.0)
+
+DEPENDENCIES:
+  - LYPopView (from `../`)
+
+EXTERNAL SOURCES:
+  LYPopView:
+    :path: ../
+
+SPEC CHECKSUMS:
+  LYPopView: f69619325a4b1babe0f8bd1e09956bbe669765bf
+
+PODFILE CHECKSUM: b7cb9e9e46397c7e323bdb164ec0bb1cc390e4fc
+
+COCOAPODS: 1.1.1
