@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'LYPopView_Example' do
+  pod 'LYPopView', :path => '../'
+
+  target 'LYPopView_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
