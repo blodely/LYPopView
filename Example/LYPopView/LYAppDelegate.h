@@ -1,9 +1,9 @@
 //
 //  LYAppDelegate.h
-//  LYPopView
+//  LYPOPVIEW
 //
-//  Created by 骆昱 (Mac mini) on 12/19/2016.
-//  Copyright (c) 2016 骆昱 (Mac mini). All rights reserved.
+//  CREATED BY LUO YU ON 12/19/2016.
+//  COPYRIGHT (C) 2016 LUO YU. ALL RIGHTS RESERVED.
 //
 
 @import UIKit;

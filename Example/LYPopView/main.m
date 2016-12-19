@@ -2,8 +2,8 @@
 //  main.m
 //  LYPopView
 //
-//  Created by 骆昱 (Mac mini) on 12/19/2016.
-//  Copyright (c) 2016 骆昱 (Mac mini). All rights reserved.
+//  Created by LUO YU on 12/19/2016.
+//  Copyright (c) 2016 LUO YU. All rights reserved.
 //
 
 @import UIKit;

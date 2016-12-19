@@ -2,17 +2,40 @@
 //  LYAppDelegate.m
 //  LYPopView
 //
-//  Created by 骆昱 (Mac mini) on 12/19/2016.
-//  Copyright (c) 2016 骆昱 (Mac mini). All rights reserved.
+//  Created by LUO YU on 12/19/2016.
+//  Copyright (c) 2016 LUO YU. All rights reserved.
 //
 
 #import "LYAppDelegate.h"
+#import "TabBaseViewController.h"
+#import "TabMsgViewController.h"
+#import "TabDateViewController.h"
 
 @implementation LYAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+	
+	_window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+	
+	UITabBarController *tabs = [[UITabBarController alloc] init];
+	
+	UINavigationController *navBase = [[UINavigationController alloc] initWithRootViewController:[[TabBaseViewController alloc] init]];
+	navBase.tabBarItem.title = @"基础";
+	
+	UINavigationController *navMsg = [[UINavigationController alloc] initWithRootViewController:[[TabMsgViewController alloc] init]];
+	navMsg.tabBarItem.title = @"消息";
+	
+	UINavigationController *navDate = [[UINavigationController alloc] initWithRootViewController:[[TabDateViewController alloc] init]];
+	navDate.tabBarItem.title = @"时间选择";
+	
+	tabs.viewControllers = @[navBase, navMsg, navDate,];
+	
+	_window.rootViewController = tabs;
+	
+	[_window makeKeyAndVisible];
+	
     return YES;
 }
 
