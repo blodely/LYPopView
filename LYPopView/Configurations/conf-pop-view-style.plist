@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>popview-theme-color</key>
+	<dict>
+		<key>name</key>
+		<string>theme color</string>
+		<key>conf-value</key>
+		<string>#f5c523</string>
+	</dict>
+	<key>popview-corner-radius</key>
+	<dict>
+		<key>name</key>
+		<string>corner radius</string>
+		<key>conf-value</key>
+		<string>5</string>
+	</dict>
+	<key>popview-padding</key>
+	<dict>
+		<key>name</key>
+		<string>padding</string>
+		<key>conf-value</key>
+		<string>12</string>
+	</dict>
+</dict>
+</plist>

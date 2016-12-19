@@ -3,7 +3,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LYPopView'
-  s.version          = '0.1.2'
+  s.version          = '0.1.3'
   s.summary          = 'pop view.'
 
   s.description      = <<-DESC
@@ -20,7 +20,7 @@ a pop view.
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'LYPopView/Classes/**/*'
+  s.source_files = 'LYPopView/Classes/**/*', 'LYPopView/Configurations/*.plist'
   
   s.resource_bundles = {
     'LYPopView' => ['LYPopView/Assets/*.png']
@@ -28,5 +28,7 @@ a pop view.
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+
+  s.dependency 'FCFileManager', '~> 1.0.18'
+
 end
