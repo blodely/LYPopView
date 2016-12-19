@@ -1,5 +1,5 @@
 PODS:
-  - LYPopView (0.1.0)
+  - LYPopView (0.1.1)
 
 DEPENDENCIES:
   - LYPopView (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  LYPopView: f69619325a4b1babe0f8bd1e09956bbe669765bf
+  LYPopView: 93294444a25c5ec0db5eb048e4bc6cde9e73d9e1
 
 PODFILE CHECKSUM: b7cb9e9e46397c7e323bdb164ec0bb1cc390e4fc
 

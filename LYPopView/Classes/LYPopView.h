@@ -1,13 +1,15 @@
 //
 //  LYPopView.h
-//  LYPopView
+//  LYPOPVIEW
 //
-//  Created by Luo Yu on 19/12/2016.
-//  Copyright © 2016 LUO YU. All rights reserved.
+//  CREATED BY LUO YU ON 19/12/2016.
+//  COPYRIGHT © 2016 LUO YU. ALL RIGHTS RESERVED.
 //
 
 #import <UIKit/UIKit.h>
 
 @interface LYPopView : UIView
+
+- (void)show;
 
 @end

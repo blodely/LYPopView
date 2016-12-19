@@ -7,6 +7,7 @@
 //
 
 #import "TabBaseViewController.h"
+#import <LYPopView/LYPopView.h>
 
 @interface TabBaseViewController ()
 
@@ -15,6 +16,12 @@
 @implementation TabBaseViewController
 
 // MARK: - ACTION
+
+- (IBAction)showNormalPopView:(UIButton *)sender {
+	
+	LYPopView *popview = [[LYPopView alloc] init];
+	[popview show];
+}
 
 // MARK: - INIT
 

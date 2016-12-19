@@ -7,6 +7,7 @@
 //
 
 #import "TabMsgViewController.h"
+#import <LYPopView/LYPopView.h>
 
 @interface TabMsgViewController ()
 
