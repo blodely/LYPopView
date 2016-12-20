@@ -10,6 +10,7 @@
 #import "TabBaseViewController.h"
 #import "TabMsgViewController.h"
 #import "TabDateViewController.h"
+#import "TabTableViewController.h"
 
 @implementation LYAppDelegate
 
@@ -30,7 +31,10 @@
 	UINavigationController *navDate = [[UINavigationController alloc] initWithRootViewController:[[TabDateViewController alloc] init]];
 	navDate.tabBarItem.title = @"时间选择";
 	
-	tabs.viewControllers = @[navBase, navMsg, navDate,];
+	UINavigationController *navTable = [[UINavigationController alloc] initWithRootViewController:[[TabTableViewController alloc] init]];
+	navTable.tabBarItem.title = @"列表选择";
+	
+	tabs.viewControllers = @[navBase, navMsg, navDate, navTable,];
 	
 	_window.rootViewController = tabs;
 	
