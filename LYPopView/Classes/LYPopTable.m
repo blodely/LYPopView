@@ -9,6 +9,13 @@
 #import "LYPopTable.h"
 #import "UIColor+LYPopViewHex.h"
 
+@interface LYPopTable () {
+	
+	__weak UITableView *tbMenu;
+}
+
+@end
+
 @implementation LYPopTable
 
 /*
