@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LYPopView : UIView
+@interface LYPopView : UIView {
+	__weak UIView *vCont;
+}
 
 @property (nonatomic, weak) UILabel *lblTitle;
 

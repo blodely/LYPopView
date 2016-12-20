@@ -7,6 +7,7 @@
 //
 
 #import "LYPopTable.h"
+#import "UIColor+LYPopViewHex.h"
 
 @implementation LYPopTable
 
