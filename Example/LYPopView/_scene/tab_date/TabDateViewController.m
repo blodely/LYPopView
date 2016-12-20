@@ -9,13 +9,20 @@
 #import "TabDateViewController.h"
 #import <LYPopView/PopView.h>
 
-@interface TabDateViewController ()
+@interface TabDateViewController () {
+	
+	__weak IBOutlet UILabel *lblOutput;
+}
 
 @end
 
 @implementation TabDateViewController
 
 // MARK: - ACTION
+
+- (IBAction)showDatePicker:(UIButton *)sender {
+	
+}
 
 // MARK: - INIT
 
