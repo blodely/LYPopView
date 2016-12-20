@@ -7,14 +7,28 @@
 //
 
 #import "TabTableViewController.h"
+#import <LYPopView/LYPopTable.h>
 
-@interface TabTableViewController ()
+@interface TabTableViewController () <UITableViewDataSource, UITableViewDelegate> {
+	
+	NSArray *menu;
+}
 
 @end
 
 @implementation TabTableViewController
 
 // MARK: - ACTION
+
+- (IBAction)showMenuTable:(UIButton *)sender {
+	
+	LYPopTable *tablepop = [[LYPopTable alloc] init];
+	tablepop.title = @"Table Pop View";
+	tablepop.tbMenu.dataSource = self;
+	tablepop.tbMenu.delegate = self;
+	[tablepop.tbMenu registerClass:[UITableViewCell class] forCellReuseIdentifier:@"menu_cell_identifier"];
+	[tablepop show];
+}
 
 // MARK: - INIT
 
@@ -29,6 +43,14 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	// DO ANY ADDITIONAL SETUP AFTER LOADING THE VIEW FROM ITS NIB.
+	
+	menu = @[
+			 @{LYPopTableDataTitle:@"menu item",},
+			 @{LYPopTableDataTitle:@"menu item",},
+			 @{LYPopTableDataTitle:@"menu item",},
+			 @{LYPopTableDataTitle:@"menu item",},
+			 @{LYPopTableDataTitle:@"menu item",},
+			 ];
 }
 
 // MARK: | MEMORY MANAGEMENT
@@ -44,7 +66,25 @@
 
 // MARK: - DELEGATE
 
-// MARK: |
+// MARK: | UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)idp {
+	
+	[tableView deselectRowAtIndexPath:idp animated:YES];
+}
+
+// MARK: | UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	return [menu count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)idp {
+	
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"menu_cell_identifier" forIndexPath:idp];
+	cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", menu[idp.row][LYPopTableDataTitle], @(idp.row)];
+	return cell;
+}
 
 // MARK: - NOTIFICATION
 
