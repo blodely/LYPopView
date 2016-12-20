@@ -23,6 +23,10 @@
 
 - (IBAction)showMessagePop:(UIButton *)sender {
 	
+	// DISMISS KEYBOARD
+	[self.view endEditing:YES];
+	
+	// SHOW MESSAGE POP VIEW
 	LYPopMessage *msgpop = [[LYPopMessage alloc] init];
 	msgpop.message = tfMessage.text;
 	[msgpop show];
