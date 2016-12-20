@@ -16,7 +16,7 @@
 	__weak UIView *vCont;
 }
 
-@property (nonatomic, weak) UILabel *lblTitle;
+@property (nonatomic, strong) NSString *title;
 
 - (void)show;
 

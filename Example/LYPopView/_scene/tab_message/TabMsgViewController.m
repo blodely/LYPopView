@@ -28,6 +28,7 @@
 	
 	// SHOW MESSAGE POP VIEW
 	LYPopMessage *msgpop = [[LYPopMessage alloc] init];
+	msgpop.title = @"Message Pop View";
 	msgpop.message = tfMessage.text;
 	[msgpop show];
 }

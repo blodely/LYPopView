@@ -20,6 +20,7 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 	__weak UIControl *cBg;
 	
 	__weak UIView *vTitle;
+	__weak UILabel *lblTitle;
 }
 
 @end
@@ -53,7 +54,7 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 		UIControl *ctrlBg = [[UIControl alloc] init];
 		ctrlBg.frame = (CGRect){0, 0, screen.width, screen.height};
 		ctrlBg.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
-		[ctrlBg addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
+		[ctrlBg addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchDown];
 		[self addSubview:ctrlBg];
 		cBg = ctrlBg;
 	}
@@ -86,7 +87,7 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 		labelTitle.textAlignment = NSTextAlignmentCenter;
 		labelTitle.font = [UIFont systemFontOfSize:16];
 		[viewTitle addSubview:labelTitle];
-		_lblTitle = labelTitle;
+		lblTitle = labelTitle;
 		
 		UIButton *buttonClose = [UIButton buttonWithType:UIButtonTypeCustom];
 		buttonClose.frame = (CGRect){width - 44, 0, 44, 44};
@@ -95,6 +96,14 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 		[buttonClose addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
 		[viewTitle addSubview:buttonClose];
 	}
+}
+
+// MARK: PROPERTY
+
+- (void)setTitle:(NSString *)title {
+	_title = title;
+	
+	lblTitle.text = _title;
 }
 
 // MARK: - METHOD

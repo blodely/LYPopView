@@ -20,7 +20,7 @@
 - (IBAction)showNormalPopView:(UIButton *)sender {
 	
 	LYPopView *popview = [[LYPopView alloc] init];
-	popview.lblTitle.text = @"基础窗口";
+	popview.title = @"Base Pop View";
 	[popview show];
 }
 
