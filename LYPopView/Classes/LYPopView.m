@@ -47,8 +47,8 @@ NSString *const confValue = @"conf-value";
 	NSDictionary *conf = [self configurations];
 	
 	CGSize screen = [UIScreen mainScreen].bounds.size;
-	CGFloat padding = [conf[@"popview-padding"][confValue] integerValue];
-	CGFloat cornerRadius = [conf[@"popview-corner-radius"][confValue] integerValue];
+	padding = [conf[@"popview-padding"][confValue] integerValue];
+	cornerRadius = [conf[@"popview-corner-radius"][confValue] integerValue];
 	
 	{
 		UIControl *ctrlBg = [[UIControl alloc] init];

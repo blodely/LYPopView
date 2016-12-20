@@ -37,5 +37,12 @@
 		<key>conf-value</key>
 		<string>12</string>
 	</dict>
+	<key>popview-message-color</key>
+	<dict>
+		<key>name</key>
+		<string>theme color</string>
+		<key>conf-value</key>
+		<string>#000000</string>
+	</dict>
 </dict>
 </plist>

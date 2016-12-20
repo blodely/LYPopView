@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface LYPopView : UIView {
+	
+	CGFloat padding;
+	CGFloat cornerRadius;
+	
 	__weak UIView *vCont;
 }
 
