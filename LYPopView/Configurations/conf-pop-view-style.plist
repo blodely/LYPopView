@@ -9,6 +9,20 @@
 		<key>conf-value</key>
 		<string>#f5c523</string>
 	</dict>
+	<key>popview-title-color</key>
+	<dict>
+		<key>name</key>
+		<string>theme color</string>
+		<key>conf-value</key>
+		<string>#000000</string>
+	</dict>
+	<key>popview-window-bg-color</key>
+	<dict>
+		<key>name</key>
+		<string>theme color</string>
+		<key>conf-value</key>
+		<string>#ffffff</string>
+	</dict>
 	<key>popview-corner-radius</key>
 	<dict>
 		<key>name</key>
