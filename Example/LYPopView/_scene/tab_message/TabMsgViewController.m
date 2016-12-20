@@ -24,7 +24,7 @@
 - (IBAction)showMessagePop:(UIButton *)sender {
 	
 	LYPopMessage *msgpop = [[LYPopMessage alloc] init];
-	
+	msgpop.message = tfMessage.text;
 	[msgpop show];
 }
 
