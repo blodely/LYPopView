@@ -10,6 +10,8 @@
 
 @interface LYPopView : UIView
 
+@property (nonatomic, weak) UILabel *lblTitle;
+
 - (void)show;
 
 @end

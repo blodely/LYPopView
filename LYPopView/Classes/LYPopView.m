@@ -7,10 +7,14 @@
 //
 
 #import "LYPopView.h"
+#import "PopView.h"
+#import <LYPopView/NSBundle+PopView.h>
 #import "FCFileManager.h"
 
 NSString *const LIB_POPVIEW_BUNDLE_ID = @"org.cocoapods.LYPopView";
 NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
+
+NSString *const confValue = @"conf-value";
 
 @interface LYPopView () {
 	
@@ -21,6 +25,10 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 	__weak UIView *vTitle;
 }
 
+@end
+
+@interface UIColor (Hex)
++ (UIColor *)pv_hex:(NSString *)hexstring;
 @end
 
 @implementation LYPopView
@@ -44,8 +52,8 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 	NSDictionary *conf = [self configurations];
 	
 	CGSize screen = [UIScreen mainScreen].bounds.size;
-	CGFloat padding = [conf[@"popview-padding"][@"conf-value"] integerValue];
-	CGFloat cornerRadius = [conf[@"popview-corner-radius"][@"conf-value"] integerValue];
+	CGFloat padding = [conf[@"popview-padding"][confValue] integerValue];
+	CGFloat cornerRadius = [conf[@"popview-corner-radius"][confValue] integerValue];
 	
 	{
 		UIControl *ctrlBg = [[UIControl alloc] init];
@@ -58,7 +66,7 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 	
 	{
 		UIView *viewCont = [[UIView alloc] init];
-		viewCont.backgroundColor = [UIColor whiteColor];
+		viewCont.backgroundColor = [UIColor pv_hex:conf[@"popview-window-bg-color"][confValue]];
 		viewCont.clipsToBounds = YES;
 		CGFloat width = screen.width - padding * 2;
 		CGFloat height = width / 0.7;
@@ -70,10 +78,26 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 	}
 	
 	{
+		CGFloat width = vCont.bounds.size.width;
+		
 		UIView *viewTitle = [[UIView alloc] init];
-		viewTitle.frame = (CGRect){0, 0, vCont.bounds.size.width, 44};
+		viewTitle.frame = (CGRect){0, 0, width, 44};
+		viewTitle.backgroundColor = [UIColor pv_hex:conf[@"popview-theme-color"][confValue]];
 		[vCont addSubview:viewTitle];
 		vTitle = viewTitle;
+		
+		UILabel *labelTitle = [[UILabel alloc] init];
+		labelTitle.frame = (CGRect){10, 0, width - 10 - 44, 44};
+		labelTitle.textColor = [UIColor pv_hex:conf[@"popview-title-color"][confValue]];
+		labelTitle.font = [UIFont systemFontOfSize:16];
+		[viewTitle addSubview:labelTitle];
+		_lblTitle = labelTitle;
+		
+		UIButton *buttonClose = [UIButton buttonWithType:UIButtonTypeCustom];
+		buttonClose.frame = (CGRect){width - 44, 0, 44, 44};
+		[buttonClose setBackgroundImage:[UIImage imageNamed:@"cross-48" inBundle:[NSBundle popResourceBundle] compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
+		[buttonClose addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
+		[viewTitle addSubview:buttonClose];
 	}
 }
 
@@ -83,14 +107,20 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 	
 	self.hidden = NO;
 	cBg.alpha = 0;
+	CGPoint center = vCont.center;
+	center.y = vCont.bounds.size.height / 2 + [UIScreen mainScreen].bounds.size.height;
+	vCont.center = center;
 	
 	if ([self superview] == nil) {
 		// SUPER VIEW = WINDOW
 		[[UIApplication sharedApplication].keyWindow addSubview:self];
 	}
 	
+	center.y = self.bounds.size.height / 2;
+	
 	[UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 		cBg.alpha = 1;
+		vCont.center = center;
 	} completion:^(BOOL finished) {
 		
 	}];
@@ -100,10 +130,14 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 
 - (void)dismiss {
 	
+	CGPoint center = vCont.center;
+	center.y = - vCont.bounds.size.height / 2;
+	
 	// ANIMATE OUT
 	[UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 		
 		cBg.alpha = 0;
+		vCont.center = center;
 		
 	} completion:^(BOOL finished) {
 		
@@ -151,4 +185,50 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 
 // MARK: - DELEGATE
 
+@end
+
+// MARK: - COLOR
+
+@implementation UIColor (Hex)
++ (UIColor *)pv_hex:(NSString *)hexstring {
+	// WE FOUND AN EMPTY STRING, WE ARE RETURNING NOTHING
+	if (hexstring.length == 0) {
+		return nil;
+	}
+	
+	// CHECK FOR HASH AND ADD THE MISSING HASH
+	if('#' != [hexstring characterAtIndex:0]) {
+		hexstring = [NSString stringWithFormat:@"#%@", hexstring];
+	}
+	
+	// RETURNING NO OBJECT ON WRONG ALPHA VALUES
+	NSArray *validHexStringLengths = @[@7,];
+	NSNumber *hexStringLengthNumber = [NSNumber numberWithUnsignedInteger:hexstring.length];
+	if ([validHexStringLengths indexOfObject:hexStringLengthNumber] == NSNotFound) {
+		return nil;
+	}
+	
+	unsigned value = 0;
+	NSScanner *hexValueScanner = nil;
+	
+	NSString *redHex = [NSString stringWithFormat:@"0x%@", [hexstring substringWithRange:NSMakeRange(1, 2)]];
+	hexValueScanner = [NSScanner scannerWithString:redHex];
+	[hexValueScanner scanHexInt:&value];
+	unsigned redInt = value;
+	hexValueScanner = nil;
+	
+	NSString *greenHex = [NSString stringWithFormat:@"0x%@", [hexstring substringWithRange:NSMakeRange(3, 2)]];
+	hexValueScanner = [NSScanner scannerWithString:greenHex];
+	[hexValueScanner scanHexInt:&value];
+	unsigned greenInt = value;
+	hexValueScanner = nil;
+	
+	NSString *blueHex = [NSString stringWithFormat:@"0x%@", [hexstring substringWithRange:NSMakeRange(5, 2)]];
+	hexValueScanner = [NSScanner scannerWithString:blueHex];
+	[hexValueScanner scanHexInt:&value];
+	unsigned blueInt = value;
+	hexValueScanner = nil;
+	
+	return [UIColor colorWithRed:redInt/255.0f green:greenInt/255.0f blue:blueInt/255.0f alpha:1.0f];
+}
 @end
