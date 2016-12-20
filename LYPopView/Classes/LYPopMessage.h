@@ -10,4 +10,6 @@
 
 @interface LYPopMessage : LYPopView
 
+@property (nonatomic, strong) NSString *message;
+
 @end
