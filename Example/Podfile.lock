@@ -1,6 +1,6 @@
 PODS:
   - FCFileManager (1.0.18)
-  - LYPopView (0.1.4):
+  - LYPopView (0.1.6):
     - FCFileManager (~> 1.0.18)
 
 DEPENDENCIES:
@@ -12,7 +12,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   FCFileManager: 3d13576da1f709d37460bd7669cdf07b9d6d8bc3
-  LYPopView: 82c0180e320662715390a501a59a055a0d083ca3
+  LYPopView: 3c5b0de6d62cacf757d1ce69ff94424ced756841
 
 PODFILE CHECKSUM: b7cb9e9e46397c7e323bdb164ec0bb1cc390e4fc
 
