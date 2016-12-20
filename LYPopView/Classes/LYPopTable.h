@@ -8,6 +8,10 @@
 
 #import <LYPopView/LYPopView.h>
 
+FOUNDATION_EXPORT NSString *const LYPopTableDataTitle;
+
 @interface LYPopTable : LYPopView
+
+@property (nonatomic, weak) UITableView *tbMenu;
 
 @end

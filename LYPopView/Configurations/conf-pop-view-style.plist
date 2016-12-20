@@ -40,9 +40,23 @@
 	<key>popview-message-color</key>
 	<dict>
 		<key>name</key>
-		<string>theme color</string>
+		<string>message text color</string>
 		<key>conf-value</key>
 		<string>#000000</string>
+	</dict>
+	<key>popview-auto-dismiss</key>
+	<dict>
+		<key>name</key>
+		<string>auto dismiss</string>
+		<key>conf-value</key>
+		<false/>
+	</dict>
+	<key>popview-min-dismiss-timeinterval</key>
+	<dict>
+		<key>name</key>
+		<string>minimal dismiss time interval</string>
+		<key>conf-value</key>
+		<integer>2</integer>
 	</dict>
 </dict>
 </plist>

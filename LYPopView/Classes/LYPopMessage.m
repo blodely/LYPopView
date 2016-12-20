@@ -71,12 +71,12 @@
 
 // MARK: - METHOD
 
-- (void)show {
-	
-	[self resetBounds];
-	
-	[super show];
-}
+//- (void)show {
+//	
+//	[self resetBounds];
+//	
+//	[super show];
+//}
 
 // MARK: | PRIVATE METHOD
 

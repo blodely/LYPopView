@@ -12,11 +12,14 @@
 	
 	CGFloat padding;
 	CGFloat cornerRadius;
+	CGFloat maxHeight;
 	
 	__weak UIView *vCont;
 }
 
 @property (nonatomic, strong) NSString *title;
+
+@property (nonatomic, assign) BOOL autoDismiss;
 
 - (void)show;
 

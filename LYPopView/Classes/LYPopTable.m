@@ -9,21 +9,83 @@
 #import "LYPopTable.h"
 #import "UIColor+LYPopViewHex.h"
 
+NSString *const LYPopTableDataTitle = @"ly.pop.table.title";
+
 @interface LYPopTable () {
 	
-	__weak UITableView *tbMenu;
 }
 
 @end
 
 @implementation LYPopTable
 
+- (instancetype)init {
+	if (self = [super init]) {
+		
+		{
+			UITableView *table = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+			table.frame = (CGRect){0, 44, vCont.bounds.size.width, vCont.bounds.size.height};
+			table.separatorStyle = UITableViewCellSeparatorStyleNone;
+			[vCont addSubview:table];
+			_tbMenu = table;
+		}
+	}
+	return self;
+}
+
+// MARK: - PROPERTY
+
+// MARK: - METHOD
+
+// MARK: | PRIVATE METHOD
+
+// MARK: - OVERRIDE
+
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
+// ONLY OVERRIDE drawRect: IF YOU PERFORM CUSTOM DRAWING.
+// AN EMPTY IMPLEMENTATION ADVERSELY AFFECTS PERFORMANCE DURING ANIMATION.
 - (void)drawRect:(CGRect)rect {
-    // Drawing code
+	// DRAWING CODE
 }
 */
+
+- (void)show {
+	
+	[_tbMenu reloadData];
+	
+	[super show];
+}
+
+- (void)resetBounds {
+	
+	// TABLE VIEW ITEM COUNT
+	NSInteger counts = 0;
+	
+	// GET SECTION COUNT
+	NSInteger sections = 1;
+	if ([_tbMenu.dataSource respondsToSelector:@selector(numberOfSectionsInTableView:)]) {
+		sections = [_tbMenu.dataSource numberOfSectionsInTableView:_tbMenu];
+	}
+	
+	for (int i = 0; i < sections; i++) {
+		NSInteger rows = 0;
+		if ([_tbMenu.dataSource respondsToSelector:@selector(tableView:numberOfRowsInSection:)]) {
+			rows = [_tbMenu.dataSource tableView:_tbMenu numberOfRowsInSection:i];
+		}
+		counts = counts + rows;
+	}
+	
+	CGFloat cellHeight = 44; // CONFIGURABLE
+	
+	CGRect rect = vCont.frame;
+	rect.size.height = MIN(cellHeight * counts + 44, maxHeight);
+	vCont.frame = rect;
+}
+
+// MARK: - DELEGATE
+
+// MARK: | UITableViewDelegate
+
+// MARK: | UITableViewDataSource
 
 @end

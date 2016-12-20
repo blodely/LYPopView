@@ -64,8 +64,8 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 		viewCont.backgroundColor = [UIColor pv_hex:conf[@"popview-window-bg-color"][confValue]];
 		viewCont.clipsToBounds = YES;
 		CGFloat width = screen.width - padding * 2;
-		CGFloat height = width / 0.7;
-		viewCont.frame = (CGRect){padding, (screen.height - height) / 2, width, height};
+		maxHeight = width / 0.7;
+		viewCont.frame = (CGRect){padding, (screen.height - maxHeight) / 2, width, maxHeight};
 		viewCont.layer.masksToBounds = YES;
 		viewCont.layer.cornerRadius = cornerRadius;
 		[self addSubview:viewCont];
@@ -98,7 +98,7 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 	}
 }
 
-// MARK: PROPERTY
+// MARK: - PROPERTY
 
 - (void)setTitle:(NSString *)title {
 	_title = title;
@@ -122,6 +122,9 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 	}
 	
 	center.y = self.bounds.size.height / 2;
+	
+	// CALL BOUND ADJUST METHOD
+	[self resetBounds];
 	
 	[UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 		cBg.alpha = 1;
@@ -154,6 +157,9 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 }
 
 // MARK: | PRIVATE METHOD
+
+- (void)resetBounds {
+}
 
 - (void)dismiss {
 	
