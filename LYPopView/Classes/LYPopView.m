@@ -15,8 +15,6 @@
 NSString *const LIB_POPVIEW_BUNDLE_ID = @"org.cocoapods.LYPopView";
 NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 
-NSString *const confValue = @"conf-value";
-
 @interface LYPopView () {
 	
 	__weak UIControl *cBg;
@@ -45,6 +43,7 @@ NSString *const confValue = @"conf-value";
 	self.clipsToBounds = YES;
 	
 	NSDictionary *conf = [self configurations];
+	NSString *confValue = @"conf-value";
 	
 	CGSize screen = [UIScreen mainScreen].bounds.size;
 	padding = [conf[@"popview-padding"][confValue] integerValue];
@@ -123,26 +122,6 @@ NSString *const confValue = @"conf-value";
 	}];
 }
 
-// MARK: | PRIVATE METHOD
-
-- (void)dismiss {
-	
-	CGPoint center = vCont.center;
-	center.y = - vCont.bounds.size.height / 2;
-	
-	// ANIMATE OUT
-	[UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-		
-		cBg.alpha = 0;
-		vCont.center = center;
-		
-	} completion:^(BOOL finished) {
-		
-		// REMOVE SELF
-		[self removeFromSuperview];
-	}];
-}
-
 - (NSDictionary *)configurations {
 	
 	NSString *confpath;
@@ -163,6 +142,26 @@ NSString *const confValue = @"conf-value";
 	}
 	
 	return conf;
+}
+
+// MARK: | PRIVATE METHOD
+
+- (void)dismiss {
+	
+	CGPoint center = vCont.center;
+	center.y = - vCont.bounds.size.height / 2;
+	
+	// ANIMATE OUT
+	[UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+		
+		cBg.alpha = 0;
+		vCont.center = center;
+		
+	} completion:^(BOOL finished) {
+		
+		// REMOVE SELF
+		[self removeFromSuperview];
+	}];
 }
 	
 // MARK: - OVERRIDE

@@ -10,8 +10,6 @@
 #import "NSBundle+PopView.h"
 #import "UIColor+LYPopViewHex.h"
 
-NSString *const confValue = @"conf-value";
-
 @interface LYPopMessage () {
 	
 	__weak UILabel *lblMessage;
@@ -26,7 +24,8 @@ NSString *const confValue = @"conf-value";
 - (instancetype)initWithFrame:(CGRect)frame {
 	if (self = [super initWithFrame:frame]) {
 		
-		NSDictionary *conf = [NSBundle popResourceBundle];
+		NSDictionary *conf = [self configurations];
+		NSString *confValue = @"conf-value";
 		
 		{
 			UILabel *labelMessage = [[UILabel alloc] init];

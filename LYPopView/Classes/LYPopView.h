@@ -20,4 +20,6 @@
 
 - (void)show;
 
+- (NSDictionary *)configurations;
+
 @end
