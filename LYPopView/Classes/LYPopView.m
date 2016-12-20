@@ -87,15 +87,17 @@ NSString *const confValue = @"conf-value";
 		vTitle = viewTitle;
 		
 		UILabel *labelTitle = [[UILabel alloc] init];
-		labelTitle.frame = (CGRect){10, 0, width - 10 - 44, 44};
+		labelTitle.frame = (CGRect){10, 0, width - 20, 44};
 		labelTitle.textColor = [UIColor pv_hex:conf[@"popview-title-color"][confValue]];
+		labelTitle.textAlignment = NSTextAlignmentCenter;
 		labelTitle.font = [UIFont systemFontOfSize:16];
 		[viewTitle addSubview:labelTitle];
 		_lblTitle = labelTitle;
 		
 		UIButton *buttonClose = [UIButton buttonWithType:UIButtonTypeCustom];
 		buttonClose.frame = (CGRect){width - 44, 0, 44, 44};
-		[buttonClose setBackgroundImage:[UIImage imageNamed:@"cross-48" inBundle:[NSBundle popResourceBundle] compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
+		[buttonClose setBackgroundImage:[[UIImage imageNamed:@"cross-48-gs" inBundle:[NSBundle popResourceBundle] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+		[buttonClose setTintColor:[UIColor pv_hex:conf[@"popview-title-color"][confValue]]];
 		[buttonClose addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
 		[viewTitle addSubview:buttonClose];
 	}

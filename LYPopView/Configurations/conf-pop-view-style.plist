@@ -14,7 +14,7 @@
 		<key>name</key>
 		<string>theme color</string>
 		<key>conf-value</key>
-		<string>#000000</string>
+		<string>#ffffff</string>
 	</dict>
 	<key>popview-window-bg-color</key>
 	<dict>
