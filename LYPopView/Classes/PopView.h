@@ -10,6 +10,7 @@
 #define PopView_h
 
 #import <LYPopView/LYPopView.h>
+#import <LYPopView/LYPopMessage.h>
 #import <LYPopView/LYPopTable.h>
 
 #endif /* PopView_h */
