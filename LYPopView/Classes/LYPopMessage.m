@@ -40,6 +40,14 @@
 	return self;
 }
 
++ (void)showPopWithTitle:(NSString *)aTitle andMessage:(NSString *)aMessage {
+	LYPopMessage *msgpop = [[LYPopMessage alloc] init];
+	msgpop.title = aTitle;
+	msgpop.message = aMessage;
+//	msgpop.autoDismiss = YES;
+	[msgpop show];
+}
+
 // MARK: - PROPERTY
 
 - (void)setMessage:(NSString *)message {
