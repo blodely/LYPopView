@@ -9,13 +9,24 @@
 #import "TabMsgViewController.h"
 #import <LYPopView/PopView.h>
 
-@interface TabMsgViewController ()
+@interface TabMsgViewController () {
+	
+	__weak IBOutlet UITextField *tfMessage;
+	__weak IBOutlet UIButton *btnShowMsg;
+}
 
 @end
 
 @implementation TabMsgViewController
 
 // MARK: - ACTION
+
+- (IBAction)showMessagePop:(UIButton *)sender {
+	
+	LYPopMessage *msgpop = [[LYPopMessage alloc] init];
+	
+	[msgpop show];
+}
 
 // MARK: - INIT
 
