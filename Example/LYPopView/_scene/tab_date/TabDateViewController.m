@@ -21,7 +21,9 @@
 // MARK: - ACTION
 
 - (IBAction)showDatePicker:(UIButton *)sender {
-	
+	LYPopDate *pop = [[LYPopDate alloc] init];
+	pop.title = @"时间选择";
+	[pop show];
 }
 
 // MARK: - INIT
