@@ -30,6 +30,7 @@ message, table.
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
 
+  s.dependency 'LYCategory'
   s.dependency 'FCFileManager', '~> 1.0.18'
 
 end

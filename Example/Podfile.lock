@@ -1,7 +1,9 @@
 PODS:
   - FCFileManager (1.0.18)
+  - LYCategory (1.2.10)
   - LYPopView (0.1.6):
     - FCFileManager (~> 1.0.18)
+    - LYCategory
 
 DEPENDENCIES:
   - LYPopView (from `../`)
@@ -12,8 +14,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   FCFileManager: 3d13576da1f709d37460bd7669cdf07b9d6d8bc3
-  LYPopView: 3c5b0de6d62cacf757d1ce69ff94424ced756841
+  LYCategory: 4c174765f6e01336e50ee7ed9eb43bf25fdf7804
+  LYPopView: 5f61a442eb39146cb9c0eb2109f2eb2876c5cb11
 
-PODFILE CHECKSUM: b7cb9e9e46397c7e323bdb164ec0bb1cc390e4fc
+PODFILE CHECKSUM: f5bfe1c7598905b7d2bd8893ce0c4bbb7b646e7d
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0
