@@ -23,6 +23,8 @@
 
 - (void)show;
 
+- (void)dismiss;
+
 - (NSDictionary *)configurations;
 
 @end
