@@ -69,7 +69,6 @@
 		{
 			UIDatePicker *datepicker = [[UIDatePicker alloc] init];
 			datepicker.frame = (CGRect){0, 44, frame.size.width, 216};
-//			[datepicker setDatePickerMode:UIDatePickerModeDate];
 			[vCont addSubview:datepicker];
 			_picker = datepicker;
 			_message.text = [datepicker.date stringWithFormat:_formatter andTimezone:_timezone];
@@ -86,7 +85,6 @@
 		
 		{
 			UIButton *buttonConfirm = [UIButton buttonWithType:UIButtonTypeCustom];
-//			buttonConfirm.frame = (CGRect){frame.size.width / 2, 44 + 216, frame.size.width / 2, 44};
 			[buttonConfirm setBackgroundColor:[UIColor pv_hex:conf[@"popview-theme-color"][confValue]]];
 			[buttonConfirm addTarget:self action:@selector(confirmBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
 			[buttonConfirm setTitle:@"确认" forState:UIControlStateNormal];
