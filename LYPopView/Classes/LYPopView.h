@@ -17,14 +17,31 @@
 	__weak UIView *vCont;
 }
 
+/**
+ Pop view title string
+ */
 @property (nonatomic, strong) NSString *title;
 
+/**
+ Pop view auto dismiss
+ */
 @property (nonatomic, assign) BOOL autoDismiss;
 
+/**
+ show pop view instance
+ */
 - (void)show;
 
+/**
+ dismiss pop view instance
+ */
 - (void)dismiss;
 
+/**
+ get configuration data
+
+ @return dictionary data
+ */
 - (NSDictionary *)configurations;
 
 @end
