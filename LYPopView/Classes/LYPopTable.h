@@ -15,3 +15,16 @@ FOUNDATION_EXPORT NSString *const LYPopTableDataTitle;
 @property (nonatomic, weak) UITableView *tbMenu;
 
 @end
+
+// MARK: - SAMPLE CELL
+
+FOUNDATION_EXPORT NSString *const LYPopTableCellIdentifier;
+
+/**
+ STANDARD CELL
+ */
+@interface LYPopTableCell : UITableViewCell
+@property (nonatomic, weak) IBOutlet UIImageView *ivIcon;
+@property (nonatomic, weak) IBOutlet UILabel *lblTitle;
+@property (nonatomic, weak) IBOutlet UILabel *lblSubtitle;
+@end

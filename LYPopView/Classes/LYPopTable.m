@@ -89,3 +89,25 @@ NSString *const LYPopTableDataTitle = @"ly.pop.table.title";
 // MARK: | UITableViewDataSource
 
 @end
+
+// MARK: - CELL
+
+NSString *const LYPopTableCellIdentifier = @"LYPopTableCellIdentifier";
+
+@interface LYPopTableCell () {}
+@end
+
+@implementation LYPopTableCell
+
+- (void)awakeFromNib {
+	[super awakeFromNib];
+
+	self.selectionStyle = UITableViewCellSelectionStyleNone;
+	_ivIcon.layer.masksToBounds = YES;
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+	[super setSelected:selected animated:animated];
+}
+
+@end
