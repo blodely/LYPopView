@@ -12,5 +12,6 @@
 #import <LYPopView/LYPopView.h>
 #import <LYPopView/LYPopMessage.h>
 #import <LYPopView/LYPopTable.h>
+#import <LYPopView/LYPopActionView.h>
 
 #endif /* PopView_h */

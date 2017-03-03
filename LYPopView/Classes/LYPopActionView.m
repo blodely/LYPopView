@@ -1,0 +1,21 @@
+//
+//  LYPopActionView.m
+//  LYPOPVIEW
+//
+//  CREATED BY LUO YU ON 03/03/2017.
+//  COPYRIGHT © 2016 LUO YU. ALL RIGHTS RESERVED.
+//
+
+#import "LYPopActionView.h"
+
+@implementation LYPopActionView
+
+/*
+// ONLY OVERRIDE drawRect: IF YOU PERFORM CUSTOM DRAWING.
+// AN EMPTY IMPLEMENTATION ADVERSELY AFFECTS PERFORMANCE DURING ANIMATION.
+- (void)drawRect:(CGRect)rect {
+	// DRAWING CODE
+}
+*/
+
+@end
