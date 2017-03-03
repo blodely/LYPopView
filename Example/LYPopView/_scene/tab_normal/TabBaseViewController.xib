@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -29,11 +29,37 @@
                         <action selector="showNormalPopView:" destination="-1" eventType="touchUpInside" id="Na1-9H-0Vm"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u4Z-kI-k5b">
+                    <rect key="frame" x="10" y="154" width="355" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="TqF-Lz-8du"/>
+                    </constraints>
+                    <state key="normal" title="single button action pop view"/>
+                    <connections>
+                        <action selector="showSingleActionPopView:" destination="-1" eventType="touchUpInside" id="1hw-j8-zrp"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQX-5C-O6s">
+                    <rect key="frame" x="10" y="208" width="355" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="YiT-ZN-Q24"/>
+                    </constraints>
+                    <state key="normal" title="double buttons action pop view"/>
+                    <connections>
+                        <action selector="showDoubleActionPopView:" destination="-1" eventType="touchUpInside" id="nHK-Ia-KHB"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="gQX-5C-O6s" firstAttribute="top" secondItem="u4Z-kI-k5b" secondAttribute="bottom" constant="10" id="1Ur-VQ-B6U"/>
+                <constraint firstAttribute="trailing" secondItem="u4Z-kI-k5b" secondAttribute="trailing" constant="10" id="GON-IG-tvE"/>
                 <constraint firstItem="BR6-eG-xJw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="Ltq-y7-7OE"/>
+                <constraint firstAttribute="trailing" secondItem="gQX-5C-O6s" secondAttribute="trailing" constant="10" id="XCE-AC-kJf"/>
+                <constraint firstItem="u4Z-kI-k5b" firstAttribute="top" secondItem="BR6-eG-xJw" secondAttribute="bottom" constant="10" id="Yv1-Gi-h6c"/>
+                <constraint firstItem="u4Z-kI-k5b" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="aG7-B4-dT8"/>
                 <constraint firstAttribute="trailing" secondItem="BR6-eG-xJw" secondAttribute="trailing" constant="16" id="dcZ-le-ms0"/>
+                <constraint firstItem="gQX-5C-O6s" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="fhV-c0-NJU"/>
                 <constraint firstItem="BR6-eG-xJw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="iIV-IP-dmc"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
