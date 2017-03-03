@@ -7,8 +7,91 @@
 //
 
 #import "LYPopActionView.h"
+#import "UIColor+LYPopViewHex.h"
+
+typedef void(^ buttonActionBlock)(void);
+
+@interface LYPopActionView () {
+	
+	buttonActionBlock blockSingleIdxZero;
+	buttonActionBlock blockDoubleIdxZero;
+	buttonActionBlock blockDoubleIdxOne;
+	
+	__weak UIButton *btnSingleIdxZero;
+	__weak UIButton *btnDoubleIdxZero;
+	__weak UIButton *btnDoubleIdxOne;
+}
+
+@end
 
 @implementation LYPopActionView
+
+// MARK: - ACTION
+
+- (void)buttonSingleIdxZeroAction:(UIButton *)button {
+	blockSingleIdxZero();
+}
+
+- (void)buttonDoubleIdxZeroAction:(UIButton *)button {
+	blockDoubleIdxZero();
+}
+
+- (void)buttonDoubleIdxOneAction:(UIButton *)button {
+	blockDoubleIdxOne();
+}
+
+// MARK: - INIT
+
+- (instancetype)initWithFrame:(CGRect)frame {
+	if (self = [super initWithFrame:frame]) {
+		
+		[self initial];
+	}
+	return self;
+}
+
+- (void)initial {
+	
+	NSDictionary *conf = [self configurations];
+	NSString *confValue = @"conf-value";
+	
+	{
+		UIView *viewContent = [[UIView alloc] init];
+		viewContent.frame = (CGRect){0, 44, vCont.bounds.size.width, vCont.bounds.size.height - 88};
+		[vCont addSubview:viewContent];
+		vActionCont = viewContent;
+	}
+	
+	{
+		// SINGLE BUTTON
+		UIButton *buttonZero = [UIButton buttonWithType:UIButtonTypeCustom];
+		buttonZero.frame = (CGRect){0, vCont.bounds.size.height - 44, vCont.bounds.size.width, 44};
+		buttonZero.hidden = YES;
+		[buttonZero setBackgroundColor:[UIColor pv_hex:conf[@"popview-theme-color"][confValue]]];
+		[buttonZero addTarget:self action:@selector(buttonSingleIdxZeroAction:) forControlEvents:UIControlEventTouchUpInside];
+		[vCont addSubview:buttonZero];
+		btnSingleIdxZero = buttonZero;
+	}
+	
+	{
+		// TWO BUTTONS
+		UIButton *buttonZero = [UIButton buttonWithType:UIButtonTypeCustom];
+		buttonZero.frame = (CGRect){0, vCont.bounds.size.height - 44, vCont.bounds.size.width / 2, 44};
+		buttonZero.hidden = YES;
+		[buttonZero setBackgroundColor:[UIColor pv_hex:conf[@"popview-theme-color"][confValue]]];
+		[buttonZero addTarget:self action:@selector(buttonDoubleIdxZeroAction:) forControlEvents:UIControlEventTouchUpInside];
+		[vCont addSubview:buttonZero];
+		btnDoubleIdxZero = buttonZero;
+		
+		UIButton *buttonOne = [UIButton buttonWithType:UIButtonTypeCustom];
+		buttonOne.frame = (CGRect){vCont.bounds.size.width / 2, vCont.bounds.size.height - 44, vCont.bounds.size.width / 2, 44};
+		buttonOne.hidden = YES;
+		[buttonOne setBackgroundColor:[UIColor pv_hex:conf[@"popview-theme-color"][confValue]]];
+		[buttonOne addTarget:self action:@selector(buttonDoubleIdxOneAction:) forControlEvents:UIControlEventTouchUpInside];
+		[vCont addSubview:buttonOne];
+		btnDoubleIdxOne = buttonOne;
+	}
+}
 
 /*
 // ONLY OVERRIDE drawRect: IF YOU PERFORM CUSTOM DRAWING.
@@ -17,5 +100,37 @@
 	// DRAWING CODE
 }
 */
+
+// MARK: - PROPERTY
+
+// MARK: - METHOD
+
+- (void)setSingleButtonTitle:(NSString *)title andAction:(void (^)(void))pressedAction {
+	
+	// BUTTON VISIBILITY
+	btnSingleIdxZero.hidden = NO;
+	btnDoubleIdxZero.hidden = btnDoubleIdxOne.hidden = YES;
+	
+	// BUTTON TITLE
+	[btnSingleIdxZero setTitle:title forState:UIControlStateNormal];
+	
+	// ACTION BLOCK
+	blockSingleIdxZero = pressedAction;
+}
+
+- (void)setDoubleButtonBtnZeroTitle:(NSString *)titleZero action:(void (^)(void))btnZeroAction andBtnOneTitle:(NSString *)titleOne action:(void (^)(void))btnOneAction {
+	
+	// BUTTON VISIBILITY
+	btnSingleIdxZero.hidden = YES;
+	btnDoubleIdxZero.hidden = btnDoubleIdxOne.hidden = NO;
+	
+	// BUTTON TITLES
+	[btnDoubleIdxZero setTitle:titleZero forState:UIControlStateNormal];
+	[btnDoubleIdxOne setTitle:titleOne forState:UIControlStateNormal];
+	
+	// ACTION BLOCKS
+	blockDoubleIdxZero = btnZeroAction;
+	blockDoubleIdxOne = btnOneAction;
+}
 
 @end

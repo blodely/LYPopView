@@ -13,4 +13,10 @@
 	__weak UIView *vActionCont;
 }
 
+//@property (nonatomic, strong) NSArray *buttons;
+
+- (void)setSingleButtonTitle:(NSString *)title andAction:(void (^)(void))pressedAction;
+
+- (void)setDoubleButtonBtnZeroTitle:(NSString *)titleZero action:(void (^)(void))btnZeroAction andBtnOneTitle:(NSString *)titleOne action:(void (^)(void))btnOneAction;
+
 @end
