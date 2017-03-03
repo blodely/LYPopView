@@ -8,6 +8,7 @@
 
 #import "LYPopActionView.h"
 #import "UIColor+LYPopViewHex.h"
+#import <LYCategory/LYCategory.h>
 
 typedef void(^ buttonActionBlock)(void);
 
@@ -30,14 +31,17 @@ typedef void(^ buttonActionBlock)(void);
 
 - (void)buttonSingleIdxZeroAction:(UIButton *)button {
 	blockSingleIdxZero();
+	[self dismiss];
 }
 
 - (void)buttonDoubleIdxZeroAction:(UIButton *)button {
 	blockDoubleIdxZero();
+	[self dismiss];
 }
 
 - (void)buttonDoubleIdxOneAction:(UIButton *)button {
 	blockDoubleIdxOne();
+	[self dismiss];
 }
 
 // MARK: - INIT
@@ -45,12 +49,12 @@ typedef void(^ buttonActionBlock)(void);
 - (instancetype)initWithFrame:(CGRect)frame {
 	if (self = [super initWithFrame:frame]) {
 		
-		[self initial];
+		[self initialPopAction];
 	}
 	return self;
 }
 
-- (void)initial {
+- (void)initialPopAction {
 	
 	NSDictionary *conf = [self configurations];
 	NSString *confValue = @"conf-value";
@@ -76,7 +80,7 @@ typedef void(^ buttonActionBlock)(void);
 	{
 		// TWO BUTTONS
 		UIButton *buttonZero = [UIButton buttonWithType:UIButtonTypeCustom];
-		buttonZero.frame = (CGRect){0, vCont.bounds.size.height - 44, vCont.bounds.size.width / 2, 44};
+		buttonZero.frame = (CGRect){0, vCont.bounds.size.height - 44, vCont.bounds.size.width / 2 - (1/[UIScreen mainScreen].scale), 44};
 		buttonZero.hidden = YES;
 		[buttonZero setBackgroundColor:[UIColor pv_hex:conf[@"popview-theme-color"][confValue]]];
 		[buttonZero addTarget:self action:@selector(buttonDoubleIdxZeroAction:) forControlEvents:UIControlEventTouchUpInside];
