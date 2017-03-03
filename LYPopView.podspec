@@ -3,12 +3,12 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LYPopView'
-  s.version          = '0.1.7'
+  s.version          = '0.1.8'
   s.summary          = 'pop view.'
 
   s.description      = <<-DESC
 a pop view.
-message, table, date.
+message, table, date, button.
                        DESC
 
   s.homepage         = 'https://github.com/blodely/LYPopView'
