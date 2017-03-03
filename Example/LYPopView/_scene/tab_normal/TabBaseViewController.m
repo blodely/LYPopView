@@ -24,6 +24,26 @@
 	[popview show];
 }
 
+- (IBAction)showSingleActionPopView:(UIButton *)sender {
+	LYPopActionView *popview = [[LYPopActionView alloc] init];
+	popview.title = @"single button pop view";
+	[popview setSingleButtonTitle:@"Yes" andAction:^{
+		NSLog(@"Pressed\n%@", [NSDate date]);
+	}];
+	[popview show];
+}
+
+- (IBAction)showDoubleActionPopView:(UIButton *)sender {
+	LYPopActionView *popview = [[LYPopActionView alloc] init];
+	popview.title = @"double buttons pop view";
+	[popview setDoubleButtonBtnZeroTitle:@"cancel" action:^{
+		NSLog(@"button 0 pressed\n%@", [NSDate date]);
+	} andBtnOneTitle:@"yes" action:^{
+		NSLog(@"button 1 pressed\n%@", [NSDate date]);
+	}];
+	[popview show];
+}
+
 // MARK: - INIT
 
 - (instancetype)init {
