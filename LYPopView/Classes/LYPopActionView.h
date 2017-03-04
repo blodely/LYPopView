@@ -13,8 +13,12 @@
 	__weak UIView *vActionCont;
 }
 
-//@property (nonatomic, strong) NSArray *buttons;
+/**
+ action pop view with one button at bottom
 
+ @param title button title
+ @param pressedAction button action block on event touch up inside
+ */
 - (void)setSingleButtonTitle:(NSString *)title andAction:(void (^)(void))pressedAction;
 
 - (void)setDoubleButtonBtnZeroTitle:(NSString *)titleZero action:(void (^)(void))btnZeroAction andBtnOneTitle:(NSString *)titleOne action:(void (^)(void))btnOneAction;
