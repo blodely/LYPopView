@@ -21,6 +21,14 @@
  */
 - (void)setSingleButtonTitle:(NSString *)title andAction:(void (^)(void))pressedAction;
 
+/**
+ action pop view with two buttons at bottom
+
+ @param titleZero button0's title
+ @param btnZeroAction button0 action block on event touch up inside
+ @param titleOne button1's title
+ @param btnOneAction button1 action block on event touch up inside
+ */
 - (void)setDoubleButtonBtnZeroTitle:(NSString *)titleZero action:(void (^)(void))btnZeroAction andBtnOneTitle:(NSString *)titleOne action:(void (^)(void))btnOneAction;
 
 @end
