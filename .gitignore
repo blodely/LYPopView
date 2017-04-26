@@ -20,6 +20,7 @@ DerivedData
 *.ipa
 
 *.xcworkspace/
+Podfile.lock
 
 # Bundler
 .bundle
