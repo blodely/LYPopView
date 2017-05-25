@@ -3,6 +3,8 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 use_frameworks!
 
+platform :ios, '8.2'
+
 target 'LYPopView_Example' do
   pod 'LYPopView', :path => '../'
 
