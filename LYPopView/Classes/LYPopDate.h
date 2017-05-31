@@ -16,13 +16,29 @@ typedef void (^ didSelectDate)(NSDate *date);
  message label
  */
 @property (nonatomic, weak) UILabel *message;
+
+/**
+ date picker
+ */
 @property (nonatomic, weak) UIDatePicker *picker;
 
+/**
+ formatter string
+ */
 @property (nonatomic, strong) NSString *formatter;
+
+/**
+ timezone string
+ */
 @property (nonatomic, strong) NSString *timezone;
 
 + (void)showPopWithTitle:(NSString *)title datePickerMode:(UIDatePickerMode)mode stringFormat:(NSString *)formatter timezone:(NSString *)timezone andSelectionBlock:(didSelectDate)selectBlock;
 
+/**
+ set selected block
+
+ @param selectBlock action block
+ */
 - (void)setSelectBlock:(didSelectDate)selectBlock;
 
 @end
