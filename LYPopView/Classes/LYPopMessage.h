@@ -10,6 +10,9 @@
 
 @interface LYPopMessage : LYPopView
 
+/**
+ message
+ */
 @property (nonatomic, strong) NSString *message;
 
 + (void)showPopWithTitle:(NSString *)aTitle andMessage:(NSString *)aMessage;
