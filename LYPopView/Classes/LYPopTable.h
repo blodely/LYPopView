@@ -12,6 +12,9 @@ FOUNDATION_EXPORT NSString *const LYPopTableDataTitle;
 
 @interface LYPopTable : LYPopView
 
+/**
+ table
+ */
 @property (nonatomic, weak) UITableView *tbMenu;
 
 @end
@@ -24,7 +27,20 @@ FOUNDATION_EXPORT NSString *const LYPopTableCellIdentifier;
  STANDARD CELL
  */
 @interface LYPopTableCell : UITableViewCell
+
+/**
+ cell icon image view
+ */
 @property (nonatomic, weak) IBOutlet UIImageView *ivIcon;
+
+/**
+ cell title label
+ */
 @property (nonatomic, weak) IBOutlet UILabel *lblTitle;
+
+/**
+ cell subtitle label
+ */
 @property (nonatomic, weak) IBOutlet UILabel *lblSubtitle;
+
 @end
