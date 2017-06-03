@@ -10,6 +10,12 @@
 
 @interface NSBundle (PopView)
 
+/**
+ module inner method.
+ resource bundle
+
+ @return bundle
+ */
 + (NSBundle *)popResourceBundle;
 
 @end
