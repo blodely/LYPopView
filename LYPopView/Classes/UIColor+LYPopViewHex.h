@@ -10,6 +10,12 @@
 
 @interface UIColor (LYPopViewHex)
 
+/**
+ hex color convertor
+
+ @param hexstring hex color string
+ @return color object
+ */
 + (UIColor *)pv_hex:(NSString *)hexstring;
 
 @end
