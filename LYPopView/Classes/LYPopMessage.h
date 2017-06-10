@@ -15,6 +15,12 @@
  */
 @property (nonatomic, strong) NSString *message;
 
+/**
+ instance creator
+
+ @param aTitle pop view title
+ @param aMessage message in pop view
+ */
 + (void)showPopWithTitle:(NSString *)aTitle andMessage:(NSString *)aMessage;
 
 @end
