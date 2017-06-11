@@ -9,7 +9,7 @@
 #import "LYPopView.h"
 #import "PopView.h"
 #import "NSBundle+PopView.h"
-#import "UIColor+LYPopViewHex.h"
+#import <LYCategory/LYCategory.h>
 #import "FCFileManager.h"
 
 NSString *const LIB_POPVIEW_BUNDLE_ID = @"org.cocoapods.LYPopView";
@@ -61,7 +61,7 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 	
 	{
 		UIView *viewCont = [[UIView alloc] init];
-		viewCont.backgroundColor = [UIColor pv_hex:conf[@"popview-window-bg-color"][confValue]];
+		viewCont.backgroundColor = [UIColor colorWithHex:conf[@"popview-window-bg-color"][confValue] andAlpha:1.0];
 		viewCont.clipsToBounds = YES;
 		CGFloat width = screen.width - padding * 2;
 		maxHeight = width / 0.7;
@@ -77,13 +77,13 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 		
 		UIView *viewTitle = [[UIView alloc] init];
 		viewTitle.frame = (CGRect){0, 0, width, 44};
-		viewTitle.backgroundColor = [UIColor pv_hex:conf[@"popview-theme-color"][confValue]];
+		viewTitle.backgroundColor = [UIColor colorWithHex:conf[@"popview-theme-color"][confValue] andAlpha:1.0];
 		[vCont addSubview:viewTitle];
 		vTitle = viewTitle;
 		
 		UILabel *labelTitle = [[UILabel alloc] init];
 		labelTitle.frame = (CGRect){10, 0, width - 20, 44};
-		labelTitle.textColor = [UIColor pv_hex:conf[@"popview-title-color"][confValue]];
+		labelTitle.textColor = [UIColor colorWithHex:conf[@"popview-title-color"][confValue] andAlpha:1.0];
 		labelTitle.textAlignment = NSTextAlignmentCenter;
 		labelTitle.font = [UIFont systemFontOfSize:16];
 		[viewTitle addSubview:labelTitle];
@@ -92,7 +92,7 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 		UIButton *buttonClose = [UIButton buttonWithType:UIButtonTypeCustom];
 		buttonClose.frame = (CGRect){width - 44, 0, 44, 44};
 		[buttonClose setBackgroundImage:[[UIImage imageNamed:@"cross-48-gs" inBundle:[NSBundle popResourceBundle] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-		[buttonClose setTintColor:[UIColor pv_hex:conf[@"popview-title-color"][confValue]]];
+		[buttonClose setTintColor:[UIColor colorWithHex:conf[@"popview-title-color"][confValue] andAlpha:1.0]];
 		[buttonClose addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
 		[viewTitle addSubview:buttonClose];
 	}

@@ -8,7 +8,7 @@
 
 #import "LYPopMessage.h"
 #import "NSBundle+PopView.h"
-#import "UIColor+LYPopViewHex.h"
+#import <LYCategory/UIColor+Speed.h>
 
 @interface LYPopMessage () {
 	
@@ -30,7 +30,7 @@
 		{
 			UILabel *labelMessage = [[UILabel alloc] init];
 			labelMessage.font = [UIFont systemFontOfSize:15];
-			labelMessage.textColor = [UIColor pv_hex:conf[@"popview-message-color"][confValue]];
+			labelMessage.textColor = [UIColor colorWithHex:conf[@"popview-message-color"][confValue] andAlpha:1.0];
 			labelMessage.textAlignment = NSTextAlignmentCenter;
 			labelMessage.frame = (CGRect){padding, 44 + padding, vCont.bounds.size.width - padding * 2, 20};
 			[vCont addSubview:labelMessage];

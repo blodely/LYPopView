@@ -9,7 +9,6 @@
 #import "LYPopDate.h"
 #import <LYCategory/LYCategory.h>
 #import "NSBundle+PopView.h"
-#import "UIColor+LYPopViewHex.h"
 
 @interface LYPopDate () {
 	__weak UIButton *btnCancel;
@@ -76,7 +75,7 @@
 		
 		{
 			UIButton *buttonCancel = [UIButton buttonWithType:UIButtonTypeCustom];
-			[buttonCancel setBackgroundColor:[UIColor pv_hex:conf[@"popview-theme-color"][confValue]]];
+			[buttonCancel setBackgroundColor:[UIColor colorWithHex:conf[@"popview-theme-color"][confValue] andAlpha:1.0]];
 			[buttonCancel addTarget:self action:@selector(cancelBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
 			[buttonCancel setTitle:@"取消" forState:UIControlStateNormal];
 			[vCont addSubview:buttonCancel];
@@ -85,7 +84,7 @@
 		
 		{
 			UIButton *buttonConfirm = [UIButton buttonWithType:UIButtonTypeCustom];
-			[buttonConfirm setBackgroundColor:[UIColor pv_hex:conf[@"popview-theme-color"][confValue]]];
+			[buttonConfirm setBackgroundColor:[UIColor colorWithHex:conf[@"popview-theme-color"][confValue] andAlpha:1.0]];
 			[buttonConfirm addTarget:self action:@selector(confirmBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
 			[buttonConfirm setTitle:@"确认" forState:UIControlStateNormal];
 			[vCont addSubview:buttonConfirm];

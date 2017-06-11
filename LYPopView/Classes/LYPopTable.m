@@ -7,7 +7,7 @@
 //
 
 #import "LYPopTable.h"
-#import "UIColor+LYPopViewHex.h"
+#import <LYCategory/UIColor+Speed.h>
 
 NSString *const LYPopTableDataTitle = @"ly.pop.table.title";
 

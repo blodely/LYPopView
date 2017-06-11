@@ -7,7 +7,6 @@
 //
 
 #import "LYPopActionView.h"
-#import "UIColor+LYPopViewHex.h"
 #import <LYCategory/LYCategory.h>
 
 typedef void(^ buttonActionBlock)(void);
@@ -71,7 +70,7 @@ typedef void(^ buttonActionBlock)(void);
 		UIButton *buttonZero = [UIButton buttonWithType:UIButtonTypeCustom];
 		buttonZero.frame = (CGRect){0, vCont.bounds.size.height - 44, vCont.bounds.size.width, 44};
 		buttonZero.hidden = YES;
-		[buttonZero setBackgroundColor:[UIColor pv_hex:conf[@"popview-theme-color"][confValue]]];
+		[buttonZero setBackgroundColor:[UIColor colorWithHex:conf[@"popview-theme-color"][confValue] andAlpha:1.0]];
 		[buttonZero addTarget:self action:@selector(buttonSingleIdxZeroAction:) forControlEvents:UIControlEventTouchUpInside];
 		[vCont addSubview:buttonZero];
 		btnSingleIdxZero = buttonZero;
@@ -82,7 +81,7 @@ typedef void(^ buttonActionBlock)(void);
 		UIButton *buttonZero = [UIButton buttonWithType:UIButtonTypeCustom];
 		buttonZero.frame = (CGRect){0, vCont.bounds.size.height - 44, vCont.bounds.size.width / 2 - (1/[UIScreen mainScreen].scale), 44};
 		buttonZero.hidden = YES;
-		[buttonZero setBackgroundColor:[UIColor pv_hex:conf[@"popview-theme-color"][confValue]]];
+		[buttonZero setBackgroundColor:[UIColor colorWithHex:conf[@"popview-theme-color"][confValue] andAlpha:1.0]];
 		[buttonZero addTarget:self action:@selector(buttonDoubleIdxZeroAction:) forControlEvents:UIControlEventTouchUpInside];
 		[vCont addSubview:buttonZero];
 		btnDoubleIdxZero = buttonZero;
@@ -90,7 +89,7 @@ typedef void(^ buttonActionBlock)(void);
 		UIButton *buttonOne = [UIButton buttonWithType:UIButtonTypeCustom];
 		buttonOne.frame = (CGRect){vCont.bounds.size.width / 2, vCont.bounds.size.height - 44, vCont.bounds.size.width / 2, 44};
 		buttonOne.hidden = YES;
-		[buttonOne setBackgroundColor:[UIColor pv_hex:conf[@"popview-theme-color"][confValue]]];
+		[buttonOne setBackgroundColor:[UIColor colorWithHex:conf[@"popview-theme-color"][confValue] andAlpha:1.0]];
 		[buttonOne addTarget:self action:@selector(buttonDoubleIdxOneAction:) forControlEvents:UIControlEventTouchUpInside];
 		[vCont addSubview:buttonOne];
 		btnDoubleIdxOne = buttonOne;
