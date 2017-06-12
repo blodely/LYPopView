@@ -15,4 +15,6 @@
 #import <LYPopView/LYPopDate.h>
 #import <LYPopView/LYPopActionView.h>
 
+#import <LYPopView/LYPickerView.h>
+
 #endif /* PopView_h */
