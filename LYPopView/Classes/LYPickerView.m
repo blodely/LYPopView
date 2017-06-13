@@ -25,6 +25,11 @@
 	[self dismiss];
 }
 
+- (void)doneInBar:(id)sender {
+	
+	[self dismiss];
+}
+
 // MARK: - INIT
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -52,7 +57,10 @@
 	[viewCont addSubview:tabbar];
 	
 	UIBarButtonItem *itemCancel = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelInBar:)];
-	[tabbar setItems:@[itemCancel,]];
+	
+	UIBarButtonItem *itemConfirm = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneInBar:)];
+	
+	[tabbar setItems:@[itemCancel, itemConfirm,]];
 
 }
 
