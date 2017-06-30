@@ -11,6 +11,7 @@
 #import "TabMsgViewController.h"
 #import "TabDateViewController.h"
 #import "TabTableViewController.h"
+#import "TabPickerViewController.h"
 
 @implementation LYAppDelegate
 
@@ -23,18 +24,21 @@
 	UITabBarController *tabs = [[UITabBarController alloc] init];
 	
 	UINavigationController *navBase = [[UINavigationController alloc] initWithRootViewController:[[TabBaseViewController alloc] init]];
-	navBase.tabBarItem.title = @"基础";
+	navBase.tabBarItem.title = @"basic pop";
 	
 	UINavigationController *navMsg = [[UINavigationController alloc] initWithRootViewController:[[TabMsgViewController alloc] init]];
-	navMsg.tabBarItem.title = @"消息";
+	navMsg.tabBarItem.title = @"msg pop";
 	
 	UINavigationController *navDate = [[UINavigationController alloc] initWithRootViewController:[[TabDateViewController alloc] init]];
-	navDate.tabBarItem.title = @"时间选择";
+	navDate.tabBarItem.title = @"date pop";
 	
 	UINavigationController *navTable = [[UINavigationController alloc] initWithRootViewController:[[TabTableViewController alloc] init]];
-	navTable.tabBarItem.title = @"列表选择";
+	navTable.tabBarItem.title = @"table pop";
 	
-	tabs.viewControllers = @[navBase, navMsg, navDate, navTable,];
+	UINavigationController *navPicker = [[UINavigationController alloc] initWithRootViewController:[[TabPickerViewController alloc] init]];
+	navPicker.tabBarItem.title = @"picker";
+	
+	tabs.viewControllers = @[navBase, navMsg, navDate, navTable, navPicker,];
 	
 	_window.rootViewController = tabs;
 	
