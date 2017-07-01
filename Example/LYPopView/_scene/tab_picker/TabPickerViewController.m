@@ -7,6 +7,7 @@
 //
 
 #import "TabPickerViewController.h"
+#import <LYPopView/PopView.h>
 
 @interface TabPickerViewController ()
 
@@ -14,10 +15,25 @@
 
 @implementation TabPickerViewController
 
+// MARK: - ACTIONS
+
+- (IBAction)pickerButtonPressed:(UIButton *)sender {
+	LYPickerView *picker = [[LYPickerView alloc] init];
+	[picker show];
+}
+
+// MARK: - INIT
+
 - (instancetype)init {
 	if (self = [super initWithNibName:@"TabPickerViewController" bundle:[NSBundle mainBundle]]) {
 	}
 	return self;
+}
+
+- (void)loadView {
+	[super loadView];
+	
+	self.title = @"picker view";
 }
 
 - (void)viewDidLoad {
