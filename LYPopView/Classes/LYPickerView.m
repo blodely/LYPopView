@@ -50,17 +50,18 @@
 	cBg = ctlBg;
 	
 	UIView *viewCont = [[UIView alloc] initWithFrame:(CGRect){0, HEIGHT - height, WIDTH, height}];
+	viewCont.backgroundColor = [UIColor whiteColor];
 	[ctlBg addSubview:viewCont];
 	vCont = viewCont;
 	
-	UITabBar *tabbar = [[UITabBar alloc] initWithFrame:(CGRect){0, 0, WIDTH, 44}];
-	[viewCont addSubview:tabbar];
+	UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:(CGRect){0, 0, WIDTH, 44}];
+	[viewCont addSubview:toolbar];
 	
 	UIBarButtonItem *itemCancel = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelInBar:)];
 	
 	UIBarButtonItem *itemConfirm = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneInBar:)];
 	
-	[tabbar setItems:@[itemCancel, itemConfirm,]];
+	[toolbar setItems:@[itemCancel, itemConfirm,]];
 
 }
 
@@ -76,16 +77,21 @@
 
 - (void)show {
 	
-	self.frame = (CGRect){0, HEIGHT, WIDTH, height};
+	self.frame = (CGRect){0, 0, WIDTH, HEIGHT};
 	self.hidden = NO;
 	self.alpha = 1;
+	
+	cBg.frame = (CGRect){0, 0, WIDTH, HEIGHT};
+	cBg.alpha = 0;
+	vCont.frame = (CGRect){0, HEIGHT, WIDTH, height};
 	
 	if ([self superview] == nil) {
 		[[UIApplication sharedApplication].keyWindow addSubview:self];
 	}
 	
 	[UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-		self.frame = (CGRect){0, HEIGHT - height, WIDTH, height};
+		cBg.alpha = 1;
+		vCont.frame = (CGRect){0, HEIGHT - height, WIDTH, height};
 	} completion:^(BOOL finished) {
 		
 	}];
@@ -93,7 +99,8 @@
 
 - (void)dismiss {
 	[UIView animateWithDuration:0.25 delay:0	 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-		self.frame = (CGRect){0, HEIGHT, WIDTH, height};
+		vCont.frame = (CGRect){0, HEIGHT, WIDTH, height};
+		cBg.backgroundColor = [UIColor clearColor];
 	} completion:^(BOOL finished) {
 		[self removeFromSuperview];
 	}];
