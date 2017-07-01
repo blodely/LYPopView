@@ -54,14 +54,14 @@
 	[ctlBg addSubview:viewCont];
 	vCont = viewCont;
 	
-	UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:(CGRect){0, 0, WIDTH, 44}];
+	UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:(CGRect){8, 0, WIDTH - 16, 44}];
 	[viewCont addSubview:toolbar];
 	
 	UIBarButtonItem *itemCancel = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelInBar:)];
-	
+	UIBarButtonItem *itemFlex = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 	UIBarButtonItem *itemConfirm = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneInBar:)];
 	
-	[toolbar setItems:@[itemCancel, itemConfirm,]];
+	[toolbar setItems:@[itemCancel, itemFlex, itemConfirm,]];
 
 }
 
