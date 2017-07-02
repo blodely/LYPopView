@@ -33,7 +33,7 @@
 - (void)loadView {
 	[super loadView];
 	
-	self.title = @"picker view";
+	self.navigationItem.title = @"picker view";
 }
 
 - (void)viewDidLoad {

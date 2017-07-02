@@ -47,7 +47,7 @@
 	[super viewDidLoad];
 	// DO ANY ADDITIONAL SETUP AFTER LOADING THE VIEW FROM ITS NIB.
 	
-	self.title = @"message pop view";
+	self.navigationItem.title = @"message pop view";
 }
 
 // MARK: | MEMORY MANAGEMENT

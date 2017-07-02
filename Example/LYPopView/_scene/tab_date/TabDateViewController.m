@@ -43,7 +43,7 @@
 	[super viewDidLoad];
 	// DO ANY ADDITIONAL SETUP AFTER LOADING THE VIEW FROM ITS NIB.
 	
-	self.title = @"date pop view";
+	self.navigationItem.title = @"date pop view";
 }
 
 // MARK: | MEMORY MANAGEMENT
