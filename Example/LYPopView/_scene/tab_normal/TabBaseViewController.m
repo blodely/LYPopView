@@ -57,6 +57,8 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	// DO ANY ADDITIONAL SETUP AFTER LOADING THE VIEW FROM ITS NIB.
+	
+	self.title = @"basic pop view";
 }
 
 // MARK: | MEMORY MANAGEMENT

@@ -46,6 +46,8 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	// DO ANY ADDITIONAL SETUP AFTER LOADING THE VIEW FROM ITS NIB.
+	
+	self.title = @"message pop view";
 }
 
 // MARK: | MEMORY MANAGEMENT

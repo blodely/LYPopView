@@ -44,6 +44,8 @@
 	[super viewDidLoad];
 	// DO ANY ADDITIONAL SETUP AFTER LOADING THE VIEW FROM ITS NIB.
 	
+	self.title = @"table pop view";
+	
 	menu = @[
 			 @{LYPopTableDataTitle:@"menu item",},
 			 @{LYPopTableDataTitle:@"menu item",},
