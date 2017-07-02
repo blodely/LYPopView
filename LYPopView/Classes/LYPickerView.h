@@ -11,7 +11,22 @@
 @interface LYPickerView : UIView {
 	
 	CGFloat height;
+	
+	__weak UIView *vCont;
 }
+
+
+/**
+ initial method
+ */
+- (void)initial;
+
+/**
+ button action
+
+ @param sender sender button
+ */
+- (void)doneInBar:(id)sender;
 
 /**
  display picker view

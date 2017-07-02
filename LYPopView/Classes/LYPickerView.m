@@ -10,11 +10,8 @@
 #import <LYCategory/LYCategory.h>
 
 @interface LYPickerView () {
-	
 	__weak UIControl *cBg;
-	__weak UIView *vCont;
 }
-
 @end
 
 @implementation LYPickerView

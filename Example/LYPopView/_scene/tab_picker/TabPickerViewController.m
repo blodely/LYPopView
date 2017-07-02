@@ -22,6 +22,12 @@
 	[picker show];
 }
 
+- (IBAction)datepickerButtonPressed:(id)sender {
+	[LYDatePicker showWithSelection:^(NSDate *date) {
+		NSLog(@"date picked %@", date);
+	}];
+}
+
 // MARK: - INIT
 
 - (instancetype)init {
