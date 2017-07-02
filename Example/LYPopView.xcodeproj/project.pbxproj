@@ -20,6 +20,7 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		7C9372E79F54C407B9103C60 /* Pods_LYPopView_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 336EEA2567D644778D2389BC /* Pods_LYPopView_Tests.framework */; };
+		893E6C571F096FFA00E8D0D6 /* conf-system-style.plist in Resources */ = {isa = PBXBuildFile; fileRef = 893E6C561F096FFA00E8D0D6 /* conf-system-style.plist */; };
 		89F9F5A71F09584D005970DE /* TabPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F9F5A51F09584D005970DE /* TabPickerViewController.m */; };
 		89F9F5A81F09584D005970DE /* TabPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89F9F5A61F09584D005970DE /* TabPickerViewController.xib */; };
 		B500F0CEB72B61BA0C85510B /* Pods_LYPopView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F258F86A2F1946B668A580 /* Pods_LYPopView_Example.framework */; };
@@ -68,6 +69,7 @@
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		6B825AB97DB2B17E6235D8A6 /* Pods-LYPopView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LYPopView_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LYPopView_Tests/Pods-LYPopView_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		78DBBB0BE6D9ADC8C94D101C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		893E6C561F096FFA00E8D0D6 /* conf-system-style.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "conf-system-style.plist"; sourceTree = "<group>"; };
 		89F9F5A41F09584D005970DE /* TabPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabPickerViewController.h; sourceTree = "<group>"; };
 		89F9F5A51F09584D005970DE /* TabPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabPickerViewController.m; sourceTree = "<group>"; };
 		89F9F5A61F09584D005970DE /* TabPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabPickerViewController.xib; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			children = (
 				6003F59C195388D20070C39A /* LYAppDelegate.h */,
 				6003F59D195388D20070C39A /* LYAppDelegate.m */,
+				893E6C561F096FFA00E8D0D6 /* conf-system-style.plist */,
 				B6AD7AF51E07CE50009743A3 /* _scene */,
 				B6AD7AF31E07CDA0009743A3 /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
@@ -366,6 +369,7 @@
 				B6AD7AF41E07CDA0009743A3 /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
+				893E6C571F096FFA00E8D0D6 /* conf-system-style.plist in Resources */,
 				B65F516B1E08E1EE00BDF02B /* TabTableViewController.xib in Resources */,
 				B6AD7B021E07CEB0009743A3 /* TabMsgViewController.xib in Resources */,
 				B6AD7B071E07CEC9009743A3 /* TabDateViewController.xib in Resources */,

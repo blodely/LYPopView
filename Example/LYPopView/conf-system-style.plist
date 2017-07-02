@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>sys-statusbar-style</key>
+	<dict>
+		<key>name</key>
+		<string>UIStatusBarStyle 样式</string>
+		<key>conf-value</key>
+		<string>1</string>
+	</dict>
+	<key>sys-navbar-bar-tint-color</key>
+	<dict>
+		<key>name</key>
+		<string>barTintColor</string>
+		<key>conf-value</key>
+		<string>#fefefe</string>
+	</dict>
+	<key>sys-navbar-tint-color</key>
+	<dict>
+		<key>name</key>
+		<string>UINavigationBar tintColor</string>
+		<key>conf-value</key>
+		<string>#ffffff</string>
+	</dict>
+	<key>sys-navbar-translucent</key>
+	<dict>
+		<key>name</key>
+		<string>UINavigationBar translucent</string>
+		<key>conf-value</key>
+		<false/>
+	</dict>
+	<key>sys-tabbar-translucent</key>
+	<dict>
+		<key>conf-value</key>
+		<true/>
+		<key>name</key>
+		<string>UITabBar translucent</string>
+	</dict>
+	<key>sys-navbar-title-foreground-color</key>
+	<dict>
+		<key>name</key>
+		<string>UINavigationBar title text attributes foreground color</string>
+		<key>conf-value</key>
+		<string>#ce4444</string>
+	</dict>
+	<key>sys-navbar-bottom-line</key>
+	<dict>
+		<key>name</key>
+		<string>UINavigationBar bottom line</string>
+		<key>conf-value</key>
+		<string>0</string>
+	</dict>
+	<key>sys-tabbar-tint-color</key>
+	<dict>
+		<key>name</key>
+		<string>UITabBar tint color</string>
+		<key>conf-value</key>
+		<string>#ce4444</string>
+	</dict>
+	<key>sys-languages</key>
+	<dict>
+		<key>name</key>
+		<string>Multiple language</string>
+		<key>conf-value</key>
+		<array>
+			<dict>
+				<key>conf-value</key>
+				<string>en</string>
+				<key>name</key>
+				<string>English</string>
+			</dict>
+			<dict>
+				<key>conf-value</key>
+				<string>zh-Hans</string>
+				<key>name</key>
+				<string>简体中文</string>
+			</dict>
+		</array>
+	</dict>
+</dict>
+</plist>

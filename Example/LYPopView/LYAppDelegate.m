@@ -12,6 +12,7 @@
 #import "TabDateViewController.h"
 #import "TabTableViewController.h"
 #import "TabPickerViewController.h"
+#import <ConfigKit/ConfigKit.h>
 
 @implementation LYAppDelegate
 
@@ -48,6 +49,8 @@
 	_window.rootViewController = tabs;
 	
 	[_window makeKeyAndVisible];
+	
+	[[ConfigKit kit] systemStyle];
 	
     return YES;
 }
