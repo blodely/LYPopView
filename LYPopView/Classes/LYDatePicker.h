@@ -12,6 +12,11 @@ typedef void (^ didSelectDate)(NSDate *date);
 
 @interface LYDatePicker : LYPickerView
 
+/**
+ set selection action block
+
+ @param actionBlock action block
+ */
 - (void)setSelection:(didSelectDate)actionBlock;
 
 + (void)showWithSelection:(didSelectDate)actionBlock;
