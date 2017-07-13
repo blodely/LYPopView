@@ -19,6 +19,11 @@ typedef void (^ didSelectDate)(NSDate *date);
  */
 - (void)setSelection:(didSelectDate)actionBlock;
 
+/**
+ show an instance date picker view with action block setter
+
+ @param actionBlock action block
+ */
 + (void)showWithSelection:(didSelectDate)actionBlock;
 
 @end
