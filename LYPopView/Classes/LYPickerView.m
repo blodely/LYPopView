@@ -74,6 +74,7 @@
 
 - (void)show {
 	
+	// MASK NEED TO BE SAME SIZE LIKE SCREEN
 	self.frame = (CGRect){0, 0, WIDTH, HEIGHT};
 	self.hidden = NO;
 	self.alpha = 1;
