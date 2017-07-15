@@ -83,6 +83,7 @@
 	cBg.alpha = 0;
 	vCont.frame = (CGRect){0, HEIGHT, WIDTH, height};
 	
+	// ADD TO WINDOW
 	if ([self superview] == nil) {
 		[[UIApplication sharedApplication].keyWindow addSubview:self];
 	}
