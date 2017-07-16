@@ -88,6 +88,7 @@
 		[[UIApplication sharedApplication].keyWindow addSubview:self];
 	}
 	
+	// ANIMATION OUT
 	[UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 		cBg.alpha = 1;
 		vCont.frame = (CGRect){0, HEIGHT - height, WIDTH, height};
