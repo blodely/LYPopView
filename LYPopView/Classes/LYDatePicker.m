@@ -13,7 +13,7 @@
 	
 	didSelectDate actionSel;
 	
-	UIDatePicker *datepicker;
+//	UIDatePicker *datepicker;
 }
 
 @end
@@ -35,7 +35,7 @@
 	
 	UIDatePicker *datepic = [[UIDatePicker alloc] initWithFrame:(CGRect){0, 44, WIDTH, height - 44}];
 	[vCont addSubview:datepic];
-	datepicker = datepic;
+	_datepicker = datepic;
 	datepic.datePickerMode = UIDatePickerModeDate;
 }
 
@@ -57,7 +57,7 @@
 - (void)doneInBar:(id)sender {
 	
 	if (actionSel != nil) {
-		actionSel(datepicker.date);
+		actionSel(_datepicker.date);
 	}
 	
 	[super doneInBar:sender];

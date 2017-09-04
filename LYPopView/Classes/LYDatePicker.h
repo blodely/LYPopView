@@ -13,6 +13,11 @@ typedef void (^ didSelectDate)(NSDate *date);
 @interface LYDatePicker : LYPickerView
 
 /**
+ datepicker instance
+ */
+@property (nonatomic, weak) UIDatePicker *datepicker;
+
+/**
  set selection action block
 
  @param actionBlock action block
