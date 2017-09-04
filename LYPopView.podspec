@@ -3,7 +3,7 @@
 
 Pod::Spec.new do |s|
 	s.name             = 'LYPopView'
-	s.version          = '0.1.10'
+	s.version          = '0.1.11'
 	s.summary          = 'pop view.'
 
 	s.description      = <<-DESC
