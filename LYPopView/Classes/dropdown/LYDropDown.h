@@ -34,4 +34,6 @@
 
 - (void)addItemTitle:(NSString *)title action:(void (^)(NSUInteger index, NSString *title))itemAction;
 
+- (void)dismiss;
+
 @end

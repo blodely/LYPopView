@@ -163,8 +163,6 @@ typedef void(^ dropdownActionBlock)(NSUInteger index, NSString *title);
 	[menuBlocks addObject:itemAction];
 }
 
-#pragma mark PRIVATE METHOD
-
 - (void)dismiss {
 	[UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 		self->cBg.alpha = 0;
@@ -173,6 +171,8 @@ typedef void(^ dropdownActionBlock)(NSUInteger index, NSString *title);
 		self.hidden = YES;
 	}];
 }
+
+#pragma mark PRIVATE METHOD
 
 #pragma mark - DELEGATE
 
