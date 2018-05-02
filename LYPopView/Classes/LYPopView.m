@@ -127,8 +127,8 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 	[self resetBounds];
 	
 	[UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-		cBg.alpha = 1;
-		vCont.center = center;
+		self->cBg.alpha = 1;
+		self->vCont.center = center;
 	} completion:^(BOOL finished) {
 		
 	}];
@@ -169,8 +169,8 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 	// ANIMATE OUT
 	[UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 		
-		cBg.alpha = 0;
-		vCont.center = center;
+		self->cBg.alpha = 0;
+		self->vCont.center = center;
 		
 	} completion:^(BOOL finished) {
 		

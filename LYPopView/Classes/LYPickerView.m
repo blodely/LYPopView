@@ -90,8 +90,8 @@
 	
 	// ANIMATION OUT
 	[UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-		cBg.alpha = 1;
-		vCont.frame = (CGRect){0, HEIGHT - height, WIDTH, height};
+		self->cBg.alpha = 1;
+		self->vCont.frame = (CGRect){0, HEIGHT - self->height, WIDTH, self->height};
 	} completion:^(BOOL finished) {
 		
 	}];
@@ -99,8 +99,8 @@
 
 - (void)dismiss {
 	[UIView animateWithDuration:0.25 delay:0	 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-		vCont.frame = (CGRect){0, HEIGHT, WIDTH, height};
-		cBg.backgroundColor = [UIColor clearColor];
+		self->vCont.frame = (CGRect){0, HEIGHT, WIDTH, self->height};
+		self->cBg.backgroundColor = [UIColor clearColor];
 	} completion:^(BOOL finished) {
 		[self removeFromSuperview];
 	}];
