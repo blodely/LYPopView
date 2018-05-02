@@ -9,7 +9,10 @@
 #import "TabBaseViewController.h"
 #import <LYPopView/PopView.h>
 
-@interface TabBaseViewController ()
+@interface TabBaseViewController () {
+	
+	__weak LYDropDown *dropdownmenu;
+}
 
 @end
 
@@ -44,6 +47,10 @@
 	[popview show];
 }
 
+- (IBAction)dropdownButtonPressed:(UIButton *)sender {
+	[dropdownmenu showFrom:sender.frame];
+}
+
 // MARK: - INIT
 
 - (instancetype)init {
@@ -59,6 +66,20 @@
 	// DO ANY ADDITIONAL SETUP AFTER LOADING THE VIEW FROM ITS NIB.
 	
 	self.navigationItem.title = @"basic pop view";
+	
+	{
+		LYDropDown *ddm = [LYDropDown menu];
+		[self.view addSubview:ddm];
+		dropdownmenu = ddm;
+		
+		[dropdownmenu addItemTitle:@"first item" action:^{
+			NSLog(@"1st: tapped");
+		}];
+		[dropdownmenu addItemTitle:@"second item" action:^{
+			NSLog(@"2ed: tapped");
+		}];
+		
+	}
 }
 
 // MARK: | MEMORY MANAGEMENT
