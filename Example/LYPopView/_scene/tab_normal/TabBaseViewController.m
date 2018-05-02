@@ -72,11 +72,11 @@
 		[self.view addSubview:ddm];
 		dropdownmenu = ddm;
 		
-		[dropdownmenu addItemTitle:@"first item" action:^(NSString *title) {
-			NSLog(@"1st: tapped : %@", title);
+		[dropdownmenu addItemTitle:@"first item" action:^(NSUInteger index, NSString *title) {
+			NSLog(@"1st: tapped : %@ %@", @(index), title);
 		}];
-		[dropdownmenu addItemTitle:@"second item" action:^(NSString *title) {
-			NSLog(@"2ed: tapped : %@", title);
+		[dropdownmenu addItemTitle:@"second item" action:^(NSUInteger index, NSString *title) {
+			NSLog(@"2ed: tapped : %@ %@", @(index), title);
 		}];
 		
 	}
