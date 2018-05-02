@@ -171,9 +171,10 @@
 	vCont.frame = rect;
 	
 	if (repeat == nil || [repeat isValid] == NO) {
-		repeat = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
-			[self setupLabel];
-		}];
+//		repeat = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
+//			[self setupLabel];
+//		}];
+		repeat = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(setupLabel) userInfo:nil repeats:YES];
 	}
 }
 
