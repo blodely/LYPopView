@@ -22,7 +22,7 @@ message, table, date, button, etc.
 
 	s.ios.deployment_target = '7.0'
 
-	s.source_files = 'LYPopView/Classes/**/*', 'LYPopView/Configurations/*.plist'
+	s.source_files = 'LYPopView/Classes/action/*', 'LYPopView/Classes/picker/*', 'LYPopView/Classes/picker_date/*', 'LYPopView/Classes/pop_message/*', 'LYPopView/Classes/pop_table/*', 'LYPopView/Classes/pop_date/*', 'LYPopView/Classes/**/*', 'LYPopView/Configurations/*.plist'
 
 	s.resource_bundles = {
 	'LYPopView' => ['LYPopView/Assets/*.png']
