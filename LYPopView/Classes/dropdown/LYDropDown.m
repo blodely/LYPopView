@@ -46,6 +46,13 @@ typedef void(^ dropdownActionBlock)(NSString *title);
 
 @implementation LYDropDown
 
+#pragma mark - ACTION
+
+- (void)backgroundTapped:(id)sender {
+//	NSLog(@"CANCEL SELECTION");
+	[self dismiss];
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -86,6 +93,7 @@ typedef void(^ dropdownActionBlock)(NSString *title);
 		self.tintColor = themeColor;
 		
 		self.clipsToBounds = YES;
+		self.hidden = YES;
 	}
 	
 	UIControl *ctlBg = [[UIControl alloc] init];
@@ -93,6 +101,8 @@ typedef void(^ dropdownActionBlock)(NSString *title);
 	ctlBg.alpha = 0;
 	[self addSubview:ctlBg];
 	cBg = ctlBg;
+	[cBg addTarget:self action:@selector(backgroundTapped:) forControlEvents:UIControlEventTouchDown];
+	[cBg addTarget:self action:@selector(backgroundTapped:) forControlEvents:UIControlEventTouchUpInside];
 	
 	UITableView *table = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
 	table.frame = (CGRect){0, 0, self.bounds.size.width, 0};
@@ -123,13 +133,15 @@ typedef void(^ dropdownActionBlock)(NSString *title);
 		return;
 	}
 	
-	if (cBg.alpha == 1) {
+	if (self.hidden == NO) {
 		[self dismiss];
 		return;
 	}
 	
 	[tbMenu reloadData];
 	
+	self.hidden = NO;
+	cBg.alpha = 0;
 	self.frame = (CGRect){0, CGRectGetMaxY(rect), WIDTH, HEIGHT - CGRectGetMaxY(rect)};
 	tbMenu.frame = (CGRect){0, 0, WIDTH, 0};
 	
@@ -158,6 +170,7 @@ typedef void(^ dropdownActionBlock)(NSString *title);
 		self->cBg.alpha = 0;
 		self->tbMenu.frame = (CGRect){0, 0, WIDTH, 0};
 	} completion:^(BOOL finished) {
+		self.hidden = YES;
 	}];
 }
 
