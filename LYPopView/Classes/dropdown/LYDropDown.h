@@ -32,6 +32,6 @@
 
 - (void)showFrom:(CGRect)rect;
 
-- (void)addItemTitle:(NSString *)title action:(void (^)(void))itemAction;
+- (void)addItemTitle:(NSString *)title action:(void (^)(NSString *title))itemAction;
 
 @end

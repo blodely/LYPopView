@@ -28,7 +28,7 @@
 #import "LYPopView.h"
 #import <LYCategory/LYCategory.h>
 
-typedef void(^ dropdownActionBlock)(void);
+typedef void(^ dropdownActionBlock)(NSString *title);
 
 @interface LYDropDown () <UITableViewDelegate, UITableViewDataSource> {
 	
@@ -141,7 +141,7 @@ typedef void(^ dropdownActionBlock)(void);
 	}];
 }
 
-- (void)addItemTitle:(NSString *)title action:(void (^)(void))itemAction {
+- (void)addItemTitle:(NSString *)title action:(void (^)(NSString *))itemAction {
 	if (title == nil || itemAction == nil) {
 		NSLog(@"❎ERROR: CANNOT ADD NIL OBJECT");
 		return;
@@ -170,7 +170,7 @@ typedef void(^ dropdownActionBlock)(void);
 	// KEEP SELECTION
 	
 	dropdownActionBlock actionBlock = menuBlocks[idp.row];
-	actionBlock();
+	actionBlock(menu[idp.row]);
 	
 	[self dismiss];
 }
