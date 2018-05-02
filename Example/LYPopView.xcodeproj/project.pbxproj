@@ -88,7 +88,7 @@
 		B6AD7B041E07CEC9009743A3 /* TabDateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabDateViewController.m; sourceTree = "<group>"; };
 		B6AD7B051E07CEC9009743A3 /* TabDateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabDateViewController.xib; sourceTree = "<group>"; };
 		D6FEC65D0F539FCAB60509E7 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		E42351A4212ED6B71FB565AE /* LYPopView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LYPopView.podspec; path = ../LYPopView.podspec; sourceTree = "<group>"; };
+		E42351A4212ED6B71FB565AE /* LYPopView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LYPopView.podspec; path = ../LYPopView.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		FC98DF1B209989E80053C873 /* push_repo_lyspecs.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = push_repo_lyspecs.sh; path = ../push_repo_lyspecs.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
