@@ -28,4 +28,10 @@
 
 @interface LYDropDown : UIView
 
++ (LYDropDown *)menu;
+
+- (void)showFrom:(CGRect)rect;
+
+- (void)addItemTitle:(NSString *)title action:(void (^)(void))itemAction;
+
 @end
