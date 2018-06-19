@@ -36,6 +36,8 @@
 #import <LYPopView/LYPickerView.h>
 #import <LYPopView/LYDatePicker.h>
 
+#import <LYPopView/LYPopImage.h>
+
 #import <LYPopView/LYDropDown.h>
 
 #endif /* PopView_h */
