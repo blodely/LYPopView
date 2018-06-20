@@ -28,6 +28,15 @@
 	}];
 }
 
+- (IBAction)showDatePicker:(UIButton *)sender {
+	[LYPopDate showPopWithTitle:@"时间选择"
+				 datePickerMode:UIDatePickerModeDate
+				   stringFormat:@"yyyy-MM-dd"
+					   timezone:@"Asia/Shanghai" andSelectionBlock:^(NSDate *date) {
+						   NSLog(@"did select date %@", date);
+					   }];
+}
+
 // MARK: - INIT
 
 - (instancetype)init {
