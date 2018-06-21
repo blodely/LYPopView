@@ -35,5 +35,6 @@ message, table, date, button, etc.
 
 	s.dependency 'LYCategory'
 	s.dependency 'FCFileManager', '~> 1.0.18'
+	s.dependency 'AFNetworking', '~> 3.2.1'
 
 end

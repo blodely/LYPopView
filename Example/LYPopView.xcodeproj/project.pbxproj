@@ -31,8 +31,11 @@
 		B6AD7AFD1E07CE99009743A3 /* TabBaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6AD7AFB1E07CE99009743A3 /* TabBaseViewController.xib */; };
 		B6AD7B011E07CEB0009743A3 /* TabMsgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AD7AFF1E07CEB0009743A3 /* TabMsgViewController.m */; };
 		B6AD7B021E07CEB0009743A3 /* TabMsgViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6AD7B001E07CEB0009743A3 /* TabMsgViewController.xib */; };
-		B6AD7B061E07CEC9009743A3 /* TabDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AD7B041E07CEC9009743A3 /* TabDateViewController.m */; };
-		B6AD7B071E07CEC9009743A3 /* TabDateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6AD7B051E07CEC9009743A3 /* TabDateViewController.xib */; };
+		FC89142C20D9F0C00050ED37 /* TabOtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC89142A20D9F0C00050ED37 /* TabOtherViewController.m */; };
+		FC89142D20D9F0C00050ED37 /* TabOtherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC89142B20D9F0C00050ED37 /* TabOtherViewController.xib */; };
+		FC89143220D9F1BC0050ED37 /* LYPopImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC89143020D9F1BC0050ED37 /* LYPopImagesViewController.m */; };
+		FC89143320D9F1BC0050ED37 /* LYPopImagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC89143120D9F1BC0050ED37 /* LYPopImagesViewController.xib */; };
+		FC89143820D9F4080050ED37 /* LYPopImagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC89143620D9F4080050ED37 /* LYPopImagesCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,11 +87,15 @@
 		B6AD7AFE1E07CEB0009743A3 /* TabMsgViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabMsgViewController.h; sourceTree = "<group>"; };
 		B6AD7AFF1E07CEB0009743A3 /* TabMsgViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabMsgViewController.m; sourceTree = "<group>"; };
 		B6AD7B001E07CEB0009743A3 /* TabMsgViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabMsgViewController.xib; sourceTree = "<group>"; };
-		B6AD7B031E07CEC9009743A3 /* TabDateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabDateViewController.h; sourceTree = "<group>"; };
-		B6AD7B041E07CEC9009743A3 /* TabDateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabDateViewController.m; sourceTree = "<group>"; };
-		B6AD7B051E07CEC9009743A3 /* TabDateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabDateViewController.xib; sourceTree = "<group>"; };
 		D6FEC65D0F539FCAB60509E7 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		E42351A4212ED6B71FB565AE /* LYPopView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LYPopView.podspec; path = ../LYPopView.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		FC89142920D9F0C00050ED37 /* TabOtherViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabOtherViewController.h; sourceTree = "<group>"; };
+		FC89142A20D9F0C00050ED37 /* TabOtherViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabOtherViewController.m; sourceTree = "<group>"; };
+		FC89142B20D9F0C00050ED37 /* TabOtherViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabOtherViewController.xib; sourceTree = "<group>"; };
+		FC89142F20D9F1BC0050ED37 /* LYPopImagesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LYPopImagesViewController.h; sourceTree = "<group>"; };
+		FC89143020D9F1BC0050ED37 /* LYPopImagesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYPopImagesViewController.m; sourceTree = "<group>"; };
+		FC89143120D9F1BC0050ED37 /* LYPopImagesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LYPopImagesViewController.xib; sourceTree = "<group>"; };
+		FC89143620D9F4080050ED37 /* LYPopImagesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LYPopImagesCell.xib; sourceTree = "<group>"; };
 		FC98DF1B209989E80053C873 /* push_repo_lyspecs.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = push_repo_lyspecs.sh; path = ../push_repo_lyspecs.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -244,21 +251,12 @@
 			children = (
 				B6AD7AF81E07CE80009743A3 /* tab_normal */,
 				B6AD7AF71E07CE80009743A3 /* tab_message */,
-				B6AD7AF61E07CE80009743A3 /* tab_date */,
 				B65F51661E08E1DC00BDF02B /* tab_table */,
 				89F9F5A31F095837005970DE /* tab_picker */,
+				FC89142820D9F0A60050ED37 /* tab_other */,
+				FC89142E20D9F1AF0050ED37 /* pop_image */,
 			);
 			path = _scene;
-			sourceTree = "<group>";
-		};
-		B6AD7AF61E07CE80009743A3 /* tab_date */ = {
-			isa = PBXGroup;
-			children = (
-				B6AD7B031E07CEC9009743A3 /* TabDateViewController.h */,
-				B6AD7B041E07CEC9009743A3 /* TabDateViewController.m */,
-				B6AD7B051E07CEC9009743A3 /* TabDateViewController.xib */,
-			);
-			path = tab_date;
 			sourceTree = "<group>";
 		};
 		B6AD7AF71E07CE80009743A3 /* tab_message */ = {
@@ -279,6 +277,27 @@
 				B6AD7AFB1E07CE99009743A3 /* TabBaseViewController.xib */,
 			);
 			path = tab_normal;
+			sourceTree = "<group>";
+		};
+		FC89142820D9F0A60050ED37 /* tab_other */ = {
+			isa = PBXGroup;
+			children = (
+				FC89142920D9F0C00050ED37 /* TabOtherViewController.h */,
+				FC89142A20D9F0C00050ED37 /* TabOtherViewController.m */,
+				FC89142B20D9F0C00050ED37 /* TabOtherViewController.xib */,
+			);
+			path = tab_other;
+			sourceTree = "<group>";
+		};
+		FC89142E20D9F1AF0050ED37 /* pop_image */ = {
+			isa = PBXGroup;
+			children = (
+				FC89142F20D9F1BC0050ED37 /* LYPopImagesViewController.h */,
+				FC89143020D9F1BC0050ED37 /* LYPopImagesViewController.m */,
+				FC89143120D9F1BC0050ED37 /* LYPopImagesViewController.xib */,
+				FC89143620D9F4080050ED37 /* LYPopImagesCell.xib */,
+			);
+			path = pop_image;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,11 +383,13 @@
 				89F9F5A81F09584D005970DE /* TabPickerViewController.xib in Resources */,
 				B6AD7AF41E07CDA0009743A3 /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				FC89143320D9F1BC0050ED37 /* LYPopImagesViewController.xib in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
+				FC89142D20D9F0C00050ED37 /* TabOtherViewController.xib in Resources */,
+				FC89143820D9F4080050ED37 /* LYPopImagesCell.xib in Resources */,
 				893E6C571F096FFA00E8D0D6 /* conf-system-style.plist in Resources */,
 				B65F516B1E08E1EE00BDF02B /* TabTableViewController.xib in Resources */,
 				B6AD7B021E07CEB0009743A3 /* TabMsgViewController.xib in Resources */,
-				B6AD7B071E07CEC9009743A3 /* TabDateViewController.xib in Resources */,
 				B6AD7AFD1E07CE99009743A3 /* TabBaseViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,6 +430,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-LYPopView_Example/Pods-LYPopView_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/ConfigKit/ConfigKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FCFileManager/FCFileManager.framework",
 				"${BUILT_PRODUCTS_DIR}/LYCategory/LYCategory.framework",
@@ -416,6 +438,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ConfigKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FCFileManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LYCategory.framework",
@@ -455,9 +478,10 @@
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				B6AD7AFC1E07CE99009743A3 /* TabBaseViewController.m in Sources */,
 				89F9F5A71F09584D005970DE /* TabPickerViewController.m in Sources */,
-				B6AD7B061E07CEC9009743A3 /* TabDateViewController.m in Sources */,
 				B65F516A1E08E1EE00BDF02B /* TabTableViewController.m in Sources */,
+				FC89142C20D9F0C00050ED37 /* TabOtherViewController.m in Sources */,
 				B6AD7B011E07CEB0009743A3 /* TabMsgViewController.m in Sources */,
+				FC89143220D9F1BC0050ED37 /* LYPopImagesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

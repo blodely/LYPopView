@@ -9,9 +9,9 @@
 #import "LYAppDelegate.h"
 #import "TabBaseViewController.h"
 #import "TabMsgViewController.h"
-#import "TabDateViewController.h"
 #import "TabTableViewController.h"
 #import "TabPickerViewController.h"
+#import "TabOtherViewController.h"
 #import <ConfigKit/ConfigKit.h>
 
 @implementation LYAppDelegate
@@ -32,16 +32,16 @@
 	navMsg.tabBarItem.title = @"msg pop";
 	navMsg.tabBarItem.image = [UIImage imageNamed:@"tab-ico-msg"];
 	
-	UINavigationController *navDate = [[UINavigationController alloc] initWithRootViewController:[[TabDateViewController alloc] init]];
-	navDate.tabBarItem.title = @"date pop";
+	UINavigationController *navDate = [[UINavigationController alloc] initWithRootViewController:[[TabPickerViewController alloc] init]];
+	navDate.tabBarItem.title = @"picker";
 	navDate.tabBarItem.image = [UIImage imageNamed:@"tab-ico-date"];
 	
 	UINavigationController *navTable = [[UINavigationController alloc] initWithRootViewController:[[TabTableViewController alloc] init]];
 	navTable.tabBarItem.title = @"table pop";
 	navTable.tabBarItem.image = [UIImage imageNamed:@"tab-ico-list"];
 	
-	UINavigationController *navPicker = [[UINavigationController alloc] initWithRootViewController:[[TabPickerViewController alloc] init]];
-	navPicker.tabBarItem.title = @"picker";
+	UINavigationController *navPicker = [[UINavigationController alloc] initWithRootViewController:[[TabOtherViewController alloc] init]];
+	navPicker.tabBarItem.title = @"other";
 	navPicker.tabBarItem.image = [UIImage imageNamed:@"tab-ico-picker"];
 	
 	tabs.viewControllers = @[navBase, navMsg, navDate, navTable, navPicker,];
