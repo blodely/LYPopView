@@ -28,4 +28,6 @@
 
 @interface LYPopImage : UIView
 
++ (instancetype)pop;
+
 @end

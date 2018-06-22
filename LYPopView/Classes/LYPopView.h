@@ -26,6 +26,8 @@
 
 #import <UIKit/UIKit.h>
 
+FOUNDATION_EXPORT NSString *const LIB_POPVIEW_BUNDLE_ID;
+
 @interface LYPopView : UIView {
 	
 	CGFloat padding;

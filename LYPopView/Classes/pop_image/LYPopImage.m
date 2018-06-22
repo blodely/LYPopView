@@ -25,6 +25,14 @@
 //
 
 #import "LYPopImage.h"
+#import "LYPopImageCell.h"
+#import "LYPopView.h"
+
+@interface LYPopImage () <UICollectionViewDelegate, UICollectionViewDataSource> {
+	
+	__weak UICollectionView *cvImage;
+}
+@end
 
 @implementation LYPopImage
 
@@ -35,5 +43,71 @@
     // Drawing code
 }
 */
+
+
+// MARK: - INIT
+
++ (instancetype)pop {
+	static LYPopImage *popview;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		popview = [[LYPopImage alloc] initWithFrame:CGRectZero];
+	});
+	return popview;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame {
+	if (self = [super initWithFrame:frame]) {
+		[self initial];
+	}
+	return self;
+}
+
+- (void)initial {
+	
+	CGRect rect = [[UIScreen mainScreen] bounds];
+	CGFloat padding = 10.0f;
+	
+	self.frame = rect;
+	
+	
+	
+	{
+		UICollectionViewFlowLayout *flowlayout = [[UICollectionViewFlowLayout alloc] init];
+		flowlayout.itemSize = rect.size;
+		flowlayout.minimumLineSpacing = padding;
+		flowlayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, padding);
+		flowlayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+		
+		rect.size.width += padding;
+		
+		UICollectionView *collectionview = [[UICollectionView alloc] initWithFrame:rect collectionViewLayout:flowlayout];
+		collectionview.delegate = self;
+		collectionview.dataSource = self;
+		collectionview.pagingEnabled = YES;
+		[self addSubview:collectionview];
+		cvImage = collectionview;
+		
+		[cvImage registerNib:[UINib nibWithNibName:@"LYPopImageCell" bundle:[NSBundle bundleWithIdentifier:LIB_POPVIEW_BUNDLE_ID]] forCellWithReuseIdentifier:LYPopImageCellIdentifier];
+	}
+}
+
+// MARK: - DELEGATE
+
+// MARK: UICollectionViewDelegate
+
+// MARK: UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+	return 0;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)idp {
+	
+	LYPopImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:LYPopImageCellIdentifier forIndexPath:idp];
+	
+	return cell;
+}
+
 
 @end
