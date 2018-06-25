@@ -28,6 +28,8 @@
 
 @interface LYPopImage : UIView
 
+@property (nonatomic, assign) BOOL showIndex;
+
 + (instancetype)pop;
 
 - (void)showImageWithIndex:(NSInteger)idx inDataSource:(NSArray <NSString *>*)datasource fromRect:(CGRect)rect;

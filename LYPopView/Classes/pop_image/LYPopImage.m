@@ -33,6 +33,8 @@
 
 @interface LYPopImage () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout> {
 	
+	__weak UILabel *lblIdx;
+	
 	__weak UICollectionView *cvImage;
 	
 	NSMutableArray *dsImage;
@@ -74,9 +76,11 @@
 	CGFloat padding = 10.0f;
 	
 	self.frame = rect;
+	self.backgroundColor = [UIColor colorWithHex:@"#000000" andAlpha:0.85];
 	
 	{
 		dsImage = [NSMutableArray arrayWithCapacity:1];
+		_showIndex = NO;
 	}
 	
 	{
@@ -92,11 +96,35 @@
 		collectionview.delegate = self;
 		collectionview.dataSource = self;
 		collectionview.pagingEnabled = YES;
+		collectionview.backgroundColor = [UIColor clearColor];
 		[self addSubview:collectionview];
 		cvImage = collectionview;
 		
 		[cvImage registerNib:[UINib nibWithNibName:@"LYPopImageCell" bundle:[NSBundle bundleWithIdentifier:LIB_POPVIEW_BUNDLE_ID]] forCellWithReuseIdentifier:LYPopImageCellIdentifier];
+		
+		// RESET
+		rect = [[UIScreen mainScreen] bounds];
 	}
+	
+	{
+		UILabel *label = [[UILabel alloc] init];
+		label.frame = (CGRect){padding, rect.size.height - 100, rect.size.width - (padding * 2), 30};
+		label.font = [UIFont systemFontOfSize:15];
+		label.textColor = [UIColor whiteColor];
+		label.textAlignment = NSTextAlignmentRight;
+		[self addSubview:label];
+		lblIdx = label;
+		
+		lblIdx.hidden = !_showIndex;
+	}
+}
+
+// MARK: - PROPERTY
+
+- (void)setShowIndex:(BOOL)showIndex {
+	_showIndex = showIndex;
+	
+	lblIdx.hidden = !_showIndex;
 }
 
 // MARK: - METHOD
@@ -111,6 +139,8 @@
 	[dsImage addObjectsFromArray:datasource];
 	[cvImage reloadData];
 	[cvImage scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:idx inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
+	
+	lblIdx.text = [NSString stringWithFormat:@"%@ / %@", @(idx + 1), @([datasource count])];
 	
 	self.alpha = 0;
 	[[UIApplication sharedApplication].keyWindow addSubview:self];
@@ -127,7 +157,16 @@
 		self.alpha = 0;
 	} completion:^(BOOL finished) {
 		[self removeFromSuperview];
+		[self cleanup];
 	}];
+}
+
+// MARK: PRIVATE METHOD
+
+- (void)cleanup {
+	[dsImage removeAllObjects];
+	[cvImage reloadData];
+	lblIdx.text = @"";
 }
 
 // MARK: - DELEGATE
@@ -161,6 +200,13 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)idp {
 	return self.bounds.size;
+}
+
+// MARK: UIScrollViewDelegate
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+	NSInteger where = (NSInteger)(scrollView.contentOffset.x / self.bounds.size.width + 1);
+	lblIdx.text = [NSString stringWithFormat:@"%@ / %@", @(where), @([dsImage count])];
 }
 
 @end
