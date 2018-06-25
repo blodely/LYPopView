@@ -50,12 +50,12 @@
 - (instancetype)initWithFrame:(CGRect)frame {
 	frame = (CGRect){0, 0, WIDTH, HEIGHT};
 	if (self = [super initWithFrame:frame]) {
-		[self initial];
+		[self initialInner];
 	}
 	return self;
 }
 
-- (void)initial {
+- (void)initialInner {
 	
 	height = 216 + 44;
 	
@@ -78,6 +78,11 @@
 	
 	[toolbar setItems:@[itemCancel, itemFlex, itemConfirm,]];
 
+	[self initial];
+}
+
+- (void)initial {
+	// LEAVE FOR OVERRIDING
 }
 
 /*
