@@ -27,10 +27,15 @@
 #import "LYPopImage.h"
 #import "LYPopImageCell.h"
 #import "LYPopView.h"
+#import <LYCategory/LYCategory.h>
+#import <AFNetworking/UIKit+AFNetworking.h>
 
-@interface LYPopImage () <UICollectionViewDelegate, UICollectionViewDataSource> {
+
+@interface LYPopImage () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout> {
 	
 	__weak UICollectionView *cvImage;
+	
+	NSMutableArray *dsImage;
 }
 @end
 
@@ -70,7 +75,9 @@
 	
 	self.frame = rect;
 	
-	
+	{
+		dsImage = [NSMutableArray arrayWithCapacity:1];
+	}
 	
 	{
 		UICollectionViewFlowLayout *flowlayout = [[UICollectionViewFlowLayout alloc] init];
@@ -92,22 +99,68 @@
 	}
 }
 
+// MARK: - METHOD
+
+- (void)showImageWithIndex:(NSInteger)idx inDataSource:(NSArray<NSString *> *)datasource fromRect:(CGRect)rect {
+	
+	if (datasource == nil || [datasource isKindOfClass:[NSArray class]] == NO || [datasource count] == 0) {
+		return;
+	}
+	
+	[dsImage removeAllObjects];
+	[dsImage addObjectsFromArray:datasource];
+	[cvImage reloadData];
+	[cvImage scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:idx inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
+	
+	self.alpha = 0;
+	[[UIApplication sharedApplication].keyWindow addSubview:self];
+	
+	[UIView animateWithDuration:ANIMATE delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+		self.alpha = 1;
+	} completion:^(BOOL finished) {
+	}];
+}
+
+- (void)dismiss {
+	
+	[UIView animateWithDuration:ANIMATE delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+		self.alpha = 0;
+	} completion:^(BOOL finished) {
+		[self removeFromSuperview];
+	}];
+}
+
 // MARK: - DELEGATE
 
 // MARK: UICollectionViewDelegate
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)idp {
+	[collectionView deselectItemAtIndexPath:idp animated:NO];
+	
+	[self dismiss];
+}
+
 // MARK: UICollectionViewDataSource
 
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+	return 1;
+}
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-	return 0;
+	return [dsImage count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)idp {
 	
 	LYPopImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:LYPopImageCellIdentifier forIndexPath:idp];
-	
+	[cell.ivImage setImageWithURL:[NSURL URLWithString:dsImage[idp.item]]];
 	return cell;
 }
 
+// MARK: UICollectionViewDelegateFlowLayout
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)idp {
+	return self.bounds.size;
+}
 
 @end

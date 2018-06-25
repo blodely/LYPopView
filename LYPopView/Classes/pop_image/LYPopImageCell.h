@@ -30,4 +30,6 @@ FOUNDATION_EXPORT NSString *const LYPopImageCellIdentifier;
 
 @interface LYPopImageCell : UICollectionViewCell
 
+@property (nonatomic, weak) IBOutlet UIImageView *ivImage;
+
 @end

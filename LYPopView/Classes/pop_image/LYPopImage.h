@@ -30,4 +30,6 @@
 
 + (instancetype)pop;
 
+- (void)showImageWithIndex:(NSInteger)idx inDataSource:(NSArray <NSString *>*)datasource fromRect:(CGRect)rect;
+
 @end

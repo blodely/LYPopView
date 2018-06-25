@@ -17,7 +17,21 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hl3-p5-euN">
+                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                    </imageView>
+                </subviews>
             </view>
+            <constraints>
+                <constraint firstItem="hl3-p5-euN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="0dK-fJ-WTI"/>
+                <constraint firstItem="hl3-p5-euN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="9Tp-EK-xnD"/>
+                <constraint firstAttribute="trailing" secondItem="hl3-p5-euN" secondAttribute="trailing" id="Cnz-zT-esS"/>
+                <constraint firstAttribute="bottom" secondItem="hl3-p5-euN" secondAttribute="bottom" id="x9J-js-ASY"/>
+            </constraints>
+            <connections>
+                <outlet property="ivImage" destination="hl3-p5-euN" id="Kk6-8Y-aBT"/>
+            </connections>
         </collectionViewCell>
     </objects>
 </document>
