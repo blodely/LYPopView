@@ -37,6 +37,32 @@ NSString *const LYDropDownCellIdentifier = @"LYDropDownCellIdentifier";
 
 @implementation LYDropDownCell
 
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+	if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+
+		CGFloat width = [UIScreen mainScreen].bounds.size.width;
+		
+		self.selectionStyle = UITableViewCellSelectionStyleNone;
+		
+		{
+			UILabel *label = [[UILabel alloc] init];
+			label.frame = (CGRect){12, 0, width - 12 - 50, 44};
+			label.textColor = [UIColor blackColor];
+			[self addSubview:label];
+			_lblTitle = label;
+		}
+		
+		{
+			UIImageView *imageview = [[UIImageView alloc] init];
+			imageview.frame = (CGRect){0, 0, 24, 24};
+			imageview.center = (CGPoint){width - 22 - 10, 22};
+			[self addSubview:imageview];
+			_ivStatus = imageview;
+		}
+	}
+	return self;
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
 	// INITIALIZATION CODE

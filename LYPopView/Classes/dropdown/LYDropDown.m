@@ -114,7 +114,8 @@ typedef void(^ dropdownActionBlock)(NSUInteger index, NSString *title);
 		[self addSubview:table];
 		tbMenu = table;
 		
-		[tbMenu registerNib:[UINib nibWithNibName:@"LYDropDownCell" bundle:[NSBundle bundleWithIdentifier:LIB_POPVIEW_BUNDLE_ID]] forCellReuseIdentifier:LYDropDownCellIdentifier];
+		[tbMenu registerClass:[LYDropDownCell class] forCellReuseIdentifier:LYDropDownCellIdentifier];
+//		[tbMenu registerNib:[UINib nibWithNibName:@"LYDropDownCell" bundle:[NSBundle bundleWithIdentifier:LIB_POPVIEW_BUNDLE_ID]] forCellReuseIdentifier:LYDropDownCellIdentifier];
 	}
 	
 	
