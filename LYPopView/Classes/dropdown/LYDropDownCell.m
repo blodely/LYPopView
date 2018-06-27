@@ -26,6 +26,7 @@
 
 #import "LYDropDownCell.h"
 #import "LYPopView.h"
+#import "NSBundle+PopView.h"
 #import <LYCategory/LYCategory.h>
 
 
@@ -39,12 +40,40 @@ NSString *const LYDropDownCellIdentifier = @"LYDropDownCellIdentifier";
 - (void)awakeFromNib {
     [super awakeFromNib];
 	// INITIALIZATION CODE
+	
+	_ivStatus.tintColor = self.tintColor;
+	self.selectionStyle = UITableViewCellSelectionStyleNone;
+}
+
+- (void)setTintColor:(UIColor *)tintColor {
+	[super setTintColor:tintColor];
+	
+	_ivStatus.tintColor = tintColor;
+}
+
+- (void)setSelected:(BOOL)selected {
+	[super setSelected:selected];
+	
+	[self setStyle:selected];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
 	// CONFIGURE THE VIEW FOR THE SELECTED STATE
+	
+	[self setStyle:selected];
+}
+
+- (void)setStyle:(BOOL)selected {
+	
+	if (selected) {
+		_ivStatus.image = [[UIImage imageNamed:@"selected-white" inBundle:[NSBundle popResourceBundle] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+		_lblTitle.textColor = self.tintColor;
+	} else {
+		_ivStatus.image = nil;
+		_lblTitle.textColor = [UIColor blackColor];
+	}
 }
 
 @end

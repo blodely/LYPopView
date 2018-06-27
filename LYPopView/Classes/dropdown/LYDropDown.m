@@ -25,6 +25,7 @@
 //
 
 #import "LYDropDown.h"
+#import "LYDropDownCell.h"
 #import "LYPopView.h"
 #import <LYCategory/LYCategory.h>
 
@@ -37,7 +38,6 @@ typedef void(^ dropdownActionBlock)(NSUInteger index, NSString *title);
 	__weak UITableView *tbMenu;
 	
 	UIColor *themeColor;
-	NSString *DropDownMenuCellIdentifier;
 	
 	NSMutableArray *menuBlocks;
 	NSMutableArray *menu;
@@ -85,7 +85,6 @@ typedef void(^ dropdownActionBlock)(NSUInteger index, NSString *title);
 - (void)initial {
 	
 	{
-		DropDownMenuCellIdentifier = @"luoyu.space.dropdown.menu.cell.id";
 		menu = [NSMutableArray arrayWithCapacity:1];
 		menuBlocks = [NSMutableArray arrayWithCapacity:1];
 		
@@ -96,23 +95,28 @@ typedef void(^ dropdownActionBlock)(NSUInteger index, NSString *title);
 		self.hidden = YES;
 	}
 	
-	UIControl *ctlBg = [[UIControl alloc] init];
-	ctlBg.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
-	ctlBg.alpha = 0;
-	[self addSubview:ctlBg];
-	cBg = ctlBg;
-	[cBg addTarget:self action:@selector(backgroundTapped:) forControlEvents:UIControlEventTouchDown];
-	[cBg addTarget:self action:@selector(backgroundTapped:) forControlEvents:UIControlEventTouchUpInside];
+	{
+		UIControl *ctlBg = [[UIControl alloc] init];
+		ctlBg.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+		ctlBg.alpha = 0;
+		[self addSubview:ctlBg];
+		cBg = ctlBg;
+		[cBg addTarget:self action:@selector(backgroundTapped:) forControlEvents:UIControlEventTouchDown];
+		[cBg addTarget:self action:@selector(backgroundTapped:) forControlEvents:UIControlEventTouchUpInside];
+	}
 	
-	UITableView *table = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-	table.frame = (CGRect){0, 0, self.bounds.size.width, 0};
-	table.delegate = self;
-	table.dataSource = self;
-	table.separatorStyle = UITableViewCellSeparatorStyleNone;
-	[self addSubview:table];
-	tbMenu = table;
+	{
+		UITableView *table = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+		table.frame = (CGRect){0, 0, self.bounds.size.width, 0};
+		table.delegate = self;
+		table.dataSource = self;
+		table.separatorStyle = UITableViewCellSeparatorStyleNone;
+		[self addSubview:table];
+		tbMenu = table;
+		
+		[tbMenu registerNib:[UINib nibWithNibName:@"LYDropDownCell" bundle:[NSBundle bundleWithIdentifier:LIB_POPVIEW_BUNDLE_ID]] forCellReuseIdentifier:LYDropDownCellIdentifier];
+	}
 	
-	[tbMenu registerClass:[UITableViewCell class] forCellReuseIdentifier:DropDownMenuCellIdentifier];
 	
 }
 
@@ -138,7 +142,7 @@ typedef void(^ dropdownActionBlock)(NSUInteger index, NSString *title);
 		return;
 	}
 	
-	[tbMenu reloadData];
+	
 	
 	self.hidden = NO;
 	cBg.alpha = 0;
@@ -161,6 +165,8 @@ typedef void(^ dropdownActionBlock)(NSUInteger index, NSString *title);
 	
 	[menu addObject:title];
 	[menuBlocks addObject:itemAction];
+	
+	[tbMenu reloadData];
 }
 
 - (void)dismiss {
@@ -195,11 +201,10 @@ typedef void(^ dropdownActionBlock)(NSUInteger index, NSString *title);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)idp {
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:DropDownMenuCellIdentifier forIndexPath:idp];
-	cell.textLabel.font = [UIFont systemFontOfSize:15];
-	cell.selectionStyle = UITableViewCellSelectionStyleNone;
+	
+	LYDropDownCell *cell = [tableView dequeueReusableCellWithIdentifier:LYDropDownCellIdentifier forIndexPath:idp];
 	cell.tintColor = themeColor;
-	cell.textLabel.text = menu[idp.row];
+	cell.lblTitle.text = menu[idp.row];
 	return cell;
 }
 
