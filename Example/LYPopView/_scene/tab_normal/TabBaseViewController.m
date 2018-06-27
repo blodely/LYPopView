@@ -79,6 +79,7 @@
 			NSLog(@"2ed: tapped : %@ %@", @(index), title);
 		}];
 		
+		[dropdownmenu selectItemAtIndex:0];
 	}
 }
 
