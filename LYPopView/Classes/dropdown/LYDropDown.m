@@ -179,6 +179,15 @@ typedef void(^ dropdownActionBlock)(NSUInteger index, NSString *title);
 	}];
 }
 
+- (void)selectItemAtIndex:(NSUInteger)index {
+	
+	if (index < [menu count]) {
+		[tbMenu selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] animated:YES scrollPosition:UITableViewScrollPositionNone];
+	} else {
+		NSLog(@"LYDropDown Error:\n\tIndex %@ .. [0~%@]", @(index), @([menu count]));
+	}
+}
+
 #pragma mark PRIVATE METHOD
 
 #pragma mark - DELEGATE

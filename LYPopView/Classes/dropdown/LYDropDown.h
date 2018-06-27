@@ -36,4 +36,6 @@
 
 - (void)dismiss;
 
+- (void)selectItemAtIndex:(NSUInteger)index;
+
 @end
