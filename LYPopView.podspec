@@ -22,16 +22,16 @@ message, table, date, button, etc.
 
 	s.ios.deployment_target = '7.0'
 
-	s.source_files = 'LYPopView/Classes/action/*', 'LYPopView/Classes/dropdown/*', 'LYPopView/Classes/picker/*', 'LYPopView/Classes/picker_date/*', 'LYPopView/Classes/pop_message/*', 'LYPopView/Classes/pop_table/*', 'LYPopView/Classes/pop_date/*', 'LYPopView/Classes/pop_image/*', 'LYPopView/Classes/**/*', 'LYPopView/Configurations/*.plist'
+	s.source_files = 'LYPopView/Classes/action/*', 'LYPopView/Classes/dropdown/*', 'LYPopView/Classes/picker/*', 'LYPopView/Classes/picker_date/*', 'LYPopView/Classes/pop_message/*', 'LYPopView/Classes/pop_table/*', 'LYPopView/Classes/pop_date/*', 'LYPopView/Classes/pop_image/*', 'LYPopView/Classes/web_vc/*', 'LYPopView/Classes/**/*', 'LYPopView/Configurations/*.plist'
 
 	s.resource_bundles = {
-	'LYPopView' => ['LYPopView/Assets/*.png']
+		'LYPopView' => ['LYPopView/Assets/*.png']
 	}
 
 	# s.public_header_files = 'Pod/Classes/**/*.h'
 	# s.frameworks = 'UIKit', 'MapKit'
 
-	s.frameworks = 'UIKit'
+	s.frameworks = 'UIKit', 'WebKit'
 
 	s.dependency 'LYCategory'
 	s.dependency 'FCFileManager', '~> 1.0.18'
