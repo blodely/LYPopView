@@ -29,12 +29,25 @@
                         <action selector="popimageButtonPressed:" destination="-1" eventType="touchUpInside" id="XXZ-Tj-KXg"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q90-RQ-9XI">
+                    <rect key="frame" x="12" y="136" width="351" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="eeX-kc-FyM"/>
+                    </constraints>
+                    <state key="normal" title="nav to a web view"/>
+                    <connections>
+                        <action selector="navToWebView:" destination="-1" eventType="touchUpInside" id="nfg-DH-VYF"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="KiX-fJ-0IM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="CJe-Jg-bVa"/>
+                <constraint firstAttribute="trailing" secondItem="q90-RQ-9XI" secondAttribute="trailing" constant="12" id="MQy-PJ-8gy"/>
                 <constraint firstItem="KiX-fJ-0IM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="U7U-oh-SxE"/>
+                <constraint firstItem="q90-RQ-9XI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="12" id="WpA-xd-R0s"/>
                 <constraint firstAttribute="trailing" secondItem="KiX-fJ-0IM" secondAttribute="trailing" constant="16" id="bT1-0H-E8N"/>
+                <constraint firstItem="q90-RQ-9XI" firstAttribute="top" secondItem="KiX-fJ-0IM" secondAttribute="bottom" constant="12" id="fpb-a8-6gb"/>
             </constraints>
         </view>
     </objects>

@@ -24,6 +24,10 @@
 	[self.navigationController pushViewController:[[LYPopImagesViewController alloc] init] animated:YES];
 }
 
+- (IBAction)navToWebView:(UIButton *)sender {
+	[self.navigationController pushViewController:[[LYWebViewController alloc] initWithTitle:@"啊哈哈啊哈哈" andURL:@"https://www.baidu.com"] animated:YES];
+}
+
 // MARK: - INIT
 
 - (instancetype)init {
