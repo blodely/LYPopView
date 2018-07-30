@@ -29,3 +29,17 @@
 @interface LYDropDownSection : UIView
 
 @end
+
+FOUNDATION_EXPORT NSString *const LYDropDownSectionCellIdentifier;
+
+@interface LYDropDownSectionCell : UITableViewCell
+
+@property (nonatomic, weak) UILabel *lblTitle;
+
+@end
+
+FOUNDATION_EXPORT NSString *const LYDropDownSectionItemCellIdentifier;
+
+@interface LYDropDownSectionItemCell : UICollectionViewCell
+
+@end
