@@ -26,9 +26,15 @@
 
 #import <UIKit/UIKit.h>
 
+@interface LYDropDownItem : NSObject <NSCopying, NSCoding>
+@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *subtitle;
+@end
+
 @interface LYDropDownSectionItem : NSObject <NSCopying, NSCoding>
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *subtitle;
+@property (nonatomic, strong) NSArray <LYDropDownItem *>*items;
 @end
 
 @interface LYDropDownSection : UIView

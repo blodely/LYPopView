@@ -28,15 +28,13 @@
 
 // MARK: -
 
-@implementation LYDropDownSectionItem
+@implementation LYDropDownItem
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
-	self = [super init];
-	if (self) {
+	if (self = [super init]) {
 		self.title = [coder decodeObjectForKey:@"self.title"];
 		self.subtitle = [coder decodeObjectForKey:@"self.subtitle"];
 	}
-
 	return self;
 }
 
@@ -45,12 +43,45 @@
 	[coder encodeObject:self.subtitle forKey:@"self.subtitle"];
 }
 
+- (id)copyWithZone:(NSZone *)zone {
+	LYDropDownItem *copy = (LYDropDownItem *)[[[self class] allocWithZone:zone] init];
+	if (copy != nil) {
+		copy.title = self.title;
+		copy.subtitle = self.subtitle;
+	}
+	return copy;
+}
+
+@end
+
+// MARK: -
+
+@implementation LYDropDownSectionItem
+
+- (instancetype)initWithCoder:(NSCoder *)coder {
+	self = [super init];
+	if (self) {
+		self.title = [coder decodeObjectForKey:@"self.title"];
+		self.subtitle = [coder decodeObjectForKey:@"self.subtitle"];
+		self.items = [coder decodeObjectForKey:@"self.items"];
+	}
+
+	return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+	[coder encodeObject:self.title forKey:@"self.title"];
+	[coder encodeObject:self.subtitle forKey:@"self.subtitle"];
+	[coder encodeObject:self.items forKey:@"self.items"];
+}
+
 - (id)copyWithZone:(nullable NSZone *)zone {
 	LYDropDownSectionItem *copy = (LYDropDownSectionItem *)[[[self class] allocWithZone:zone] init];
 
 	if (copy != nil) {
 		copy.title = self.title;
 		copy.subtitle = self.subtitle;
+		copy.items = self.items;
 	}
 
 	return copy;
