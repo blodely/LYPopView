@@ -239,18 +239,30 @@ typedef void(^LYDropDownSectionSelectAction)(NSIndexPath *idp);
 	cBg.alpha = 0;
 	self.frame = (CGRect){0, axisY, WIDTH, height};
 	
+	CGFloat xpos = (CGFloat)(NSInteger)(0.25 * WIDTH);
+	
+	// ANIMATE BEGIN
+	tbMenu.frame = (CGRect){0, 0, xpos, 0};
+	cvItem.frame = (CGRect){xpos, 0, WIDTH - xpos, 0};
+	
 	[UIView animateWithDuration:ANIMATE delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 		self->cBg.alpha = 1;
-//		self->tbMenu.frame;
+		self->tbMenu.frame = (CGRect){0, 0, xpos, height};
+		self->cvItem.frame = (CGRect){xpos, 0, WIDTH - xpos, height};
 	} completion:^(BOOL finished) {
 		
 	}];
 }
 
 - (void)dismiss {
+	
+	CGFloat xpos = (CGFloat)(NSInteger)(0.25 * WIDTH);
+	
 	[UIView animateWithDuration:ANIMATE delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 		self->cBg.alpha = 0;
 		// ANIMATE TABLE
+		self->tbMenu.frame = (CGRect){0, 0, xpos, 0};
+		self->cvItem.frame = (CGRect){xpos, 0, WIDTH - xpos, 0};
 	} completion:^(BOOL finished) {
 		self.hidden = YES;
 	}];
