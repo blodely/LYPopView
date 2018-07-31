@@ -40,5 +40,6 @@
 
 #import <LYPopView/LYDropDown.h>
 #import <LYPopView/LYDropDownCell.h>
+#import <LYPopView/LYDropDownSection.h>
 
 #endif /* PopView_h */
