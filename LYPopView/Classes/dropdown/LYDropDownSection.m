@@ -312,8 +312,11 @@ typedef void(^LYDropDownSectionSelectAction)(NSIndexPath *idp);
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)idp {
 	[collectionView deselectItemAtIndexPath:idp animated:YES];
 	
+	// MARK: SELECT
+	
 	if (selectBlock != nil) {
 		selectBlock([NSIndexPath indexPathForItem:idp.item inSection:selection]);
+		[self dismiss];
 	} else {
 		NSLog(@"LYDropDownSection Error : SelectAction Block NIL");
 	}
