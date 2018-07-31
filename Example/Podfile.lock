@@ -1,0 +1,51 @@
+PODS:
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
+    - AFNetworking/NSURLSession
+  - ConfigKit (1.2.13):
+    - FCFileManager (~> 1.0.18)
+  - FCFileManager (1.0.20)
+  - LYCategory (1.2.29)
+  - LYPopView (0.1.20):
+    - AFNetworking (~> 3.2.1)
+    - FCFileManager (~> 1.0.18)
+    - LYCategory
+
+DEPENDENCIES:
+  - ConfigKit
+  - LYPopView (from `../`)
+
+SPEC REPOS:
+  https://github.com/blodely/LYSpecs.git:
+    - ConfigKit
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - FCFileManager
+    - LYCategory
+
+EXTERNAL SOURCES:
+  LYPopView:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  ConfigKit: 5f95a2739bc6c2d77d5ee8cf11469577e8fe668e
+  FCFileManager: e0f73316e6aa2eb04d2ff4caa75fe7df1ae44270
+  LYCategory: 345399f3247cc6b9cc02100e7ee1743fe0f354e6
+  LYPopView: 42cbf688f034fbcd236387062a6341794a061619
+
+PODFILE CHECKSUM: e7f8fc8897ac6ef00363a1747d21435731590837
+
+COCOAPODS: 1.5.3

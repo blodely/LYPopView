@@ -21,7 +21,7 @@
 		<key>name</key>
 		<string>UINavigationBar tintColor</string>
 		<key>conf-value</key>
-		<string>#ffffff</string>
+		<string>#ce4444</string>
 	</dict>
 	<key>sys-navbar-translucent</key>
 	<dict>
