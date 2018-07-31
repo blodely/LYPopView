@@ -31,25 +31,39 @@
 @implementation LYDropDownItem
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
-	if (self = [super init]) {
+	self = [super init];
+	if (self) {
 		self.title = [coder decodeObjectForKey:@"self.title"];
 		self.subtitle = [coder decodeObjectForKey:@"self.subtitle"];
+		self.section = [coder decodeInt64ForKey:@"self.section"];
+		self.idx = [coder decodeInt64ForKey:@"self.idx"];
 	}
+
 	return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)coder {
 	[coder encodeObject:self.title forKey:@"self.title"];
 	[coder encodeObject:self.subtitle forKey:@"self.subtitle"];
+	[coder encodeInt64:self.section forKey:@"self.section"];
+	[coder encodeInt64:self.idx forKey:@"self.idx"];
 }
+
 
 - (id)copyWithZone:(NSZone *)zone {
 	LYDropDownItem *copy = (LYDropDownItem *)[[[self class] allocWithZone:zone] init];
 	if (copy != nil) {
 		copy.title = self.title;
 		copy.subtitle = self.subtitle;
+		copy.idx = self.idx;
+		copy.section = self.section;
 	}
 	return copy;
+}
+
+- (NSString *)description {
+	return [NSString stringWithFormat:@"\nLYDropDownItem\n\tTitle\t%@\n\tsubtitle\t%@\n\tSection %@ Idx %@\n",
+			_title, _subtitle, @(_section), @(_idx)];
 }
 
 @end
@@ -64,6 +78,7 @@
 		self.title = [coder decodeObjectForKey:@"self.title"];
 		self.subtitle = [coder decodeObjectForKey:@"self.subtitle"];
 		self.items = [coder decodeObjectForKey:@"self.items"];
+		self.section = [coder decodeInt64ForKey:@"self.section"];
 	}
 
 	return self;
@@ -73,6 +88,7 @@
 	[coder encodeObject:self.title forKey:@"self.title"];
 	[coder encodeObject:self.subtitle forKey:@"self.subtitle"];
 	[coder encodeObject:self.items forKey:@"self.items"];
+	[coder encodeInt64:self.section forKey:@"self.section"];
 }
 
 - (id)copyWithZone:(nullable NSZone *)zone {
@@ -82,6 +98,7 @@
 		copy.title = self.title;
 		copy.subtitle = self.subtitle;
 		copy.items = self.items;
+		copy.section = self.section;
 	}
 
 	return copy;

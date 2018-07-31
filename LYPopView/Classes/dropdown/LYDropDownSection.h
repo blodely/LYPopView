@@ -26,31 +26,40 @@
 
 #import <UIKit/UIKit.h>
 
+// MARK: - LYDropDownItem
+
 @interface LYDropDownItem : NSObject <NSCopying, NSCoding>
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *subtitle;
+@property (nonatomic, assign) NSUInteger section;
+@property (nonatomic, assign) NSUInteger idx;
 @end
+
+// MARK: - LYDropDownSectionItem
 
 @interface LYDropDownSectionItem : NSObject <NSCopying, NSCoding>
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *subtitle;
+@property (nonatomic, assign) NSUInteger section;
 @property (nonatomic, strong) NSArray <LYDropDownItem *>*items;
 @end
 
-@interface LYDropDownSection : UIView
+// MARK: - LYDropDownSection
 
+@interface LYDropDownSection : UIView
+@property (nonatomic, strong) NSArray <LYDropDownSectionItem *>*datasource;
 @end
+
+// MARK: - LYDropDownSectionCell
 
 FOUNDATION_EXPORT NSString *const LYDropDownSectionCellIdentifier;
-
 @interface LYDropDownSectionCell : UITableViewCell
-
 @property (nonatomic, weak) UILabel *lblTitle;
-
 @end
 
+// MARK: - LYDropDownSectionItemCell
+
 FOUNDATION_EXPORT NSString *const LYDropDownSectionItemCellIdentifier;
-
 @interface LYDropDownSectionItemCell : UICollectionViewCell
-
+@property (nonatomic, weak) UILabel *lblTitle;
 @end
