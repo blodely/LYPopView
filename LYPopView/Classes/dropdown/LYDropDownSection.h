@@ -48,8 +48,13 @@
 
 @interface LYDropDownSection : UIView
 @property (nonatomic, strong) NSArray <LYDropDownSectionItem *>*datasource;
+
++ (instancetype)menu;
 - (void)showFromYaxis:(CGFloat)axisY withHeight:(CGFloat)height;
 - (void)dismiss;
+- (void)selectSection:(NSUInteger)index;
+- (void)setSelectAction:(void (^)(NSIndexPath *idp))selectAction;
+
 @end
 
 // MARK: - LYDropDownSectionCell

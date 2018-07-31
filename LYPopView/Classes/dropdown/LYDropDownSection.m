@@ -25,9 +25,10 @@
 //
 
 #import "LYDropDownSection.h"
+#import "LYPopView.h"
 #import <LYCategory/LYCategory.h>
 
-// MARK: -
+// MARK: - LYDropDownItem
 
 @implementation LYDropDownItem
 
@@ -69,7 +70,7 @@
 
 @end
 
-// MARK: -
+// MARK: - LYDropDownSectionItem
 
 @implementation LYDropDownSectionItem
 
@@ -111,9 +112,11 @@
 
 @end
 
-// MARK: -
+// MARK: - LYDropDownSection
 
-@interface LYDropDownSection () <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource> {
+typedef void(^LYDropDownSectionSelectAction)(NSIndexPath *idp);
+
+@interface LYDropDownSection () <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout> {
 	
 	__weak UIControl *cBg;
 	
@@ -121,6 +124,9 @@
 	__weak UICollectionView *cvItem;
 	
 	NSUInteger selection;
+	LYDropDownSectionSelectAction selectBlock;
+	
+	UIColor *themeColor;
 }
 @end
 
@@ -157,7 +163,15 @@
 
 - (void)initial {
 	
-	selection = 0;
+	{
+		selection = 0;
+		
+		themeColor = [UIColor colorWithHex:[[[LYPopView alloc] init] configurations][@"popview-theme-color"][@"conf-value"] andAlpha:1.0];
+		self.tintColor = themeColor;
+		
+		self.clipsToBounds = YES;
+		self.hidden = YES;
+	}
 	
 	{
 		// BACKGROUND
@@ -172,6 +186,7 @@
 		UITableView *tableview = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
 		tableview.delegate = self;
 		tableview.dataSource = self;
+		tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
 		[tableview registerClass:[LYDropDownSectionCell class] forCellReuseIdentifier:LYDropDownSectionCellIdentifier];
 		[self addSubview:tableview];
 		tbMenu = tableview;
@@ -179,13 +194,22 @@
 	
 	{
 		UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+		layout.minimumLineSpacing = 8;
+		layout.minimumInteritemSpacing = 8;
+		layout.sectionInset = UIEdgeInsetsMake(0, 8, 0, 8); // top left bottom right
 		
 		UICollectionView *collectionview = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
 		collectionview.delegate = self;
 		collectionview.dataSource = self;
+		collectionview.backgroundColor = [UIColor whiteColor];
+		[collectionview registerClass:[LYDropDownSectionItemCell class] forCellWithReuseIdentifier:LYDropDownSectionItemCellIdentifier];
 		[self addSubview:collectionview];
 		cvItem = collectionview;
 	}
+}
+
++ (instancetype)menu {
+	return [[LYDropDownSection alloc] initWithFrame:(CGRect){0, 0, 44, 44}];
 }
 
 - (void)setFrame:(CGRect)frame {
@@ -232,6 +256,20 @@
 	}];
 }
 
+- (void)selectSection:(NSUInteger)index {
+	
+	if (index < [_datasource count]) {
+		[tbMenu selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] animated:YES scrollPosition:UITableViewScrollPositionNone];
+		selection = index;
+	} else {
+		NSLog(@"LYDropDownSection Error:\n\tIndex %@ .. [0~%@]", @(index), @([_datasource count]));
+	}
+}
+
+- (void)setSelectAction:(void (^)(NSIndexPath *))selectAction {
+	selectBlock = selectAction;
+}
+
 // MARK: PRIVATE METHOD
 
 // MARK: - DELEGATE
@@ -239,7 +277,7 @@
 // MARK: UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)idp {
-	[tableView deselectRowAtIndexPath:idp animated:YES];
+//	[tableView deselectRowAtIndexPath:idp animated:YES];
 	
 	selection = idp.row;
 	[cvItem reloadData];
@@ -262,11 +300,19 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)idp {
 	[collectionView deselectItemAtIndexPath:idp animated:YES];
 	
+	if (selectBlock != nil) {
+		selectBlock([NSIndexPath indexPathForItem:idp.item inSection:selection]);
+	} else {
+		NSLog(@"LYDropDownSection Error : SelectAction Block NIL");
+	}
 }
 
 // MARK: UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+	if (_datasource == nil || [_datasource count] < 1) {
+		return 0;
+	}
 	return [_datasource[selection].items count];
 }
 
@@ -276,6 +322,15 @@
 	return cell;
 }
 
+// MARK: UICollectionViewDelegateFlowLayout
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)idp {
+	CGSize size = CGSizeZero;
+	size.width = ((NSUInteger)(self.bounds.size.width * 0.75f) - (8 * 3)) * 0.5f;
+	size.height = 44;
+	return size;
+}
+
 // MARK: - OVERRIDE
 
 - (NSString *)description {
@@ -283,6 +338,8 @@
 }
 
 @end
+
+// MARK: - LYDropDownSectionCell
 
 NSString *const LYDropDownSectionCellIdentifier = @"LYDropDownSectionCellIdentifier";
 
@@ -332,8 +389,38 @@ NSString *const LYDropDownSectionCellIdentifier = @"LYDropDownSectionCellIdentif
 
 @end
 
+// MARK: - LYDropDownSectionItemCell
+
 NSString *const LYDropDownSectionItemCellIdentifier = @"LYDropDownSectionItemCellIdentifier";
 
+@interface LYDropDownSectionItemCell () {}
+@end
+
 @implementation LYDropDownSectionItemCell
+
+- (instancetype)initWithFrame:(CGRect)frame {
+	if (self = [super initWithFrame:frame]) {
+		[self initial];
+	}
+	return self;
+}
+
+- (void)initial {
+	
+	self.backgroundColor = [UIColor whiteColor];
+	self.clipsToBounds = YES;
+	CGSize size = self.frame.size;
+	
+	{
+		UILabel *label = [[UILabel alloc] init];
+		label.frame = (CGRect){0, 0, size.width, size.height};
+		label.textAlignment = NSTextAlignmentCenter;
+		label.textColor = [UIColor blackColor];
+		label.font = [UIFont systemFontOfSize:14];
+		label.numberOfLines = 0;
+		[self addSubview:label];
+		_lblTitle = label;
+	}
+}
 
 @end
