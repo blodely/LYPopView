@@ -12,6 +12,8 @@
 @interface TabBaseViewController () {
 	
 	__weak LYDropDown *dropdownmenu;
+	
+	__weak LYDropDownSection *ddsection;
 }
 
 @end
@@ -51,6 +53,10 @@
 	[dropdownmenu showFrom:sender.frame];
 }
 
+- (IBAction)dropdownSectionButtonPressed:(UIButton *)sender {
+	[ddsection showFromYaxis:CGRectGetMaxY(sender.frame) withHeight:self.view.frame.size.height - CGRectGetMaxY(sender.frame)];
+}
+
 // MARK: - INIT
 
 - (instancetype)init {
@@ -80,6 +86,34 @@
 		}];
 		
 		[dropdownmenu selectItemAtIndex:0];
+	}
+	
+	{
+		LYDropDownSection *dds = [LYDropDownSection menu];
+		[self.view addSubview:dds];
+		ddsection = dds;
+		
+		NSMutableArray *ds = [NSMutableArray arrayWithCapacity:1];
+		for (int i = 0; i < 5; i++) {
+			LYDropDownSectionItem *secitem = [[LYDropDownSectionItem alloc] init];
+			secitem.title = [NSString stringWithFormat:@"section item %@", @(i)];
+			NSMutableArray *secarr = [NSMutableArray arrayWithCapacity:1];
+			for (int j = 0; j < 15; j++) {
+				LYDropDownItem *item = [[LYDropDownItem alloc] init];
+				item.title = [NSString stringWithFormat:@"item %@ in sec %@", @(j), @(i)];
+				[secarr addObject:item];
+			}
+			secitem.items = [NSArray arrayWithArray:secarr];
+			[ds addObject:secitem];
+		}
+		
+		dds.datasource = [NSArray arrayWithArray:ds];
+		
+		[ddsection selectSection:0];
+		
+		[ddsection setSelectAction:^(NSIndexPath *idp) {
+			NSLog(@"DDSection %@", idp);
+		}];
 	}
 }
 
