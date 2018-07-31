@@ -48,6 +48,8 @@
 
 @interface LYDropDownSection : UIView
 @property (nonatomic, strong) NSArray <LYDropDownSectionItem *>*datasource;
+- (void)showFromYaxis:(CGFloat)axisY withHeight:(CGFloat)height;
+- (void)dismiss;
 @end
 
 // MARK: - LYDropDownSectionCell

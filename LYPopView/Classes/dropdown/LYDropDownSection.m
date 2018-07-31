@@ -25,6 +25,7 @@
 //
 
 #import "LYDropDownSection.h"
+#import <LYCategory/LYCategory.h>
 
 // MARK: -
 
@@ -112,9 +113,14 @@
 
 // MARK: -
 
-@interface LYDropDownSection () <UITableViewDelegate, UITableViewDataSource> {
+@interface LYDropDownSection () <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource> {
+	
+	__weak UIControl *cBg;
 	
 	__weak UITableView *tbMenu;
+	__weak UICollectionView *cvItem;
+	
+	NSUInteger selection;
 }
 @end
 
@@ -151,6 +157,16 @@
 
 - (void)initial {
 	
+	selection = 0;
+	
+	{
+		// BACKGROUND
+		UIControl *control = [[UIControl alloc] init];
+		control.backgroundColor = [UIColor colorWithHex:@"#000000" andAlpha:0.5f];
+		[self addSubview:control];
+		cBg = control;
+	}
+	
 	{
 		// MENU VIEW
 		UITableView *tableview = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
@@ -160,9 +176,61 @@
 		[self addSubview:tableview];
 		tbMenu = tableview;
 	}
+	
+	{
+		UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+		
+		UICollectionView *collectionview = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+		collectionview.delegate = self;
+		collectionview.dataSource = self;
+		[self addSubview:collectionview];
+		cvItem = collectionview;
+	}
+}
+
+- (void)setFrame:(CGRect)frame {
+	frame.origin.x = 0;
+	frame.size.width = WIDTH;
+	[super setFrame:frame];
+	
+	CGFloat xpos = (CGFloat)(NSInteger)(0.25 * WIDTH);
+	tbMenu.frame = (CGRect){0, 0, xpos, frame.size.height};
+	cvItem.frame = (CGRect){xpos, 0, WIDTH - xpos, frame.size.height};
 }
 
 // MARK: - METHOD
+
+- (void)showFromYaxis:(CGFloat)axisY withHeight:(CGFloat)height {
+	
+	if ([self superview] == nil) {
+		return;
+	}
+	
+	if (self.hidden == NO) {
+		[self dismiss];
+		return;
+	}
+	
+	self.hidden = NO;
+	cBg.alpha = 0;
+	self.frame = (CGRect){0, axisY, WIDTH, height};
+	
+	[UIView animateWithDuration:ANIMATE delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+		self->cBg.alpha = 1;
+//		self->tbMenu.frame;
+	} completion:^(BOOL finished) {
+		
+	}];
+}
+
+- (void)dismiss {
+	[UIView animateWithDuration:ANIMATE delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+		self->cBg.alpha = 0;
+		// ANIMATE TABLE
+	} completion:^(BOOL finished) {
+		self.hidden = YES;
+	}];
+}
 
 // MARK: PRIVATE METHOD
 
@@ -172,16 +240,39 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)idp {
 	[tableView deselectRowAtIndexPath:idp animated:YES];
+	
+	selection = idp.row;
+	[cvItem reloadData];
 }
 
 // MARK: UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return 0;
+	return [_datasource count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)idp {
 	LYDropDownSectionCell *cell = [tableView dequeueReusableCellWithIdentifier:LYDropDownSectionCellIdentifier forIndexPath:idp];
+	cell.lblTitle.text = _datasource[idp.row].title;
+	return cell;
+}
+
+// MARK: UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)idp {
+	[collectionView deselectItemAtIndexPath:idp animated:YES];
+	
+}
+
+// MARK: UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+	return [_datasource[selection].items count];
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)idp {
+	LYDropDownSectionItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:LYDropDownSectionItemCellIdentifier forIndexPath:idp];
+	cell.lblTitle.text = _datasource[selection].items[idp.item].title;
 	return cell;
 }
 
