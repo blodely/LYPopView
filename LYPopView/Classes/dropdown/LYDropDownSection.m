@@ -26,6 +26,44 @@
 
 #import "LYDropDownSection.h"
 
+// MARK: -
+
+@implementation LYDropDownSectionItem
+
+- (instancetype)initWithCoder:(NSCoder *)coder {
+	self = [super init];
+	if (self) {
+		self.title = [coder decodeObjectForKey:@"self.title"];
+		self.subtitle = [coder decodeObjectForKey:@"self.subtitle"];
+	}
+
+	return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+	[coder encodeObject:self.title forKey:@"self.title"];
+	[coder encodeObject:self.subtitle forKey:@"self.subtitle"];
+}
+
+- (id)copyWithZone:(nullable NSZone *)zone {
+	LYDropDownSectionItem *copy = (LYDropDownSectionItem *)[[[self class] allocWithZone:zone] init];
+
+	if (copy != nil) {
+		copy.title = self.title;
+		copy.subtitle = self.subtitle;
+	}
+
+	return copy;
+}
+
+- (NSString *)description {
+	return [NSString stringWithFormat:@"\nLYDropDownSectionItem\n\tTitle\t%@\n\tSubtitle\t%@\n", _title, _subtitle];
+}
+
+@end
+
+// MARK: -
+
 @interface LYDropDownSection () <UITableViewDelegate, UITableViewDataSource> {
 	
 	__weak UITableView *tbMenu;
@@ -139,10 +177,18 @@ NSString *const LYDropDownSectionCellIdentifier = @"LYDropDownSectionCellIdentif
 			bar.userInteractionEnabled = NO;
 			bar.clipsToBounds = YES;
 			[self addSubview:bar];
+			vBar = bar;
 		}
 		
 	}
 	return self;
+}
+
+- (void)setFrame:(CGRect)frame {
+	[super setFrame:frame];
+	
+	vBar.frame = (CGRect){0, 0, 10, frame.size.height};
+	_lblTitle.frame = (CGRect){0, 0, frame.size.width, frame.size.height};
 }
 
 @end
