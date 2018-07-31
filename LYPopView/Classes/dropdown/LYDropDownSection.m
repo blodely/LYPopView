@@ -37,8 +37,8 @@
 	if (self) {
 		self.title = [coder decodeObjectForKey:@"self.title"];
 		self.subtitle = [coder decodeObjectForKey:@"self.subtitle"];
-		self.section = [coder decodeInt64ForKey:@"self.section"];
-		self.idx = [coder decodeInt64ForKey:@"self.idx"];
+		self.section = [coder decodeIntegerForKey:@"self.section"];
+		self.idx = [coder decodeIntegerForKey:@"self.idx"];
 	}
 
 	return self;
@@ -47,8 +47,8 @@
 - (void)encodeWithCoder:(NSCoder *)coder {
 	[coder encodeObject:self.title forKey:@"self.title"];
 	[coder encodeObject:self.subtitle forKey:@"self.subtitle"];
-	[coder encodeInt64:self.section forKey:@"self.section"];
-	[coder encodeInt64:self.idx forKey:@"self.idx"];
+	[coder encodeInteger:self.section forKey:@"self.section"];
+	[coder encodeInteger:self.idx forKey:@"self.idx"];
 }
 
 
