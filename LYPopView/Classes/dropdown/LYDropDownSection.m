@@ -177,6 +177,7 @@ typedef void(^LYDropDownSectionSelectAction)(NSIndexPath *idp);
 		// BACKGROUND
 		UIControl *control = [[UIControl alloc] init];
 		control.backgroundColor = [UIColor colorWithHex:@"#000000" andAlpha:0.5f];
+		[control addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchDown | UIControlEventTouchUpInside];
 		[self addSubview:control];
 		cBg = control;
 	}
@@ -493,6 +494,18 @@ NSString *const LYDropDownSectionItemCellIdentifier = @"LYDropDownSectionItemCel
 	self.backgroundColor = [UIColor whiteColor];
 	self.clipsToBounds = YES;
 	CGSize size = self.frame.size;
+	
+	{
+		UIView *view = [[UIView alloc] init];
+		view.frame = (CGRect){0, 0, size.width, size.height};
+		view.clipsToBounds = YES;
+		view.userInteractionEnabled = NO;
+		view.backgroundColor = [UIColor whiteColor];
+		view.layer.cornerRadius = 2;
+		view.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
+		view.layer.borderWidth = 1.0f / SCALE;
+		[self addSubview:view];
+	}
 	
 	{
 		UILabel *label = [[UILabel alloc] init];
