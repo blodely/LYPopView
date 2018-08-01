@@ -127,7 +127,6 @@ typedef void(^LYDropDownSectionSelectAction)(NSIndexPath *idp);
 	LYDropDownSectionSelectAction selectBlock;
 	
 	UIColor *themeColor;
-	CGFloat heightMaxData;
 }
 @end
 
@@ -238,7 +237,7 @@ typedef void(^LYDropDownSectionSelectAction)(NSIndexPath *idp);
 		return;
 	}
 	
-	CGFloat heightContent = MIN(height, heightMaxData);
+	CGFloat heightContent = MIN(height, MAX([tbMenu contentSize].height, [self rightCollectionViewHeight]));
 	
 	self.hidden = NO;
 	cBg.alpha = 0;
@@ -290,6 +289,7 @@ typedef void(^LYDropDownSectionSelectAction)(NSIndexPath *idp);
 // MARK: PRIVATE METHOD
 
 - (CGFloat)listHeight {
+	
 	CGFloat height = 0.0f;
 	
 	if (_datasource == nil || [_datasource count] == 0) {
@@ -297,7 +297,11 @@ typedef void(^LYDropDownSectionSelectAction)(NSIndexPath *idp);
 	}
 	
 	height = MAX([tbMenu contentSize].height, [self rightCollectionViewHeight]);
+	
 	height = MIN(height, self.bounds.size.height);
+	// SHOULD NOT CALL AT VIEW INITIAL
+	// SELF.BOUNDS.SIZE.HEIGHT WILL BE 44 AT START
+	
 	return height;
 }
 
@@ -340,10 +344,6 @@ typedef void(^LYDropDownSectionSelectAction)(NSIndexPath *idp);
 		[tbMenu reloadData];
 		selection = 0;
 		[cvItem reloadData];
-		NSLog(@"frame %@ tb %@ cv %@", NSStringFromCGRect(self.frame), @([tbMenu contentSize].height), @([cvItem contentSize].height));
-		heightMaxData = MAX([tbMenu contentSize].height, [self rightCollectionViewHeight]);
-	} else {
-		heightMaxData = 0.0f;
 	}
 }
 
