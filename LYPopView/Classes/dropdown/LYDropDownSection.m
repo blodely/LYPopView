@@ -496,6 +496,18 @@ NSString *const LYDropDownSectionItemCellIdentifier = @"LYDropDownSectionItemCel
 	CGSize size = self.frame.size;
 	
 	{
+		UIView *view = [[UIView alloc] init];
+		view.frame = (CGRect){0, 0, size.width, size.height};
+		view.clipsToBounds = YES;
+		view.userInteractionEnabled = NO;
+		view.backgroundColor = [UIColor whiteColor];
+		view.layer.cornerRadius = 2;
+		view.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
+		view.layer.borderWidth = 1.0f / SCALE;
+		[self addSubview:view];
+	}
+	
+	{
 		UILabel *label = [[UILabel alloc] init];
 		label.frame = (CGRect){0, 0, size.width, size.height};
 		label.textAlignment = NSTextAlignmentCenter;
