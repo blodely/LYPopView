@@ -127,6 +127,7 @@ typedef void(^LYDropDownSectionSelectAction)(NSIndexPath *idp);
 	LYDropDownSectionSelectAction selectBlock;
 	
 	UIColor *themeColor;
+	CGFloat heightMaxData;
 }
 @end
 
@@ -217,6 +218,8 @@ typedef void(^LYDropDownSectionSelectAction)(NSIndexPath *idp);
 	frame.size.width = WIDTH;
 	[super setFrame:frame];
 	
+	cBg.frame = (CGRect){0, 0, frame.size.width, frame.size.height};
+	
 	CGFloat xpos = (CGFloat)(NSInteger)(0.25 * WIDTH);
 	tbMenu.frame = (CGRect){0, 0, xpos, frame.size.height};
 	cvItem.frame = (CGRect){xpos, 0, WIDTH - xpos, frame.size.height};
@@ -235,6 +238,8 @@ typedef void(^LYDropDownSectionSelectAction)(NSIndexPath *idp);
 		return;
 	}
 	
+	CGFloat heightContent = MIN(height, heightMaxData);
+	
 	self.hidden = NO;
 	cBg.alpha = 0;
 	self.frame = (CGRect){0, axisY, WIDTH, height};
@@ -247,8 +252,8 @@ typedef void(^LYDropDownSectionSelectAction)(NSIndexPath *idp);
 	
 	[UIView animateWithDuration:ANIMATE delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 		self->cBg.alpha = 1;
-		self->tbMenu.frame = (CGRect){0, 0, xpos, height};
-		self->cvItem.frame = (CGRect){xpos, 0, WIDTH - xpos, height};
+		self->tbMenu.frame = (CGRect){0, 0, xpos, heightContent};
+		self->cvItem.frame = (CGRect){xpos, 0, WIDTH - xpos, heightContent};
 	} completion:^(BOOL finished) {
 		
 	}];
@@ -284,6 +289,64 @@ typedef void(^LYDropDownSectionSelectAction)(NSIndexPath *idp);
 
 // MARK: PRIVATE METHOD
 
+- (CGFloat)listHeight {
+	CGFloat height = 0.0f;
+	
+	if (_datasource == nil || [_datasource count] == 0) {
+		return 0;
+	}
+	
+	height = MAX([tbMenu contentSize].height, [self rightCollectionViewHeight]);
+	height = MIN(height, self.bounds.size.height);
+	return height;
+}
+
+- (CGFloat)rightCollectionViewHeight {
+	
+	if (selection >= [_datasource count]) {
+		return 0.0f;
+	}
+	
+	CGFloat height = 0.0f;
+	NSUInteger itemsCount = [_datasource[selection].items count];
+	height = ((itemsCount / 2) + (itemsCount % 2)) * (44 + 8);
+	return height;
+}
+
+- (void)expandViewToHeight:(CGFloat)height {
+	
+	CGRect rectTb = tbMenu.frame;
+	CGRect rectCv = cvItem.frame;
+	
+	rectTb.size.height = height;
+	rectCv.size.height = height;
+	
+	[UIView animateWithDuration:ANIMATE delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+		self->tbMenu.frame = rectTb;
+		self->cvItem.frame = rectCv;
+	} completion:^(BOOL finished) {
+		
+	}];
+}
+
+// MARK: - PROPERTY
+
+- (void)setDatasource:(NSArray<LYDropDownSectionItem *> *)datasource {
+	_datasource = datasource;
+	
+	if (datasource != nil && [datasource count] > 1) {
+		// HAS ITEMS
+		
+		[tbMenu reloadData];
+		selection = 0;
+		[cvItem reloadData];
+		NSLog(@"frame %@ tb %@ cv %@", NSStringFromCGRect(self.frame), @([tbMenu contentSize].height), @([cvItem contentSize].height));
+		heightMaxData = MAX([tbMenu contentSize].height, [self rightCollectionViewHeight]);
+	} else {
+		heightMaxData = 0.0f;
+	}
+}
+
 // MARK: - DELEGATE
 
 // MARK: UITableViewDelegate
@@ -293,6 +356,11 @@ typedef void(^LYDropDownSectionSelectAction)(NSIndexPath *idp);
 	
 	selection = idp.row;
 	[cvItem reloadData];
+	
+	CGFloat height = 0.0f;
+	height = MAX([tbMenu contentSize].height, [self rightCollectionViewHeight]);
+	height = MIN(height, self.bounds.size.height);
+	[self expandViewToHeight:height];
 }
 
 // MARK: UITableViewDataSource
