@@ -8,6 +8,7 @@
 
 #import "TabBaseViewController.h"
 #import <LYPopView/PopView.h>
+#import <LYCategory/LYCategory.h>
 
 @interface TabBaseViewController () {
 	
@@ -98,7 +99,7 @@
 			LYDropDownSectionItem *secitem = [[LYDropDownSectionItem alloc] init];
 			secitem.title = [NSString stringWithFormat:@"section item %@", @(i)];
 			NSMutableArray *secarr = [NSMutableArray arrayWithCapacity:1];
-			for (int j = 0; j < 15; j++) {
+			for (int j = 0; j < [NSNumber randomIntBetween:6 and:25]; j++) {
 				LYDropDownItem *item = [[LYDropDownItem alloc] init];
 				item.title = [NSString stringWithFormat:@"item %@ in sec %@", @(j), @(i)];
 				[secarr addObject:item];
