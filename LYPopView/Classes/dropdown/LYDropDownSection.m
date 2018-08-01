@@ -177,6 +177,7 @@ typedef void(^LYDropDownSectionSelectAction)(NSIndexPath *idp);
 		// BACKGROUND
 		UIControl *control = [[UIControl alloc] init];
 		control.backgroundColor = [UIColor colorWithHex:@"#000000" andAlpha:0.5f];
+		[control addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchDown | UIControlEventTouchUpInside];
 		[self addSubview:control];
 		cBg = control;
 	}
