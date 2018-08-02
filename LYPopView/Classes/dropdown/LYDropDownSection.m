@@ -456,6 +456,7 @@ NSString *const LYDropDownSectionCellIdentifier = @"LYDropDownSectionCellIdentif
 			bar.frame = (CGRect){0, 0, 10, size.height};
 			bar.userInteractionEnabled = NO;
 			bar.clipsToBounds = YES;
+			bar.backgroundColor = [UIColor colorWithHex:[[[LYPopView alloc] init] configurations][@"popview-theme-color"][@"conf-value"] andAlpha:1.0];
 			[self addSubview:bar];
 			vBar = bar;
 		}
