@@ -30,7 +30,7 @@
 
 @implementation LYPopImagePickerAction
 
-+ (void)showFrownViewController:(UIViewController *)basevc popTitle:(NSString *)titlePop cameraTitle:(NSString *)titleCamera albumTitle:(NSString *)titleAlbum cancelTitle:(NSString *)titleCancel cameraAction:(void (^)(UIImagePickerController *, NSDictionary *))actionCamera albumAction:(void (^)(UIImagePickerController *, NSDictionary *))actionAlbum cancelAction:(void (^)(void))actionCancel {
++ (void)showFrownViewController:(UIViewController *)basevc edit:(BOOL)edit popTitle:(NSString *)titlePop cameraTitle:(NSString *)titleCamera albumTitle:(NSString *)titleAlbum cancelTitle:(NSString *)titleCancel cameraAction:(void (^)(UIImagePickerController *, NSDictionary *))actionCamera albumAction:(void (^)(UIImagePickerController *, NSDictionary *))actionAlbum cancelAction:(void (^)(void))actionCancel {
 	
 	UIAlertController *sheet = [UIAlertController alertControllerWithTitle:titlePop message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
 	
@@ -39,7 +39,7 @@
 		
 		UIImagePickerController *imp = [[UIImagePickerController alloc] init];
 		imp.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-		imp.allowsEditing = YES;
+		imp.allowsEditing = edit;
 		[imp setBk_didCancelBlock:^(UIImagePickerController *impc) {
 			[impc dismissViewControllerAnimated:YES completion:^{}];
 		}];
@@ -55,7 +55,7 @@
 		
 		UIImagePickerController *imp = [[UIImagePickerController alloc] init];
 		imp.sourceType = UIImagePickerControllerSourceTypeCamera;
-		imp.allowsEditing = YES;
+		imp.allowsEditing = edit;
 		[imp setBk_didCancelBlock:^(UIImagePickerController *impc) {
 			[impc dismissViewControllerAnimated:YES completion:^{}];
 		}];
@@ -75,6 +75,11 @@
 	// SHOW ACTION_SHEET
 	[basevc presentViewController:sheet animated:YES completion:^{}];
 	
+}
+
++ (void)showFrownViewController:(UIViewController *)basevc popTitle:(NSString *)titlePop cameraTitle:(NSString *)titleCamera albumTitle:(NSString *)titleAlbum cancelTitle:(NSString *)titleCancel cameraAction:(void (^)(UIImagePickerController *, NSDictionary *))actionCamera albumAction:(void (^)(UIImagePickerController *, NSDictionary *))actionAlbum cancelAction:(void (^)(void))actionCancel {
+	
+	[self showFrownViewController:basevc edit:YES popTitle:titlePop cameraTitle:titleCamera albumTitle:titleAlbum cancelTitle:titleCancel cameraAction:actionCamera albumAction:actionAlbum cancelAction:actionCancel];
 }
 
 @end

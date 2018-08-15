@@ -38,4 +38,14 @@
 					albumAction:(void (^)(UIImagePickerController *imp, NSDictionary *ret))actionAlbum
 				   cancelAction:(void (^)(void))actionCancel;
 
++ (void)showFrownViewController:(UIViewController *)basevc
+						   edit:(BOOL)edit
+					   popTitle:(NSString *)titlePop
+					cameraTitle:(NSString *)titleCamera
+					 albumTitle:(NSString *)titleAlbum
+					cancelTitle:(NSString *)titleCancel
+				   cameraAction:(void (^)(UIImagePickerController *imp, NSDictionary *ret))actionCamera
+					albumAction:(void (^)(UIImagePickerController *imp, NSDictionary *ret))actionAlbum
+				   cancelAction:(void (^)(void))actionCancel;
+
 @end
