@@ -80,7 +80,7 @@
 		self.title = [coder decodeObjectForKey:@"self.title"];
 		self.subtitle = [coder decodeObjectForKey:@"self.subtitle"];
 		self.items = [coder decodeObjectForKey:@"self.items"];
-		self.section = [coder decodeInt64ForKey:@"self.section"];
+		self.section = (NSUInteger)[coder decodeInt64ForKey:@"self.section"];
 	}
 
 	return self;
