@@ -25,7 +25,56 @@
 //
 
 #import "LYPopImagePickerAction.h"
+#import <BlocksKit/BlocksKit+UIKit.h>
+
 
 @implementation LYPopImagePickerAction
+
++ (void)showFrownViewController:(UIViewController *)basevc popTitle:(NSString *)titlePop cameraTitle:(NSString *)titleCamera albumTitle:(NSString *)titleAlbum cancelTitle:(NSString *)titleCancel cameraAction:(void (^)(UIImagePickerController *, NSDictionary *))actionCamera albumAction:(void (^)(UIImagePickerController *, NSDictionary *))actionAlbum cancelAction:(void (^)(void))actionCancel {
+	
+	UIAlertController *sheet = [UIAlertController alertControllerWithTitle:titlePop message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+	
+	// ADD ALBUM BUTTON
+	[sheet addAction:[UIAlertAction actionWithTitle:titleAlbum style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		
+		UIImagePickerController *imp = [[UIImagePickerController alloc] init];
+		imp.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+		imp.allowsEditing = YES;
+		[imp setBk_didCancelBlock:^(UIImagePickerController *impc) {
+			[impc dismissViewControllerAnimated:YES completion:^{}];
+		}];
+		[imp setBk_didFinishPickingMediaBlock:^(UIImagePickerController *impc, NSDictionary *data) {
+			actionAlbum(impc, data);
+			[impc dismissViewControllerAnimated:YES completion:^{}];
+		}];
+		[basevc presentViewController:imp animated:YES completion:^{}];
+	}]];
+	
+	// ADD CAMERA BUTTON
+	[sheet addAction:[UIAlertAction actionWithTitle:titleCamera style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		
+		UIImagePickerController *imp = [[UIImagePickerController alloc] init];
+		imp.sourceType = UIImagePickerControllerSourceTypeCamera;
+		imp.allowsEditing = YES;
+		[imp setBk_didCancelBlock:^(UIImagePickerController *impc) {
+			[impc dismissViewControllerAnimated:YES completion:^{}];
+		}];
+		[imp setBk_didFinishPickingMediaBlock:^(UIImagePickerController *impc, NSDictionary *data) {
+			actionCamera(impc, data);
+			[impc dismissViewControllerAnimated:YES completion:^{}];
+		}];
+		[basevc presentViewController:imp animated:YES completion:^{}];
+		
+	}]];
+	
+	// ADD CANCEL BUTTON
+	[sheet addAction:[UIAlertAction actionWithTitle:titleCancel style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+		actionCancel();
+	}]];
+	
+	// SHOW ACTION_SHEET
+	[basevc presentViewController:sheet animated:YES completion:^{}];
+	
+}
 
 @end

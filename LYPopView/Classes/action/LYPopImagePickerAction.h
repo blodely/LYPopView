@@ -25,7 +25,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface LYPopImagePickerAction : NSObject
+
++ (void)showFrownViewController:(UIViewController *)basevc
+					   popTitle:(NSString *)titlePop
+					cameraTitle:(NSString *)titleCamera
+					 albumTitle:(NSString *)titleAlbum
+					cancelTitle:(NSString *)titleCancel
+				   cameraAction:(void (^)(UIImagePickerController *imp, NSDictionary *ret))actionCamera
+					albumAction:(void (^)(UIImagePickerController *imp, NSDictionary *ret))actionAlbum
+				   cancelAction:(void (^)(void))actionCancel;
 
 @end
