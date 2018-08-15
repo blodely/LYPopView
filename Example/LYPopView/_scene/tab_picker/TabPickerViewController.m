@@ -7,7 +7,7 @@
 //
 
 #import "TabPickerViewController.h"
-#import <LYPopView/PopView.h>
+#import <LYPopView/LYPopView.h>
 
 @interface TabPickerViewController ()
 

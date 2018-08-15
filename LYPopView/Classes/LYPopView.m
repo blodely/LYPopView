@@ -25,7 +25,6 @@
 //
 
 #import "LYPopView.h"
-#import "PopView.h"
 #import "NSBundle+PopView.h"
 #import <LYCategory/LYCategory.h>
 #import "FCFileManager.h"

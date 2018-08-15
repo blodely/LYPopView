@@ -37,6 +37,7 @@ FOUNDATION_EXPORT NSString *const LIB_POPVIEW_BUNDLE_ID;
 	__weak UIView *vCont;
 }
 
+
 /**
  Pop view title string
  */
@@ -65,3 +66,18 @@ FOUNDATION_EXPORT NSString *const LIB_POPVIEW_BUNDLE_ID;
 - (NSDictionary *)configurations;
 
 @end
+
+#import <LYPopView/LYPopMessage.h>
+#import <LYPopView/LYPopTable.h>
+#import <LYPopView/LYPopDate.h>
+#import <LYPopView/LYPopActionView.h>
+#import <LYPopView/LYPopImagePickerAction.h>
+
+#import <LYPopView/LYPickerView.h>
+#import <LYPopView/LYDatePicker.h>
+
+#import <LYPopView/LYPopImage.h>
+
+#import <LYPopView/LYDropDown.h>
+#import <LYPopView/LYDropDownCell.h>
+#import <LYPopView/LYDropDownSection.h>

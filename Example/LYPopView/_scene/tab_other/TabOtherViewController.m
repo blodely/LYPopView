@@ -7,7 +7,7 @@
 //
 
 #import "TabOtherViewController.h"
-#import <LYPopView/PopView.h>
+#import <LYPopView/LYPopView.h>
 
 #import "LYPopImagesViewController.h"
 

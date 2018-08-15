@@ -7,7 +7,7 @@
 //
 
 #import "LYPopImagesViewController.h"
-#import <LYPopView/PopView.h>
+#import <LYPopView/LYPopView.h>
 #import <AFNetworking/AFNetworking.h>
 #import <AFNetworking/UIKit+AFNetworking.h>
 #import <LYCategory/LYCategory.h>
