@@ -14,12 +14,28 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - BlocksKit (2.2.5):
+    - BlocksKit/All (= 2.2.5)
+  - BlocksKit/All (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/Core (2.2.5)
+  - BlocksKit/DynamicDelegate (2.2.5)
+  - BlocksKit/MessageUI (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - BlocksKit/UIKit (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
   - ConfigKit (1.2.13):
     - FCFileManager (~> 1.0.18)
   - FCFileManager (1.0.20)
   - LYCategory (1.2.29)
   - LYPopView (0.1.22):
     - AFNetworking (~> 3.2.1)
+    - BlocksKit (~> 2.2.5)
     - FCFileManager (~> 1.0.18)
     - LYCategory
 
@@ -32,6 +48,7 @@ SPEC REPOS:
     - ConfigKit
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - BlocksKit
     - FCFileManager
     - LYCategory
 
@@ -41,10 +58,11 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   ConfigKit: 5f95a2739bc6c2d77d5ee8cf11469577e8fe668e
   FCFileManager: e0f73316e6aa2eb04d2ff4caa75fe7df1ae44270
   LYCategory: 345399f3247cc6b9cc02100e7ee1743fe0f354e6
-  LYPopView: 6cc9bcce5fb6939889ae5c2b6732afc40c063134
+  LYPopView: 931f4b500c0473daa43bcaca0cce9441eeeef826
 
 PODFILE CHECKSUM: e7f8fc8897ac6ef00363a1747d21435731590837
 

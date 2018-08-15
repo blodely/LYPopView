@@ -29,10 +29,23 @@
                         <action selector="popimageButtonPressed:" destination="-1" eventType="touchUpInside" id="XXZ-Tj-KXg"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Miq-60-9rf">
+                    <rect key="frame" x="12" y="136" width="351" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="36" id="Xuu-s1-ywe"/>
+                    </constraints>
+                    <state key="normal" title="pop image picker actionsheet"/>
+                    <connections>
+                        <action selector="popImagePickerActionSheetTapped:" destination="-1" eventType="touchUpInside" id="F7B-1w-7II"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="Miq-60-9rf" firstAttribute="top" secondItem="KiX-fJ-0IM" secondAttribute="bottom" constant="12" id="0L6-TF-gQV"/>
+                <constraint firstItem="Miq-60-9rf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="12" id="2mG-ud-9w4"/>
                 <constraint firstItem="KiX-fJ-0IM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="CJe-Jg-bVa"/>
+                <constraint firstAttribute="trailing" secondItem="Miq-60-9rf" secondAttribute="trailing" constant="12" id="Cir-ir-xP4"/>
                 <constraint firstItem="KiX-fJ-0IM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="U7U-oh-SxE"/>
                 <constraint firstAttribute="trailing" secondItem="KiX-fJ-0IM" secondAttribute="trailing" constant="16" id="bT1-0H-E8N"/>
             </constraints>

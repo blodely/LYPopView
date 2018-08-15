@@ -24,6 +24,16 @@
 	[self.navigationController pushViewController:[[LYPopImagesViewController alloc] init] animated:YES];
 }
 
+- (IBAction)popImagePickerActionSheetTapped:(UIButton *)sender {
+	[LYPopImagePickerAction showFrownViewController:self popTitle:@"this is a title" cameraTitle:@"see camera!" albumTitle:@"check albums" cancelTitle:@"cancel, no!" cameraAction:^(UIImagePickerController *imp, NSDictionary *ret) {
+		NSLog(@"photo from album size=%@", NSStringFromCGSize([(UIImage *)ret[UIImagePickerControllerEditedImage] size]));
+	} albumAction:^(UIImagePickerController *imp, NSDictionary *ret) {
+		NSLog(@"photo from camera size=%@", NSStringFromCGSize([(UIImage *)ret[UIImagePickerControllerEditedImage] size]));
+	} cancelAction:^{
+		NSLog(@"not gonna pick");
+	}];
+}
+
 // MARK: - INIT
 
 - (instancetype)init {
