@@ -1,8 +1,8 @@
 //
-//  LYPopView.h
+//  LYPickerList.m
 //  LYPOPVIEW
 //
-//  CREATED BY LUO YU ON 19/12/2016.
+//  CREATED BY LUO YU ON 2018-08-21.
 //  COPYRIGHT © 2016-2018 LUO YU <indie.luo@gmail.com>. ALL RIGHTS RESERVED.
 //
 //	Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,61 +24,20 @@
 //	THE SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+#import "LYPickerList.h"
+#import <LYCategory/LYCategory.h>
 
-FOUNDATION_EXPORT NSString *const LIB_POPVIEW_BUNDLE_ID;
-
-@interface LYPopView : UIView {
-	
-	CGFloat padding;
-	CGFloat cornerRadius;
-	CGFloat maxHeight;
-	
-	__weak UIView *vCont;
-}
-
-
-/**
- Pop view title string
- */
-@property (nonatomic, strong) NSString *title;
-
-/**
- Pop view auto dismiss
- */
-@property (nonatomic, assign) BOOL autoDismiss;
-
-/**
- show pop view instance
- */
-- (void)show;
-
-/**
- dismiss pop view instance
- */
-- (void)dismiss;
-
-/**
- get configuration data
-
- @return dictionary data
- */
-- (NSDictionary *)configurations;
-
+@interface LYPickerList () {}
 @end
 
-#import <LYPopView/LYPopMessage.h>
-#import <LYPopView/LYPopTable.h>
-#import <LYPopView/LYPopDate.h>
-#import <LYPopView/LYPopActionView.h>
-#import <LYPopView/LYPopImagePickerAction.h>
+@implementation LYPickerList
 
-#import <LYPopView/LYPickerView.h>
-#import <LYPopView/LYDatePicker.h>
-#import <LYPopView/LYPickerList.h>
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+}
+*/
 
-#import <LYPopView/LYPopImage.h>
-
-#import <LYPopView/LYDropDown.h>
-#import <LYPopView/LYDropDownCell.h>
-#import <LYPopView/LYDropDownSection.h>
+@end
