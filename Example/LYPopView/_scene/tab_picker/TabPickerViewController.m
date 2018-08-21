@@ -37,6 +37,20 @@
 					   }];
 }
 
+- (IBAction)showListPicker:(UIButton *)sender {
+	LYPickerList *picker = [[LYPickerList alloc] init];
+	picker.datasource = @[
+						  @{@"title":@"first item", @"avalue":@"1st",},
+						  @{@"title":@"second item", @"avalue":@"2nd",},
+						  @{@"title":@"third item", @"avalue":@"3rd",},
+						  ];
+	picker.keyTitle = @"title";
+	[picker setDonePickAction:^(NSDictionary *item, NSUInteger idx) {
+		NSLog(@"\n\nINDEX=%@ WITH ITEM=%@", @(idx), item);
+	}];
+	[picker show];
+}
+
 // MARK: - INIT
 
 - (instancetype)init {

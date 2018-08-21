@@ -44,9 +44,19 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="Ab3-n4-Vh6"/>
                     </constraints>
-                    <state key="normal" title="Show Date Picker"/>
+                    <state key="normal" title="show date picker"/>
                     <connections>
                         <action selector="showDatePicker:" destination="-1" eventType="touchUpInside" id="Ehd-Hi-PmS"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dyb-qV-aMx">
+                    <rect key="frame" x="16" y="262" width="343" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="IDu-hJ-9oB"/>
+                    </constraints>
+                    <state key="normal" title="show picker with list"/>
+                    <connections>
+                        <action selector="showListPicker:" destination="-1" eventType="touchUpInside" id="hey-1D-WV1"/>
                     </connections>
                 </button>
             </subviews>
@@ -57,9 +67,12 @@
                 <constraint firstItem="Pog-pC-kWG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="J4c-AH-tEN"/>
                 <constraint firstAttribute="trailing" secondItem="Pog-pC-kWG" secondAttribute="trailing" constant="16" id="Vj0-Wq-6yC"/>
                 <constraint firstAttribute="trailing" secondItem="udS-1Q-xK2" secondAttribute="trailing" constant="16" id="Wd5-LA-xTC"/>
+                <constraint firstAttribute="trailing" secondItem="dyb-qV-aMx" secondAttribute="trailing" constant="16" id="clL-Uk-Dt0"/>
                 <constraint firstItem="OVQ-WE-JG7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="kzx-6a-esZ"/>
                 <constraint firstItem="udS-1Q-xK2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="rMi-Oq-9CW"/>
+                <constraint firstItem="dyb-qV-aMx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="sBy-4E-N9P"/>
                 <constraint firstItem="Pog-pC-kWG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="90" id="uEe-he-TNF"/>
+                <constraint firstItem="dyb-qV-aMx" firstAttribute="top" secondItem="udS-1Q-xK2" secondAttribute="bottom" constant="16" id="vw4-c4-b39"/>
                 <constraint firstItem="OVQ-WE-JG7" firstAttribute="top" secondItem="Pog-pC-kWG" secondAttribute="bottom" constant="8" id="wzI-ul-Cko"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
