@@ -30,4 +30,21 @@
 
 @interface LYPickerList : LYPickerView
 
+/**
+ data source
+ */
+@property (nonatomic, strong) NSArray *datasource;
+
+/**
+ key of item in datasource to query picker item title
+ */
+@property (nonatomic, strong) NSString *keyTitle;
+
+/**
+ done action
+
+ @param doneAction action block
+ */
+- (void)setDonePickAction:(void (^)(NSDictionary *item, NSUInteger idx))doneAction;
+
 @end

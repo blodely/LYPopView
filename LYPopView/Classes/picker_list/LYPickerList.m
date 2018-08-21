@@ -27,7 +27,16 @@
 #import "LYPickerList.h"
 #import <LYCategory/LYCategory.h>
 
-@interface LYPickerList () {}
+typedef void(^donePickListBlock)(NSDictionary *item, NSUInteger index);
+
+@interface LYPickerList () <UIPickerViewDelegate, UIPickerViewDataSource> {
+	
+	__weak UIPickerView *picker;
+	
+	NSUInteger selected;
+	
+	donePickListBlock donePickBlock;
+}
 @end
 
 @implementation LYPickerList
@@ -39,5 +48,101 @@
     // Drawing code
 }
 */
+
+// MARK: - ACTION
+
+- (void)doneInBar:(id)sender {
+	// OVERRIDE
+	
+	if (_datasource == nil || [_datasource count] == 0 || selected >= [_datasource count] || donePickBlock == nil) {
+		[self dismiss];
+		return;
+	}
+	
+	donePickBlock(_datasource[selected], selected);
+	[self dismiss];
+}
+
+// MARK: - INIT
+
+- (void)initial {
+	
+	{
+		selected = 0;
+	}
+	
+	{
+		UIPickerView *pickerview = [[UIPickerView alloc] init];
+		pickerview.delegate = self;
+		pickerview.dataSource = self;
+		[vCont addSubview:pickerview];
+		picker = pickerview;
+		
+		picker.frame = (CGRect){0, 44, vCont.bounds.size.width, vCont.bounds.size.height - 44};
+	}
+}
+
+// MARK: - METHOD
+
+- (void)setDonePickAction:(void (^)(NSDictionary *, NSUInteger))doneAction {
+	donePickBlock = doneAction;
+}
+
+// MARK: - PROPERTY
+
+- (void)setDatasource:(NSArray *)datasource {
+	
+	if (datasource == nil || [datasource isKindOfClass:[NSArray class]] == NO || [datasource count] == 0) {
+		_datasource = nil;
+		return;
+	}
+	
+	_datasource = datasource;
+	
+	[picker reloadAllComponents];
+	selected = 0;
+	[picker selectRow:0 inComponent:0 animated:NO];
+}
+
+- (void)setKeyTitle:(NSString *)keyTitle {
+	
+	if (keyTitle == nil || [keyTitle isEqualToString:@""]) {
+		_keyTitle = nil;
+		return;
+	}
+	
+	_keyTitle = keyTitle;
+	
+	[picker reloadAllComponents];
+	selected = 0;
+	[picker selectRow:0 inComponent:0 animated:NO];
+}
+
+// MARK: - DELEGATE
+
+// MARK: UIPickerViewDelegate
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+	selected = row;
+}
+
+// MARK: UIPickerViewDataSource
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+	return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+	return [_datasource count];
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+	
+	if (_keyTitle == nil) {
+		return @"";
+	}
+	
+	return _datasource[row][_keyTitle];
+}
 
 @end
