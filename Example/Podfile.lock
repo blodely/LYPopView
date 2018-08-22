@@ -33,7 +33,7 @@ PODS:
     - FCFileManager (~> 1.0.18)
   - FCFileManager (1.0.20)
   - LYCategory (1.2.29)
-  - LYPopView (0.1.25):
+  - LYPopView (0.1.26):
     - AFNetworking (~> 3.2.1)
     - BlocksKit (~> 2.2.5)
     - FCFileManager (~> 1.0.18)
@@ -62,7 +62,7 @@ SPEC CHECKSUMS:
   ConfigKit: 5f95a2739bc6c2d77d5ee8cf11469577e8fe668e
   FCFileManager: e0f73316e6aa2eb04d2ff4caa75fe7df1ae44270
   LYCategory: 345399f3247cc6b9cc02100e7ee1743fe0f354e6
-  LYPopView: ae881f2d23a4f96ac662e69457ac71045b7dc917
+  LYPopView: 9afd4893fe90c51ae7c3af7dc35cfb727b3ba113
 
 PODFILE CHECKSUM: e7f8fc8897ac6ef00363a1747d21435731590837
 
