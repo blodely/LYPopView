@@ -25,6 +25,7 @@
 //
 
 #import "LYPopImageCell.h"
+#import <Masonry/Masonry.h>
 
 NSString *const LYPopImageCellIdentifier = @"LYPopImageCellIdentifier";
 
@@ -36,6 +37,25 @@ NSString *const LYPopImageCellIdentifier = @"LYPopImageCellIdentifier";
 - (void)awakeFromNib {
 	[super awakeFromNib];
 	// INITIALIZATION CODE
+}
+
+- (instancetype)initWithFrame:(CGRect)frame {
+	if (self = [super initWithFrame:frame]) {
+		
+		{
+			UIImageView *imageview = [[UIImageView alloc] init];
+			[self addSubview:imageview];
+			_ivImage = imageview;
+			
+			_ivImage.contentMode = UIViewContentModeScaleAspectFit;
+			_ivImage.clipsToBounds = YES;
+			
+			[_ivImage mas_makeConstraints:^(MASConstraintMaker *make) {
+				make.top.left.right.bottom.equalTo(self).with.offset(0);
+			}];
+		}
+	}
+	return self;
 }
 
 @end

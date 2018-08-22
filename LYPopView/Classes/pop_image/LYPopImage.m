@@ -100,7 +100,8 @@
 		[self addSubview:collectionview];
 		cvImage = collectionview;
 		
-		[cvImage registerNib:[UINib nibWithNibName:@"LYPopImageCell" bundle:[NSBundle bundleWithIdentifier:LIB_POPVIEW_BUNDLE_ID]] forCellWithReuseIdentifier:LYPopImageCellIdentifier];
+//		[cvImage registerNib:[UINib nibWithNibName:@"LYPopImageCell" bundle:[NSBundle bundleWithIdentifier:LIB_POPVIEW_BUNDLE_ID]] forCellWithReuseIdentifier:LYPopImageCellIdentifier];
+		[cvImage registerClass:[LYPopImageCell class] forCellWithReuseIdentifier:LYPopImageCellIdentifier];
 		
 		// RESET
 		rect = [[UIScreen mainScreen] bounds];
