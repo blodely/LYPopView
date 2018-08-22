@@ -38,6 +38,8 @@ PODS:
     - BlocksKit (~> 2.2.5)
     - FCFileManager (~> 1.0.18)
     - LYCategory
+    - Masonry (~> 1.1.0)
+  - Masonry (1.1.0)
 
 DEPENDENCIES:
   - ConfigKit
@@ -51,6 +53,7 @@ SPEC REPOS:
     - BlocksKit
     - FCFileManager
     - LYCategory
+    - Masonry
 
 EXTERNAL SOURCES:
   LYPopView:
@@ -62,7 +65,8 @@ SPEC CHECKSUMS:
   ConfigKit: 5f95a2739bc6c2d77d5ee8cf11469577e8fe668e
   FCFileManager: e0f73316e6aa2eb04d2ff4caa75fe7df1ae44270
   LYCategory: 345399f3247cc6b9cc02100e7ee1743fe0f354e6
-  LYPopView: 9afd4893fe90c51ae7c3af7dc35cfb727b3ba113
+  LYPopView: 83ef8266f4fa64f737fa51a08a226c1e1c42797f
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
 
 PODFILE CHECKSUM: e7f8fc8897ac6ef00363a1747d21435731590837
 
