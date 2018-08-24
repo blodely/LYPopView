@@ -27,17 +27,149 @@
 #import "LYPickerSecList.h"
 #import <LYCategory/LYCategory.h>
 
-@interface LYPickerSecList () {}
+
+typedef void(^donePickSecListBlock)(NSDictionary *item, NSIndexPath *idp);
+
+@interface LYPickerSecList () <UIPickerViewDelegate, UIPickerViewDataSource> {
+	
+	__weak UIPickerView *picker;
+	
+	NSUInteger selSec;
+	NSUInteger selRow;
+	
+	donePickSecListBlock donePickBlock;
+}
 @end
 
 @implementation LYPickerSecList
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+// MARK: - ACTION
+
+- (void)doneInBar:(id)sender {
+	// OVERRIDE
+	
+	if (_datasource == nil || [_datasource count] == 0 ||
+		_keyArray == nil || [_keyArray isEqualToString:@""] ||
+		selSec >= [_datasource count] || selRow >= [_datasource[selSec][_keyArray] count] ||
+		donePickBlock == nil) {
+		[self dismiss];
+		return;
+	}
+	
+	donePickBlock(_datasource[selSec][_keyArray][selRow], [NSIndexPath indexPathForRow:selRow inSection:selSec]);
+	[self dismiss];
 }
-*/
+
+// MARK: - INIT
+
+- (void)initial {
+	[super initial];
+	
+	{
+		// MARK: INITIAL VALUES
+		selSec = 0;
+		selRow = 0;
+	}
+	
+	{
+		UIPickerView *pickerview = [[UIPickerView alloc] init];
+		[vCont addSubview:pickerview];
+		picker = pickerview;
+		
+		picker.delegate = self;
+		picker.dataSource = self;
+		
+		picker.frame = (CGRect){0, 44, vCont.bounds.size.width, vCont.bounds.size.height - 44};
+	}
+}
+
+// MARK: - METHOD
+
+- (void)setDonePickAction:(void (^)(NSDictionary *, NSIndexPath *))doneAction {
+	donePickBlock = doneAction;
+}
+
+// MARK: - PROPERTY
+
+- (void)setDatasource:(NSArray *)datasource {
+	
+	if (datasource == nil || [datasource isKindOfClass:[NSArray class]] == NO || [datasource count] == 0) {
+		_datasource = nil;
+		return;
+	}
+	
+	_datasource = datasource;
+	
+	[picker reloadAllComponents];
+	selSec = 0;
+	selRow = 0;
+	[picker selectRow:0 inComponent:0 animated:NO];
+}
+
+- (void)setKeyTitle:(NSString *)keyTitle {
+	if (keyTitle == nil || [keyTitle isEqualToString:@""]) {
+		_keyTitle = nil;
+		return;
+	}
+	
+	_keyTitle = keyTitle;
+	[picker reloadAllComponents];
+}
+
+- (void)setKeyArray:(NSString *)keyArray {
+	if (keyArray == nil || [keyArray isEqualToString:@""]) {
+		_keyArray = nil;
+		return;
+	}
+	
+	_keyArray = keyArray;
+	[picker reloadAllComponents];
+}
+
+// MARK: - DELEGATE
+
+// MARK: UIPickerViewDelegate
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+	
+	if (_keyTitle == nil || _keyArray == nil) {
+		return @"";
+	}
+	
+	NSString *title = @"";
+	if (component == 0) {
+		title = _datasource[row][_keyTitle];
+	} else if (component == 1) {
+		title = _datasource[selSec][_keyArray][row][_keyTitle];
+	}
+	return title;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+	
+	if (component == 0) {
+		selSec = row;
+		[pickerView reloadComponent:1];
+	} else if (component == 1) {
+		selRow = row;
+	}
+	
+}
+
+// MARK: UIPickerViewDataSource
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+	return 2;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+	NSInteger rows = 0;
+	if (component == 0) {
+		rows = [_datasource count];
+	} else if (component == 1) {
+		rows = [_datasource[selSec][_keyArray] count];
+	}
+	return rows;
+}
 
 @end

@@ -29,4 +29,11 @@
 
 @interface LYPickerSecList : LYPickerView
 
+@property (nonatomic, strong) NSArray *datasource;
+
+@property (nonatomic, strong) NSString *keyTitle;
+@property (nonatomic, strong) NSString *keyArray;
+
+- (void)setDonePickAction:(void (^)(NSDictionary *item, NSIndexPath *idp))doneAction;
+
 @end
