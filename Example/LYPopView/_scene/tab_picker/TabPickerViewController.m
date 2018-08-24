@@ -51,6 +51,21 @@
 	[picker show];
 }
 
+- (IBAction)showSectionListPicker:(UIButton *)sender {
+	LYPickerSecList *picker = [[LYPickerSecList alloc] init];
+	picker.datasource = @[
+						  @{@"title":@"group 0", @"subarray":@[@{@"title":@"item name sec 0"},],},
+						  @{@"title":@"group 1", @"subarray":@[@{@"title":@"item name s 1"},],},
+						  @{@"title":@"group 2", @"subarray":@[@{@"title":@"item name s2"},],},
+						  ];
+	picker.keyTitle = @"title";
+	picker.keyArray = @"subarray";
+	[picker setDonePickAction:^(NSDictionary *item, NSIndexPath *idp) {
+		NSLog(@"\n\nIDP=%@ WITH ITEM=%@", idp, item);
+	}];
+	[picker show];
+}
+
 // MARK: - INIT
 
 - (instancetype)init {
