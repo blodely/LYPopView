@@ -48,6 +48,7 @@ FOUNDATION_EXPORT NSString *const LIB_POPVIEW_BUNDLE_ID;
  */
 @property (nonatomic, assign) BOOL autoDismiss;
 
++ (instancetype)pop;
 
 /**
  default initial method to build view structure.

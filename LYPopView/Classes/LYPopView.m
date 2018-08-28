@@ -46,6 +46,10 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 
 // MARK: - INIT
 
++ (instancetype)pop {
+	return [[[self class] alloc] initWithFrame:CGRectZero];
+}
+
 - (instancetype)initWithFrame:(CGRect)frame {
 	frame.origin = CGPointZero;
 	frame.size = [UIScreen mainScreen].bounds.size;
