@@ -30,6 +30,8 @@
 
 + (LYDropDown *)menu;
 
+- (void)initial;
+
 - (void)showFrom:(CGRect)rect;
 
 - (void)addItemTitle:(NSString *)title action:(void (^)(NSUInteger index, NSString *title))itemAction;
