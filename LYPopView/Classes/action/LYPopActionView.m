@@ -63,15 +63,8 @@ typedef void(^ buttonActionBlock)(void);
 
 // MARK: - INIT
 
-- (instancetype)initWithFrame:(CGRect)frame {
-	if (self = [super initWithFrame:frame]) {
-		
-		[self initialPopAction];
-	}
-	return self;
-}
-
-- (void)initialPopAction {
+- (void)initial {
+	[super initial];
 	
 	NSDictionary *conf = [self configurations];
 	NSString *confValue = @"conf-value";

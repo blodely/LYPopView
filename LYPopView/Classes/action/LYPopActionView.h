@@ -31,6 +31,8 @@
 	__weak UIView *vActionCont;
 }
 
+- (void)initial;
+
 /**
  action pop view with one button at bottom
 
