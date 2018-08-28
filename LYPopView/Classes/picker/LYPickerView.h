@@ -33,6 +33,7 @@
 	__weak UIView *vCont;
 }
 
++ (instancetype)picker;
 
 /**
  initial method

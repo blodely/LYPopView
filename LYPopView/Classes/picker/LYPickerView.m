@@ -47,6 +47,10 @@
 
 // MARK: - INIT
 
++ (instancetype)picker {
+	return [[[self class] alloc] initWithFrame:CGRectZero];
+}
+
 - (instancetype)initWithFrame:(CGRect)frame {
 	frame = (CGRect){0, 0, WIDTH, HEIGHT};
 	if (self = [super initWithFrame:frame]) {
