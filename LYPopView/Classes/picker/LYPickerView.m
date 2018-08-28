@@ -50,39 +50,35 @@
 - (instancetype)initWithFrame:(CGRect)frame {
 	frame = (CGRect){0, 0, WIDTH, HEIGHT};
 	if (self = [super initWithFrame:frame]) {
-		[self initialInner];
+		[self initial];
 	}
 	return self;
 }
 
-- (void)initialInner {
-	
-	height = 216 + 44;
-	
-	UIControl *ctlBg = [[UIControl alloc] initWithFrame:(CGRect){0, 0, WIDTH, HEIGHT}];
-	ctlBg.backgroundColor = [UIColor colorWithHex:@"#000000" andAlpha:0.618];
-	[self addSubview:ctlBg];
-	cBg = ctlBg;
-	
-	UIView *viewCont = [[UIView alloc] initWithFrame:(CGRect){0, HEIGHT - height, WIDTH, height}];
-	viewCont.backgroundColor = [UIColor whiteColor];
-	[ctlBg addSubview:viewCont];
-	vCont = viewCont;
-	
-	UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:(CGRect){8, 0, WIDTH - 16, 44}];
-	[viewCont addSubview:toolbar];
-	
-	UIBarButtonItem *itemCancel = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelInBar:)];
-	UIBarButtonItem *itemFlex = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-	UIBarButtonItem *itemConfirm = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneInBar:)];
-	
-	[toolbar setItems:@[itemCancel, itemFlex, itemConfirm,]];
-
-	[self initial];
-}
-
 - (void)initial {
-	// LEAVE FOR OVERRIDING
+	
+	{
+		height = 216 + 44;
+		
+		UIControl *ctlBg = [[UIControl alloc] initWithFrame:(CGRect){0, 0, WIDTH, HEIGHT}];
+		ctlBg.backgroundColor = [UIColor colorWithHex:@"#000000" andAlpha:0.618];
+		[self addSubview:ctlBg];
+		cBg = ctlBg;
+		
+		UIView *viewCont = [[UIView alloc] initWithFrame:(CGRect){0, HEIGHT - height, WIDTH, height}];
+		viewCont.backgroundColor = [UIColor whiteColor];
+		[ctlBg addSubview:viewCont];
+		vCont = viewCont;
+		
+		UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:(CGRect){8, 0, WIDTH - 16, 44}];
+		[viewCont addSubview:toolbar];
+		
+		UIBarButtonItem *itemCancel = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelInBar:)];
+		UIBarButtonItem *itemFlex = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+		UIBarButtonItem *itemConfirm = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneInBar:)];
+		
+		[toolbar setItems:@[itemCancel, itemFlex, itemConfirm,]];
+	}
 }
 
 /*

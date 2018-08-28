@@ -66,6 +66,7 @@ typedef void(^donePickListBlock)(NSDictionary *item, NSUInteger index);
 // MARK: - INIT
 
 - (void)initial {
+	[super initial];
 	
 	{
 		selected = 0;
