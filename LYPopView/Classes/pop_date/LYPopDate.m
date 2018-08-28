@@ -67,49 +67,48 @@
 	[datepop show];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame {
-	if (self = [super initWithFrame:frame]) {
-		
-		NSDictionary *conf = [self configurations];
-		NSString *confValue = @"conf-value";
-		
-		{
-			UILabel *labelDate = [[UILabel alloc] init];
-			labelDate.frame = (CGRect){10, 0, frame.size.width - 10, 44};
-			labelDate.font = [UIFont systemFontOfSize:15];
-			labelDate.textColor = [UIColor blackColor];
-			labelDate.textAlignment = NSTextAlignmentLeft;
-			[vCont addSubview:labelDate];
-			_message = labelDate;
-		}
-		
-		{
-			UIDatePicker *datepicker = [[UIDatePicker alloc] init];
-			datepicker.frame = (CGRect){0, 44, frame.size.width, 216};
-			[vCont addSubview:datepicker];
-			_picker = datepicker;
-			_message.text = [datepicker.date stringWithFormat:_formatter andTimezone:_timezone];
-		}
-		
-		{
-			UIButton *buttonCancel = [UIButton buttonWithType:UIButtonTypeCustom];
-			[buttonCancel setBackgroundColor:[UIColor colorWithHex:conf[@"popview-theme-color"][confValue] andAlpha:1.0]];
-			[buttonCancel addTarget:self action:@selector(cancelBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
-			[buttonCancel setTitle:@"取消" forState:UIControlStateNormal];
-			[vCont addSubview:buttonCancel];
-			btnCancel = buttonCancel;
-		}
-		
-		{
-			UIButton *buttonConfirm = [UIButton buttonWithType:UIButtonTypeCustom];
-			[buttonConfirm setBackgroundColor:[UIColor colorWithHex:conf[@"popview-theme-color"][confValue] andAlpha:1.0]];
-			[buttonConfirm addTarget:self action:@selector(confirmBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
-			[buttonConfirm setTitle:@"确认" forState:UIControlStateNormal];
-			[vCont addSubview:buttonConfirm];
-			btnConfirm = buttonConfirm;
-		}
+- (void)initial {
+	[super initial];
+	
+	NSDictionary *conf = [self configurations];
+	NSString *confValue = @"conf-value";
+	CGRect frame = self.frame;
+	
+	{
+		UILabel *labelDate = [[UILabel alloc] init];
+		labelDate.frame = (CGRect){10, 0, frame.size.width - 10, 44};
+		labelDate.font = [UIFont systemFontOfSize:15];
+		labelDate.textColor = [UIColor blackColor];
+		labelDate.textAlignment = NSTextAlignmentLeft;
+		[vCont addSubview:labelDate];
+		_message = labelDate;
 	}
-	return self;
+	
+	{
+		UIDatePicker *datepicker = [[UIDatePicker alloc] init];
+		datepicker.frame = (CGRect){0, 44, frame.size.width, 216};
+		[vCont addSubview:datepicker];
+		_picker = datepicker;
+		_message.text = [datepicker.date stringWithFormat:_formatter andTimezone:_timezone];
+	}
+	
+	{
+		UIButton *buttonCancel = [UIButton buttonWithType:UIButtonTypeCustom];
+		[buttonCancel setBackgroundColor:[UIColor colorWithHex:conf[@"popview-theme-color"][confValue] andAlpha:1.0]];
+		[buttonCancel addTarget:self action:@selector(cancelBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+		[buttonCancel setTitle:@"取消" forState:UIControlStateNormal];
+		[vCont addSubview:buttonCancel];
+		btnCancel = buttonCancel;
+	}
+	
+	{
+		UIButton *buttonConfirm = [UIButton buttonWithType:UIButtonTypeCustom];
+		[buttonConfirm setBackgroundColor:[UIColor colorWithHex:conf[@"popview-theme-color"][confValue] andAlpha:1.0]];
+		[buttonConfirm addTarget:self action:@selector(confirmBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+		[buttonConfirm setTitle:@"确认" forState:UIControlStateNormal];
+		[vCont addSubview:buttonConfirm];
+		btnConfirm = buttonConfirm;
+	}
 }
 
 /*

@@ -39,23 +39,21 @@
 
 // MARK: - INIT
 
-- (instancetype)initWithFrame:(CGRect)frame {
-	if (self = [super initWithFrame:frame]) {
-		
-		NSDictionary *conf = [self configurations];
-		NSString *confValue = @"conf-value";
-		
-		{
-			UILabel *labelMessage = [[UILabel alloc] init];
-			labelMessage.font = [UIFont systemFontOfSize:15];
-			labelMessage.textColor = [UIColor colorWithHex:conf[@"popview-message-color"][confValue] andAlpha:1.0];
-			labelMessage.textAlignment = NSTextAlignmentCenter;
-			labelMessage.frame = (CGRect){padding, 44 + padding, vCont.bounds.size.width - padding * 2, 20};
-			[vCont addSubview:labelMessage];
-			lblMessage = labelMessage;
-		}
+- (void)initial {
+	[super initial];
+	
+	NSDictionary *conf = [self configurations];
+	NSString *confValue = @"conf-value";
+	
+	{
+		UILabel *labelMessage = [[UILabel alloc] init];
+		labelMessage.font = [UIFont systemFontOfSize:15];
+		labelMessage.textColor = [UIColor colorWithHex:conf[@"popview-message-color"][confValue] andAlpha:1.0];
+		labelMessage.textAlignment = NSTextAlignmentCenter;
+		labelMessage.frame = (CGRect){padding, 44 + padding, vCont.bounds.size.width - padding * 2, 20};
+		[vCont addSubview:labelMessage];
+		lblMessage = labelMessage;
 	}
-	return self;
 }
 
 + (void)showPopWithTitle:(NSString *)aTitle andMessage:(NSString *)aMessage {

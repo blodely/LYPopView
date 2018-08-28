@@ -37,18 +37,16 @@ NSString *const LYPopTableDataTitle = @"ly.pop.table.title";
 
 @implementation LYPopTable
 
-- (instancetype)init {
-	if (self = [super init]) {
-		
-		{
-			UITableView *table = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-			table.frame = (CGRect){0, 44, vCont.bounds.size.width, vCont.bounds.size.height};
-			table.separatorStyle = UITableViewCellSeparatorStyleNone;
-			[vCont addSubview:table];
-			_tbMenu = table;
-		}
+- (void)initial {
+	[super initial];
+	
+	{
+		UITableView *table = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+		table.frame = (CGRect){0, 44, vCont.bounds.size.width, vCont.bounds.size.height};
+		table.separatorStyle = UITableViewCellSeparatorStyleNone;
+		[vCont addSubview:table];
+		_tbMenu = table;
 	}
-	return self;
 }
 
 // MARK: - PROPERTY
