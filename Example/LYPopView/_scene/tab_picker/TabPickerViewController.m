@@ -38,7 +38,7 @@
 }
 
 - (IBAction)showListPicker:(UIButton *)sender {
-	LYPickerList *picker = [[LYPickerList alloc] init];
+	LYPickerList *picker = [LYPickerList picker];
 	picker.datasource = @[
 						  @{@"title":@"first item", @"avalue":@"1st",},
 						  @{@"title":@"second item", @"avalue":@"2nd",},
@@ -52,7 +52,7 @@
 }
 
 - (IBAction)showSectionListPicker:(UIButton *)sender {
-	LYPickerSecList *picker = [[LYPickerSecList alloc] init];
+	LYPickerSecList *picker = [LYPickerSecList picker];
 	picker.datasource = @[
 						  @{@"title":@"group 0", @"subarray":@[@{@"title":@"item name sec 0"},],},
 						  @{@"title":@"group 1", @"subarray":@[@{@"title":@"item name s 1"},],},
