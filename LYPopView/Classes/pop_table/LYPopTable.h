@@ -49,16 +49,16 @@ FOUNDATION_EXPORT NSString *const LYPopTableCellIdentifier;
 /**
  cell icon image view
  */
-@property (nonatomic, weak) IBOutlet UIImageView *ivIcon;
+@property (nonatomic, weak) UIImageView *ivIcon;
 
 /**
  cell title label
  */
-@property (nonatomic, weak) IBOutlet UILabel *lblTitle;
+@property (nonatomic, weak) UILabel *lblTitle;
 
 /**
  cell subtitle label
  */
-@property (nonatomic, weak) IBOutlet UILabel *lblSubtitle;
+@property (nonatomic, weak) UILabel *lblSubtitle;
 
 @end
