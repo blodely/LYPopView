@@ -59,7 +59,11 @@ typedef void (^ didSelectDate)(NSDate *date);
  @param timezone timezone
  @param selectBlock selection block
  */
-+ (void)showPopWithTitle:(NSString *)title datePickerMode:(UIDatePickerMode)mode stringFormat:(NSString *)formatter timezone:(NSString *)timezone andSelectionBlock:(didSelectDate)selectBlock;
++ (void)showPopWithTitle:(NSString *)title
+		  datePickerMode:(UIDatePickerMode)mode
+			stringFormat:(NSString *)formatter
+				timezone:(NSString *)timezone
+	   andSelectionBlock:(didSelectDate)selectBlock;
 
 /**
  set selected block

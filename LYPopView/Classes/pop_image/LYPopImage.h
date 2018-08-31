@@ -30,10 +30,27 @@
 
 @property (nonatomic, assign) BOOL showIndex;
 
+/**
+ instance getter
+
+ @return pop image view instance
+ */
 + (instancetype)pop;
 
+/**
+ initial method
+ */
 - (void)initial;
 
-- (void)showImageWithIndex:(NSInteger)idx inDataSource:(NSArray <NSString *>*)datasource fromRect:(CGRect)rect;
+/**
+ present pop image view with current image index and data source
+
+ @param idx current image index
+ @param datasource data source
+ @param rect original rectangle
+ */
+- (void)showImageWithIndex:(NSInteger)idx
+			  inDataSource:(NSArray <NSString *>*)datasource
+				  fromRect:(CGRect)rect;
 
 @end
