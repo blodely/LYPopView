@@ -39,6 +39,7 @@
 
 - (IBAction)showListPicker:(UIButton *)sender {
 	LYPickerList *picker = [LYPickerList picker];
+	picker.font = [UIFont systemFontOfSize:10];
 	picker.datasource = @[
 						  @{@"title":@"first item", @"avalue":@"1st",},
 						  @{@"title":@"second item", @"avalue":@"2nd",},
