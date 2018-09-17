@@ -40,6 +40,8 @@
  */
 @property (nonatomic, strong) NSString *keyTitle;
 
+@property (nonatomic, strong) UIFont *font;
+
 /**
  done action
 

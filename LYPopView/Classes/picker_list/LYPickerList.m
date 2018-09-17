@@ -70,6 +70,7 @@ typedef void(^donePickListBlock)(NSDictionary *item, NSUInteger index);
 	
 	{
 		selected = 0;
+		_font = [UIFont systemFontOfSize:14];
 	}
 	
 	{
@@ -119,6 +120,23 @@ typedef void(^donePickListBlock)(NSDictionary *item, NSUInteger index);
 	[picker selectRow:0 inComponent:0 animated:NO];
 }
 
+- (void)setFont:(UIFont *)font {
+	
+	if (font == nil || [font isKindOfClass:[UIFont class]] == NO) {
+		_font = [UIFont systemFontOfSize:14];
+	} else {
+		_font = font;
+	}
+	
+	if (_datasource == nil || _keyTitle == nil || [_datasource count] == 0 || [_keyTitle isEqualToString:@""]) {
+		return;
+	}
+	
+	[picker reloadAllComponents];
+	selected = 0;
+	[picker selectRow:0 inComponent:0 animated:0];
+}
+
 // MARK: - DELEGATE
 
 // MARK: UIPickerViewDelegate
@@ -137,13 +155,16 @@ typedef void(^donePickListBlock)(NSDictionary *item, NSUInteger index);
 	return [_datasource count];
 }
 
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+- (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component {
 	
+	NSString *title;
 	if (_keyTitle == nil) {
-		return @"";
+		title = @"";
+	} else {
+		title = _datasource[row][_keyTitle];
 	}
 	
-	return _datasource[row][_keyTitle];
+	return [[NSAttributedString alloc] initWithString:title attributes:@{NSFontAttributeName:_font}];
 }
 
 @end
