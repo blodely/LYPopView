@@ -7,14 +7,14 @@
 		<key>name</key>
 		<string>theme color</string>
 		<key>conf-value</key>
-		<string>#f5c523</string>
+		<string>#ffffff</string>
 	</dict>
 	<key>popview-title-color</key>
 	<dict>
 		<key>name</key>
 		<string>theme color</string>
 		<key>conf-value</key>
-		<string>#ffffff</string>
+		<string>#4f92f7</string>
 	</dict>
 	<key>popview-window-bg-color</key>
 	<dict>
