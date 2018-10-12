@@ -88,7 +88,7 @@ typedef void(^ dropdownActionBlock)(NSUInteger index, NSString *title);
 		menu = [NSMutableArray arrayWithCapacity:1];
 		menuBlocks = [NSMutableArray arrayWithCapacity:1];
 		
-		themeColor = [UIColor colorWithHex:[[[LYPopView alloc] init] configurations][@"popview-theme-color"][@"conf-value"] andAlpha:1.0];
+		themeColor = [UIColor colorWithHex:[[[LYPopView alloc] init] configurations][@"popview-menu-sel-color"][@"conf-value"] andAlpha:1.0];
 		self.tintColor = themeColor;
 		
 		self.clipsToBounds = YES;
