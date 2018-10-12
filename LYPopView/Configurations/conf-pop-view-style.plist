@@ -9,6 +9,13 @@
 		<key>conf-value</key>
 		<string>#ffffff</string>
 	</dict>
+	<key>popview-menu-sel-color</key>
+	<dict>
+		<key>name</key>
+		<string>menu item selection color</string>
+		<key>conf-value</key>
+		<string>#0f0f0f</string>
+	</dict>
 	<key>popview-title-color</key>
 	<dict>
 		<key>name</key>
