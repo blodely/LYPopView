@@ -166,7 +166,7 @@ typedef void(^LYDropDownSectionSelectAction)(NSIndexPath *idp);
 	{
 		selection = 0;
 		
-		themeColor = [UIColor colorWithHex:[[[LYPopView alloc] init] configurations][@"popview-theme-color"][@"conf-value"] andAlpha:1.0];
+		themeColor = [UIColor colorWithHex:[[[LYPopView alloc] init] configurations][@"popview-menu-sel-color"][@"conf-value"] andAlpha:1.0];
 		self.tintColor = themeColor;
 		
 		self.clipsToBounds = YES;
