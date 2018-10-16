@@ -35,6 +35,11 @@ FOUNDATION_EXPORT NSString *const LIB_POPVIEW_BUNDLE_ID;
 	CGFloat maxHeight;
 	
 	__weak UIView *vCont;
+	__weak UIControl *cBg;
+	
+	__weak UIView *vTitle;
+	__weak UILabel *lblTitle;
+	__weak UIButton *btnClose;
 }
 
 

@@ -35,13 +35,7 @@ NSString *const LIB_POPVIEW_BUNDLE_ID = @"org.cocoapods.LYPopView";
 NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 
 @interface LYPopView () {
-	
-	__weak UIControl *cBg;
-	
-	__weak UIView *vTitle;
-	__weak UILabel *lblTitle;
 }
-
 @end
 
 @implementation LYPopView
@@ -125,25 +119,42 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 		CGFloat width = vCont.bounds.size.width;
 		
 		UIView *viewTitle = [[UIView alloc] init];
-		viewTitle.frame = (CGRect){0, 0, width, 44};
+//		viewTitle.frame = (CGRect){0, 0, width, 44};
 		viewTitle.backgroundColor = enableBlur ? [UIColor clearColor] : [UIColor colorWithHex:conf[@"popview-theme-color"][confValue] andAlpha:1.0];
 		[vCont addSubview:viewTitle];
 		vTitle = viewTitle;
 		
+		[viewTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+			make.left.right.top.equalTo(self->vCont);
+			make.height.mas_equalTo(44);
+		}];
+		
 		UILabel *labelTitle = [[UILabel alloc] init];
-		labelTitle.frame = (CGRect){10, 0, width - 20, 44};
+//		labelTitle.frame = (CGRect){10, 0, width - 20, 44};
 		labelTitle.textColor = [UIColor colorWithHex:conf[@"popview-title-color"][confValue] andAlpha:1.0];
 		labelTitle.textAlignment = NSTextAlignmentCenter;
 		labelTitle.font = [UIFont systemFontOfSize:16];
 		[viewTitle addSubview:labelTitle];
 		lblTitle = labelTitle;
 		
+		[labelTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+			make.left.equalTo(viewTitle).offset(10);
+			make.right.equalTo(viewTitle).offset(-10);
+			make.top.bottom.equalTo(viewTitle);
+		}];
+		
 		UIButton *buttonClose = [UIButton buttonWithType:UIButtonTypeCustom];
-		buttonClose.frame = (CGRect){width - 44, 0, 44, 44};
+//		buttonClose.frame = (CGRect){width - 44, 0, 44, 44};
 		[buttonClose setBackgroundImage:[[UIImage imageNamed:@"cross-48-gs" inBundle:[NSBundle popResourceBundle] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
 		[buttonClose setTintColor:[UIColor colorWithHex:conf[@"popview-title-color"][confValue] andAlpha:1.0]];
 		[buttonClose addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
 		[viewTitle addSubview:buttonClose];
+		btnClose = buttonClose;
+		
+		[buttonClose mas_makeConstraints:^(MASConstraintMaker *make) {
+			make.right.top.equalTo(viewTitle);
+			make.width.height.mas_equalTo(44);
+		}];
 	}
 }
 
