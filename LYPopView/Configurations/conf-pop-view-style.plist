@@ -58,6 +58,13 @@
 		<key>conf-value</key>
 		<false/>
 	</dict>
+	<key>popview-bgv-blur-switch</key>
+	<dict>
+		<key>name</key>
+		<string>background view blur effect switch</string>
+		<key>conf-value</key>
+		<true/>
+	</dict>
 	<key>popview-min-dismiss-timeinterval</key>
 	<dict>
 		<key>name</key>
