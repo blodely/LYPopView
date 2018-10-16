@@ -21,7 +21,7 @@
 		<key>name</key>
 		<string>theme color</string>
 		<key>conf-value</key>
-		<string>#4f92f7</string>
+		<string>#0e0e0e</string>
 	</dict>
 	<key>popview-window-bg-color</key>
 	<dict>
@@ -35,14 +35,14 @@
 		<key>name</key>
 		<string>corner radius</string>
 		<key>conf-value</key>
-		<string>5</string>
+		<string>16</string>
 	</dict>
 	<key>popview-padding</key>
 	<dict>
 		<key>name</key>
 		<string>padding</string>
 		<key>conf-value</key>
-		<string>12</string>
+		<string>20</string>
 	</dict>
 	<key>popview-message-color</key>
 	<dict>
