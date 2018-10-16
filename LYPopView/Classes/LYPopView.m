@@ -28,6 +28,8 @@
 #import "NSBundle+PopView.h"
 #import <LYCategory/LYCategory.h>
 #import "FCFileManager.h"
+#import <Masonry/Masonry.h>
+
 
 NSString *const LIB_POPVIEW_BUNDLE_ID = @"org.cocoapods.LYPopView";
 NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
@@ -74,15 +76,41 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 	{
 		UIControl *ctrlBg = [[UIControl alloc] init];
 		ctrlBg.frame = (CGRect){0, 0, screen.width, screen.height};
-		ctrlBg.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+		ctrlBg.backgroundColor = [UIColor colorWithWhite:0 alpha:0.382];
 		[ctrlBg addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchDown];
 		[self addSubview:ctrlBg];
 		cBg = ctrlBg;
 	}
 	
+	BOOL enableBlur = [conf[@"popview-bgv-blur-switch"][confValue] boolValue]
+						&& ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0);
+	
 	{
 		UIView *viewCont = [[UIView alloc] init];
-		viewCont.backgroundColor = [UIColor colorWithHex:conf[@"popview-window-bg-color"][confValue] andAlpha:1.0];
+		
+		// TRY TO ADD BLUR EFFECT IF IT'S ENABLED IN CONFIGURATION
+		if (enableBlur) {
+			// BLUR EFFECT
+			viewCont.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.1];
+			
+			UIBlurEffect *blureff;
+			
+			if (@available(iOS 10.0, *)) {
+				blureff = [UIBlurEffect effectWithStyle:UIBlurEffectStyleRegular];
+			} else {
+				blureff = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+			}
+			
+			UIVisualEffectView *effv = [[UIVisualEffectView alloc] initWithEffect:blureff];
+			[viewCont addSubview:effv];
+			[effv mas_makeConstraints:^(MASConstraintMaker *make) {
+				make.edges.equalTo(viewCont).insets(UIEdgeInsetsMake(0, 0, 0, 0));
+			}];
+		} else {
+			// OTHERWISE, USE PLAIN BACKGROUND COLOR
+			viewCont.backgroundColor = [UIColor colorWithHex:conf[@"popview-window-bg-color"][confValue] andAlpha:1.0];
+		}
+		
 		viewCont.clipsToBounds = YES;
 		CGFloat width = screen.width - padding * 2;
 		maxHeight = width / 0.7;
@@ -98,7 +126,7 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 		
 		UIView *viewTitle = [[UIView alloc] init];
 		viewTitle.frame = (CGRect){0, 0, width, 44};
-		viewTitle.backgroundColor = [UIColor colorWithHex:conf[@"popview-theme-color"][confValue] andAlpha:1.0];
+		viewTitle.backgroundColor = enableBlur ? [UIColor clearColor] : [UIColor colorWithHex:conf[@"popview-theme-color"][confValue] andAlpha:1.0];
 		[vCont addSubview:viewTitle];
 		vTitle = viewTitle;
 		
