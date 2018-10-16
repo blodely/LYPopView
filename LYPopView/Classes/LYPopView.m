@@ -68,6 +68,7 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 	cornerRadius = [conf[@"popview-corner-radius"][confValue] integerValue];
 	
 	{
+		// MARK: DARK BG
 		UIControl *ctrlBg = [[UIControl alloc] init];
 		ctrlBg.frame = (CGRect){0, 0, screen.width, screen.height};
 		ctrlBg.backgroundColor = [UIColor colorWithWhite:0 alpha:0.382];
@@ -80,6 +81,7 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 						&& ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0);
 	
 	{
+		// MARK: CONTENT VIEW
 		UIView *viewCont = [[UIView alloc] init];
 		
 		// TRY TO ADD BLUR EFFECT IF IT'S ENABLED IN CONFIGURATION
@@ -116,10 +118,8 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 	}
 	
 	{
-		CGFloat width = vCont.bounds.size.width;
-		
+		// MARK: TITLE AREA
 		UIView *viewTitle = [[UIView alloc] init];
-//		viewTitle.frame = (CGRect){0, 0, width, 44};
 		viewTitle.backgroundColor = enableBlur ? [UIColor clearColor] : [UIColor colorWithHex:conf[@"popview-theme-color"][confValue] andAlpha:1.0];
 		[vCont addSubview:viewTitle];
 		vTitle = viewTitle;
@@ -130,7 +130,6 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 		}];
 		
 		UILabel *labelTitle = [[UILabel alloc] init];
-//		labelTitle.frame = (CGRect){10, 0, width - 20, 44};
 		labelTitle.textColor = [UIColor colorWithHex:conf[@"popview-title-color"][confValue] andAlpha:1.0];
 		labelTitle.textAlignment = NSTextAlignmentCenter;
 		labelTitle.font = [UIFont systemFontOfSize:16];
@@ -144,7 +143,6 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 		}];
 		
 		UIButton *buttonClose = [UIButton buttonWithType:UIButtonTypeCustom];
-//		buttonClose.frame = (CGRect){width - 44, 0, 44, 44};
 		[buttonClose setBackgroundImage:[[UIImage imageNamed:@"cross-48-gs" inBundle:[NSBundle popResourceBundle] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
 		[buttonClose setTintColor:[UIColor colorWithHex:conf[@"popview-title-color"][confValue] andAlpha:1.0]];
 		[buttonClose addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
