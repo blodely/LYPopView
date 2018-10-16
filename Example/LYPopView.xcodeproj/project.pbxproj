@@ -36,6 +36,7 @@
 		FC89143220D9F1BC0050ED37 /* LYPopImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC89143020D9F1BC0050ED37 /* LYPopImagesViewController.m */; };
 		FC89143320D9F1BC0050ED37 /* LYPopImagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC89143120D9F1BC0050ED37 /* LYPopImagesViewController.xib */; };
 		FC89143820D9F4080050ED37 /* LYPopImagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC89143620D9F4080050ED37 /* LYPopImagesCell.xib */; };
+		FCD1770F2175BBDF00BCD3BA /* conf-pop-view-style.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCD1770E2175BBDF00BCD3BA /* conf-pop-view-style.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		FC89143120D9F1BC0050ED37 /* LYPopImagesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LYPopImagesViewController.xib; sourceTree = "<group>"; };
 		FC89143620D9F4080050ED37 /* LYPopImagesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LYPopImagesCell.xib; sourceTree = "<group>"; };
 		FC98DF1B209989E80053C873 /* push_repo_lyspecs.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = push_repo_lyspecs.sh; path = ../push_repo_lyspecs.sh; sourceTree = "<group>"; };
+		FCD1770E2175BBDF00BCD3BA /* conf-pop-view-style.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "conf-pop-view-style.plist"; path = "../../LYPopView/Configurations/conf-pop-view-style.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 				6003F59C195388D20070C39A /* LYAppDelegate.h */,
 				6003F59D195388D20070C39A /* LYAppDelegate.m */,
 				893E6C561F096FFA00E8D0D6 /* conf-system-style.plist */,
+				FCD1770E2175BBDF00BCD3BA /* conf-pop-view-style.plist */,
 				B6AD7AF51E07CE50009743A3 /* _scene */,
 				B6AD7AF31E07CDA0009743A3 /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
@@ -391,6 +394,7 @@
 				B65F516B1E08E1EE00BDF02B /* TabTableViewController.xib in Resources */,
 				B6AD7B021E07CEB0009743A3 /* TabMsgViewController.xib in Resources */,
 				B6AD7AFD1E07CE99009743A3 /* TabBaseViewController.xib in Resources */,
+				FCD1770F2175BBDF00BCD3BA /* conf-pop-view-style.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
