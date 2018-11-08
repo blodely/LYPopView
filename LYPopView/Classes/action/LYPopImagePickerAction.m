@@ -32,7 +32,7 @@
 
 + (void)showFromViewController:(UIViewController *)basevc edit:(BOOL)edit popTitle:(NSString *)titlePop cameraTitle:(NSString *)titleCamera albumTitle:(NSString *)titleAlbum cancelTitle:(NSString *)titleCancel cameraAction:(void (^)(UIImagePickerController *, NSDictionary *))actionCamera albumAction:(void (^)(UIImagePickerController *, NSDictionary *))actionAlbum cancelAction:(void (^)(void))actionCancel {
 	
-	UIAlertController *sheet = [UIAlertController alertControllerWithTitle:titlePop message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+	UIAlertController *sheet = [UIAlertController alertControllerWithTitle:titlePop message:nil preferredStyle:UIAlertControllerStyleActionSheet];
 	
 	// ADD ALBUM BUTTON
 	[sheet addAction:[UIAlertAction actionWithTitle:titleAlbum style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
