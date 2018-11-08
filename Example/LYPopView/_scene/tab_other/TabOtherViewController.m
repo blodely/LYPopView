@@ -26,7 +26,7 @@
 
 - (IBAction)popImagePickerActionSheetTapped:(UIButton *)sender {
 	
-	[LYPopImagePickerAction showFromViewController:self popTitle:@"this is a title" cameraTitle:@"see camera!" albumTitle:@"check albums" cancelTitle:@"cancel, no!" pickerAction:^(UIImagePickerController *imp, NSDictionary *ret) {
+	[LYPopImagePickerAction showFromViewController:self popTitle:nil cameraTitle:@"see camera!" albumTitle:@"check albums" cancelTitle:@"cancel, no!" pickerAction:^(UIImagePickerController *imp, NSDictionary *ret) {
 		NSLog(@"photo picked size=%@", NSStringFromCGSize([(UIImage *)ret[UIImagePickerControllerOriginalImage] size]));
 	} cancelAction:^{
 		NSLog(@"not gonna pick");
