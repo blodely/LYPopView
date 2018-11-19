@@ -32,6 +32,14 @@
 
 @implementation LYHover
 
+// MARK: - ACTION
+
+- (void)backgroundTapped:(id)sender {
+	[self endEditing:YES];
+	
+	[self dismiss];
+}
+
 // MARK: - INIT
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -45,10 +53,12 @@
 
 - (void)initial {
 	
+	// MARK: SELF
 	self.backgroundColor = [UIColor clearColor];
-	[self addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchDown];
+	[self addTarget:self action:@selector(backgroundTapped:) forControlEvents:UIControlEventTouchDown];
 	
 	{
+		// MARK: CONTAINER VIEW
 		UIView *view = [[UIView alloc] init];
 		[self addSubview:view];
 		vCont = view;
@@ -67,6 +77,7 @@
 	}
 	
 	if (@available(iOS 11.0, *)){
+		// MARK: FOOTER
 		UIView *view = [[UIView alloc] init];
 		[self addSubview:view];
 		view.backgroundColor = vCont.backgroundColor;
