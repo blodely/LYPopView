@@ -33,6 +33,13 @@
 	}];
 }
 
+- (IBAction)popHoverViewAction:(id)sender {
+	
+	LYHover *hover = [LYHover view];
+	hover.background = YES;
+	[hover show];
+}
+
 // MARK: - INIT
 
 - (instancetype)init {
