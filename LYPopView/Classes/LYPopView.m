@@ -109,7 +109,11 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 		
 		viewCont.clipsToBounds = YES;
 		CGFloat width = screen.width - padding * 2;
-		maxHeight = width / 0.7;
+		if (maxHeight <= 44) {
+			// NOT A VALID HEIGHT
+			// SET DEFAULT HEIGHT
+			maxHeight = width / 0.7;
+		}
 		viewCont.frame = (CGRect){padding, (screen.height - maxHeight) / 2, width, maxHeight};
 		viewCont.layer.masksToBounds = YES;
 		viewCont.layer.cornerRadius = cornerRadius;
