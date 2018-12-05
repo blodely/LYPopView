@@ -22,7 +22,7 @@ message, table, date, button, etc.
 
 	s.ios.deployment_target = '7.0'
 
-	s.source_files = 'LYPopView/Classes/action/*', 'LYPopView/Classes/hover/*', 'LYPopView/Classes/dropdown/*', 'LYPopView/Classes/picker/*', 'LYPopView/Classes/picker_date/*', 'LYPopView/Classes/picker_list/*', 'LYPopView/Classes/pop_message/*', 'LYPopView/Classes/pop_table/*', 'LYPopView/Classes/pop_date/*', 'LYPopView/Classes/pop_image/*', 'LYPopView/Classes/**/*', 'LYPopView/Configurations/*.plist'
+	s.source_files = 'LYPopView/Classes/action/*', 'LYPopView/Classes/hover/*', 'LYPopView/Classes/dropdown/*', 'LYPopView/Classes/picker/*', 'LYPopView/Classes/picker_date/*', 'LYPopView/Classes/picker_list/*', 'LYPopView/Classes/pop_message/*', 'LYPopView/Classes/pop_table/*', 'LYPopView/Classes/pop_date/*', 'LYPopView/Classes/pop_image/*', 'LYPopView/Classes/*', 'LYPopView/Configurations/*.plist'
 
 	s.resource_bundles = {
 		'LYPopView' => ['LYPopView/Assets/*.png']
@@ -33,7 +33,7 @@ message, table, date, button, etc.
 
 	s.frameworks = 'UIKit'
 
-	s.dependency 'LYCategory'
+	s.dependency 'LYCategory', '~> 1.2.38'
 	s.dependency 'FCFileManager', '~> 1.0.18'
 	s.dependency 'AFNetworking', '~> 3.2.1'
 	s.dependency 'BlocksKit', '~> 2.2.5'
