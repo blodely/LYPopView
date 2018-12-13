@@ -27,32 +27,35 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+
 @interface LYPopImagePickerAction : NSObject
 
-+ (void)showFromViewController:(UIViewController *)basevc
+/**
+ instance getter
+
+ @return instance of self
+ */
++ (instancetype)action;
+
+/**
+ SHOW ACTIONSHEET TO PICK IMAGE
+
+ @param basevc view controller to show
+ @param edit allow editing
+ @param titlePop pop actionsheet title
+ @param titleCamera camera button title
+ @param titleAlbum album button title
+ @param titleCancel cancel button title
+ @param action pick result action
+ @param actionCancel cancel action
+ */
+- (void)showFromViewController:(UIViewController *)basevc
+						  edit:(BOOL)edit
 					  popTitle:(NSString *)titlePop
 				   cameraTitle:(NSString *)titleCamera
 					albumTitle:(NSString *)titleAlbum
 				   cancelTitle:(NSString *)titleCancel
-				  pickerAction:(void (^)(UIImagePickerController *imp, NSDictionary *ret))actionPicker
+				   photoAction:(void (^)(UIImagePickerController *imp, NSDictionary *ret))action
 				  cancelAction:(void (^)(void))actionCancel;
-
-+ (void)showEditFromViewController:(UIViewController *)basevc
-						  popTitle:(NSString *)titlePop
-					   cameraTitle:(NSString *)titleCamera
-						albumTitle:(NSString *)titleAlbum
-					   cancelTitle:(NSString *)titleCancel
-					  pickerAction:(void (^)(UIImagePickerController *imp, NSDictionary *ret))actionPicker
-					  cancelAction:(void (^)(void))actionCancel;
-
-+ (void)showFromViewController:(UIViewController *)basevc
-						   edit:(BOOL)edit
-					   popTitle:(NSString *)titlePop
-					cameraTitle:(NSString *)titleCamera
-					 albumTitle:(NSString *)titleAlbum
-					cancelTitle:(NSString *)titleCancel
-				   cameraAction:(void (^)(UIImagePickerController *imp, NSDictionary *ret))actionCamera
-					albumAction:(void (^)(UIImagePickerController *imp, NSDictionary *ret))actionAlbum
-				   cancelAction:(void (^)(void))actionCancel;
 
 @end

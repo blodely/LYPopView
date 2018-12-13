@@ -25,12 +25,46 @@
 //
 
 #import "LYPopImagePickerAction.h"
-#import <BlocksKit/BlocksKit+UIKit.h>
 
+
+typedef void(^LYPopImagePickerActionBlock)(UIImagePickerController *imp, NSDictionary *);
+@interface LYPopImagePickerAction () <UINavigationControllerDelegate, UIImagePickerControllerDelegate> {
+	LYPopImagePickerActionBlock blockPicked;
+}
+@end
 
 @implementation LYPopImagePickerAction
 
-+ (void)showFromViewController:(UIViewController *)basevc edit:(BOOL)edit popTitle:(NSString *)titlePop cameraTitle:(NSString *)titleCamera albumTitle:(NSString *)titleAlbum cancelTitle:(NSString *)titleCancel cameraAction:(void (^)(UIImagePickerController *, NSDictionary *))actionCamera albumAction:(void (^)(UIImagePickerController *, NSDictionary *))actionAlbum cancelAction:(void (^)(void))actionCancel {
+// MARK: - INITIAL
+
++ (instancetype)action {
+	static LYPopImagePickerAction *sharedLYPopImgPickerAction;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		sharedLYPopImgPickerAction = [[LYPopImagePickerAction alloc] init];
+	});
+	return sharedLYPopImgPickerAction;
+}
+
+- (instancetype)init {
+	if (self = [super init]) {
+		
+	}
+	return self;
+}
+
+// MARK: - METHOD
+
+- (void)showFromViewController:(UIViewController *)basevc
+						  edit:(BOOL)edit
+					  popTitle:(NSString *)titlePop
+				   cameraTitle:(NSString *)titleCamera
+					albumTitle:(NSString *)titleAlbum
+				   cancelTitle:(NSString *)titleCancel
+				   photoAction:(void (^)(UIImagePickerController *, NSDictionary *))action
+				  cancelAction:(void (^)(void))actionCancel {
+	
+	blockPicked = action;
 	
 	UIAlertController *sheet = [UIAlertController alertControllerWithTitle:titlePop message:nil preferredStyle:UIAlertControllerStyleActionSheet];
 	
@@ -38,15 +72,9 @@
 	[sheet addAction:[UIAlertAction actionWithTitle:titleAlbum style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 		
 		UIImagePickerController *imp = [[UIImagePickerController alloc] init];
+		imp.delegate = self;
 		imp.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
 		imp.allowsEditing = edit;
-		[imp setBk_didCancelBlock:^(UIImagePickerController *impc) {
-			[impc dismissViewControllerAnimated:YES completion:^{}];
-		}];
-		[imp setBk_didFinishPickingMediaBlock:^(UIImagePickerController *impc, NSDictionary *data) {
-			actionAlbum(impc, data);
-			[impc dismissViewControllerAnimated:YES completion:^{}];
-		}];
 		[basevc presentViewController:imp animated:YES completion:^{}];
 	}]];
 	
@@ -54,15 +82,9 @@
 	[sheet addAction:[UIAlertAction actionWithTitle:titleCamera style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 		
 		UIImagePickerController *imp = [[UIImagePickerController alloc] init];
+		imp.delegate = self;
 		imp.sourceType = UIImagePickerControllerSourceTypeCamera;
 		imp.allowsEditing = edit;
-		[imp setBk_didCancelBlock:^(UIImagePickerController *impc) {
-			[impc dismissViewControllerAnimated:YES completion:^{}];
-		}];
-		[imp setBk_didFinishPickingMediaBlock:^(UIImagePickerController *impc, NSDictionary *data) {
-			actionCamera(impc, data);
-			[impc dismissViewControllerAnimated:YES completion:^{}];
-		}];
 		[basevc presentViewController:imp animated:YES completion:^{}];
 		
 	}]];
@@ -77,14 +99,21 @@
 	
 }
 
-+ (void)showFromViewController:(UIViewController *)basevc popTitle:(NSString *)titlePop cameraTitle:(NSString *)titleCamera albumTitle:(NSString *)titleAlbum cancelTitle:(NSString *)titleCancel pickerAction:(void (^)(UIImagePickerController *, NSDictionary *))actionPicker cancelAction:(void (^)(void))actionCancel {
+// MARK: - DELEGATE
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey, id> *)info {
 	
-	[self showFromViewController:basevc edit:NO popTitle:titlePop cameraTitle:titleCamera albumTitle:titleAlbum cancelTitle:titleCancel cameraAction:actionPicker albumAction:actionPicker cancelAction:actionCancel];
+	if (blockPicked != nil) {
+		blockPicked(picker, info);
+	} else {
+		NSLog(@"BLOCK NOT FOUND");
+	}
+	
+	[picker dismissViewControllerAnimated:YES completion:nil];
 }
 
-+ (void)showEditFromViewController:(UIViewController *)basevc popTitle:(NSString *)titlePop cameraTitle:(NSString *)titleCamera albumTitle:(NSString *)titleAlbum cancelTitle:(NSString *)titleCancel pickerAction:(void (^)(UIImagePickerController *, NSDictionary *))actionPicker cancelAction:(void (^)(void))actionCancel {
-	
-	[self showFromViewController:basevc edit:YES popTitle:titlePop cameraTitle:titleCamera albumTitle:titleAlbum cancelTitle:titleCancel cameraAction:actionPicker albumAction:actionPicker cancelAction:actionCancel];
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+	[picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
