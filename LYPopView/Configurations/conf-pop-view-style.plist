@@ -30,6 +30,13 @@
 		<key>conf-value</key>
 		<string>#ffffff</string>
 	</dict>
+	<key>popview-height-aspect</key>
+	<dict>
+		<key>name</key>
+		<string>aspect</string>
+		<key>conf-value</key>
+		<real>0.7</real>
+	</dict>
 	<key>popview-corner-radius</key>
 	<dict>
 		<key>name</key>
