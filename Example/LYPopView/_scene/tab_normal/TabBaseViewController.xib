@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,11 +20,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BR6-eG-xJw">
-                    <rect key="frame" x="16" y="100" width="343" height="44"/>
+                    <rect key="frame" x="16" y="100" width="167.5" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="WOs-Aq-zJY"/>
                     </constraints>
-                    <state key="normal" title="Show a normal pop view"/>
+                    <state key="normal" title="pop view"/>
                     <connections>
                         <action selector="showNormalPopView:" destination="-1" eventType="touchUpInside" id="Na1-9H-0Vm"/>
                     </connections>
@@ -69,24 +69,35 @@
                         <action selector="dropdownSectionButtonPressed:" destination="-1" eventType="touchUpInside" id="yJa-B9-YN9"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uc-gg-KHd">
+                    <rect key="frame" x="191.5" y="100" width="167.5" height="44"/>
+                    <state key="normal" title="base pop view"/>
+                    <connections>
+                        <action selector="showBasePopView:" destination="-1" eventType="touchUpInside" id="98p-9R-GXf"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="gQX-5C-O6s" firstAttribute="top" secondItem="u4Z-kI-k5b" secondAttribute="bottom" constant="10" id="1Ur-VQ-B6U"/>
+                <constraint firstItem="7uc-gg-KHd" firstAttribute="top" secondItem="BR6-eG-xJw" secondAttribute="top" id="8wv-IU-hZm"/>
                 <constraint firstItem="xLn-TE-O5q" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="Alq-Wh-obD"/>
+                <constraint firstItem="7uc-gg-KHd" firstAttribute="leading" secondItem="BR6-eG-xJw" secondAttribute="trailing" constant="8" id="Dhl-bI-vUo"/>
                 <constraint firstAttribute="trailing" secondItem="u4Z-kI-k5b" secondAttribute="trailing" constant="10" id="GON-IG-tvE"/>
                 <constraint firstItem="BR6-eG-xJw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="Ltq-y7-7OE"/>
                 <constraint firstItem="cw2-0T-6EF" firstAttribute="top" secondItem="xLn-TE-O5q" secondAttribute="bottom" constant="8" id="Poo-cp-vqQ"/>
+                <constraint firstItem="7uc-gg-KHd" firstAttribute="width" secondItem="BR6-eG-xJw" secondAttribute="width" id="SCt-c7-VmX"/>
                 <constraint firstAttribute="trailing" secondItem="gQX-5C-O6s" secondAttribute="trailing" constant="10" id="XCE-AC-kJf"/>
                 <constraint firstItem="cw2-0T-6EF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="XhA-tN-lpr"/>
                 <constraint firstItem="u4Z-kI-k5b" firstAttribute="top" secondItem="BR6-eG-xJw" secondAttribute="bottom" constant="10" id="Yv1-Gi-h6c"/>
                 <constraint firstItem="xLn-TE-O5q" firstAttribute="top" secondItem="gQX-5C-O6s" secondAttribute="bottom" constant="8" id="Yvl-Kn-dl8"/>
                 <constraint firstItem="u4Z-kI-k5b" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="aG7-B4-dT8"/>
-                <constraint firstAttribute="trailing" secondItem="BR6-eG-xJw" secondAttribute="trailing" constant="16" id="dcZ-le-ms0"/>
+                <constraint firstAttribute="trailing" secondItem="7uc-gg-KHd" secondAttribute="trailing" constant="16" id="dWJ-zT-tkc"/>
                 <constraint firstItem="gQX-5C-O6s" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="fhV-c0-NJU"/>
                 <constraint firstItem="BR6-eG-xJw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="iIV-IP-dmc"/>
                 <constraint firstAttribute="trailing" secondItem="cw2-0T-6EF" secondAttribute="trailing" constant="8" id="l97-Jn-fTe"/>
                 <constraint firstAttribute="trailing" secondItem="xLn-TE-O5q" secondAttribute="trailing" constant="8" id="q5D-Vy-lyS"/>
+                <constraint firstItem="7uc-gg-KHd" firstAttribute="bottom" secondItem="BR6-eG-xJw" secondAttribute="bottom" id="qD0-gO-NVU"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>

@@ -113,6 +113,7 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 		if (maxHeight <= 44) {
 			// NOT A VALID HEIGHT
 			// SET DEFAULT HEIGHT
+			maxHeight = width / [conf[@"popview-height-aspect"][confValue] floatValue];
 		}
 		viewCont.frame = (CGRect){padding, (screen.height - maxHeight) / 2, width, maxHeight};
 		viewCont.layer.masksToBounds = YES;

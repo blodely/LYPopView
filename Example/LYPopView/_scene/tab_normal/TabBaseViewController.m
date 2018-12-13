@@ -30,6 +30,11 @@
 	[popview show];
 }
 
+- (IBAction)showBasePopView:(id)sender {
+	LYPopBaseView *popview = [LYPopBaseView pop];
+	[popview show];
+}
+
 - (IBAction)showSingleActionPopView:(UIButton *)sender {
 	LYPopActionView *popview = [[LYPopActionView alloc] init];
 	popview.title = @"single button pop view";
