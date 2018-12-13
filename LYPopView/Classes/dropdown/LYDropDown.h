@@ -26,16 +26,33 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface LYDropDown : UIView
 
+/**
+ menu instance
+
+ @return instance
+ */
 + (LYDropDown *)menu;
 
+/**
+ initial method
+ */
 - (void)initial;
 
+/**
+ show from rectangle area
+
+ @param rect rectangle area
+ */
 - (void)showFrom:(CGRect)rect;
 
 - (void)addItemTitle:(NSString *)title action:(void (^)(NSUInteger index, NSString *title))itemAction;
 
+/**
+ dismiss drop down menu
+ */
 - (void)dismiss;
 
 - (void)selectItemAtIndex:(NSUInteger)index;

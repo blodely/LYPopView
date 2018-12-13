@@ -36,7 +36,6 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 
 
 @interface LYPopBaseView () {}
-
 @end
 
 @implementation LYPopBaseView
@@ -213,8 +212,9 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 
 @end
 
-@interface LYPopView () {
-}
+// MARK: - LYPopView
+
+@interface LYPopView () {}
 @end
 
 @implementation LYPopView

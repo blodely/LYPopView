@@ -28,6 +28,7 @@
 
 FOUNDATION_EXPORT NSString *const LIB_POPVIEW_BUNDLE_ID;
 
+// MARK: - LYPopBaseView
 @interface LYPopBaseView : UIView {
 	CGFloat padding;
 	CGFloat cornerRadius;
@@ -42,6 +43,11 @@ FOUNDATION_EXPORT NSString *const LIB_POPVIEW_BUNDLE_ID;
  */
 @property (nonatomic, assign) BOOL autoDismiss;
 
+/**
+ get instance
+
+ @return instance
+ */
 + (instancetype)pop;
 
 /**
@@ -68,6 +74,7 @@ FOUNDATION_EXPORT NSString *const LIB_POPVIEW_BUNDLE_ID;
 
 @end
 
+// MARK: - LYPopView
 @interface LYPopView : LYPopBaseView {
 	__weak UIView *vTitle;
 	__weak UILabel *lblTitle;

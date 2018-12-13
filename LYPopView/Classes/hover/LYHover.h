@@ -36,10 +36,19 @@
 
 + (instancetype)view;
 
+/**
+ initial method
+ */
 - (void)initial;
 
+/**
+ show hover
+ */
 - (void)show;
 
+/**
+ dismiss hover
+ */
 - (void)dismiss;
 
 @end

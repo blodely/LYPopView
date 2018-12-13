@@ -26,11 +26,14 @@
 
 #import <LYPopView/LYPopView.h>
 
+
 @interface LYPopActionView : LYPopView {
-	
 	__weak UIView *vActionCont;
 }
 
+/**
+ initial method
+ */
 - (void)initial;
 
 /**
