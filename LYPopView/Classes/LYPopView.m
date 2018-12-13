@@ -34,11 +34,12 @@
 NSString *const LIB_POPVIEW_BUNDLE_ID = @"org.cocoapods.LYPopView";
 NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 
-@interface LYPopView () {
-}
+
+@interface LYPopBaseView () {}
+
 @end
 
-@implementation LYPopView
+@implementation LYPopBaseView
 
 // MARK: - INIT
 
@@ -78,7 +79,7 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 	}
 	
 	BOOL enableBlur = [conf[@"popview-bgv-blur-switch"][confValue] boolValue]
-						&& ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0);
+	&& ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0);
 	
 	{
 		// MARK: CONTENT VIEW
@@ -87,7 +88,7 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 		// TRY TO ADD BLUR EFFECT IF IT'S ENABLED IN CONFIGURATION
 		if (enableBlur) {
 			// BLUR EFFECT
-			viewCont.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.1];
+			viewCont.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.618];
 			
 			UIBlurEffect *blureff;
 			
@@ -112,7 +113,6 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 		if (maxHeight <= 44) {
 			// NOT A VALID HEIGHT
 			// SET DEFAULT HEIGHT
-			maxHeight = width / 0.7;
 		}
 		viewCont.frame = (CGRect){padding, (screen.height - maxHeight) / 2, width, maxHeight};
 		viewCont.layer.masksToBounds = YES;
@@ -120,6 +120,113 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 		[self addSubview:viewCont];
 		vCont = viewCont;
 	}
+}
+
+// MARK: - METHOD
+
+- (void)show {
+	
+	self.hidden = NO;
+	cBg.alpha = 0;
+	CGPoint center = vCont.center;
+	center.y = vCont.bounds.size.height / 2 + [UIScreen mainScreen].bounds.size.height;
+	vCont.center = center;
+	
+	if ([self superview] == nil) {
+		// SUPER VIEW = WINDOW
+		[[UIApplication sharedApplication].keyWindow addSubview:self];
+	}
+	
+	center.y = self.bounds.size.height / 2;
+	
+	// CALL BOUND ADJUST METHOD
+	[self resetBounds];
+	
+	[UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+		self->cBg.alpha = 1;
+		self->vCont.center = center;
+	} completion:^(BOOL finished) {
+		
+	}];
+}
+
+- (void)dismiss {
+	
+	CGPoint center = vCont.center;
+	center.y = - vCont.bounds.size.height / 2;
+	
+	// ANIMATE OUT
+	[UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+		
+		self->cBg.alpha = 0;
+		self->vCont.center = center;
+		
+	} completion:^(BOOL finished) {
+		
+		// REMOVE SELF
+		[self removeFromSuperview];
+	}];
+}
+
+- (NSDictionary *)configurations {
+	
+	NSString *confpath;
+	
+	confpath = [[NSBundle mainBundle] pathForResource:NAME_CONF_POPVIEW ofType:@"plist"];
+	
+	if (confpath == nil || [confpath isEqualToString:@""] == YES || [FCFileManager isFileItemAtPath:confpath] == NO) {
+		NSLog(@"LYPopView WARNING\n\tAPP CONFIGURATION FILE WAS NOT FOUND.\n\t%@", confpath);
+		
+		// FALLBACK TO LIB DEFAULT
+		confpath = [[NSBundle bundleWithIdentifier:LIB_POPVIEW_BUNDLE_ID] pathForResource:NAME_CONF_POPVIEW ofType:@"plist"];
+	}
+	
+	NSDictionary *conf = [FCFileManager readFileAtPathAsDictionary:confpath];
+	
+	if (conf == nil) {
+		NSLog(@"LYPopView ERROR\n\tCONFIGURATION FILE WAS NEVER FOUND.");
+	}
+	
+	return conf;
+}
+
+// MARK: | PRIVATE METHOD
+
+- (void)resetBounds {
+}
+
+// MARK: - OVERRIDE
+
+/*
+ // ONLY OVERRIDE drawRect: IF YOU PERFORM CUSTOM DRAWING.
+ // AN EMPTY IMPLEMENTATION ADVERSELY AFFECTS PERFORMANCE DURING ANIMATION.
+ - (void)drawRect:(CGRect)rect {
+ // DRAWING CODE
+ }
+ */
+
+- (void)setFrame:(CGRect)frame {
+	frame = [UIScreen mainScreen].bounds;
+	[super setFrame:frame];
+}
+
+@end
+
+@interface LYPopView () {
+}
+@end
+
+@implementation LYPopView
+
+// MARK: - INIT
+
+- (void)initial {
+	[super initial];
+	
+	NSDictionary *conf = [self configurations];
+	NSString *confValue = @"conf-value";
+	BOOL enableBlur = [conf[@"popview-bgv-blur-switch"][confValue] boolValue]
+	&& ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0);
 	
 	{
 		// MARK: TITLE AREA
@@ -170,91 +277,7 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 
 // MARK: - METHOD
 
-- (void)show {
-	
-	self.hidden = NO;
-	cBg.alpha = 0;
-	CGPoint center = vCont.center;
-	center.y = vCont.bounds.size.height / 2 + [UIScreen mainScreen].bounds.size.height;
-	vCont.center = center;
-	
-	if ([self superview] == nil) {
-		// SUPER VIEW = WINDOW
-		[[UIApplication sharedApplication].keyWindow addSubview:self];
-	}
-	
-	center.y = self.bounds.size.height / 2;
-	
-	// CALL BOUND ADJUST METHOD
-	[self resetBounds];
-	
-	[UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-		self->cBg.alpha = 1;
-		self->vCont.center = center;
-	} completion:^(BOOL finished) {
-		
-	}];
-}
-
-- (NSDictionary *)configurations {
-	
-	NSString *confpath;
-	
-	confpath = [[NSBundle mainBundle] pathForResource:NAME_CONF_POPVIEW ofType:@"plist"];
-	
-	if (confpath == nil || [confpath isEqualToString:@""] == YES || [FCFileManager isFileItemAtPath:confpath] == NO) {
-		NSLog(@"LYPopView WARNING\n\tAPP CONFIGURATION FILE WAS NOT FOUND.\n\t%@", confpath);
-		
-		// FALLBACK TO LIB DEFAULT
-		confpath = [[NSBundle bundleWithIdentifier:LIB_POPVIEW_BUNDLE_ID] pathForResource:NAME_CONF_POPVIEW ofType:@"plist"];
-	}
-	
-	NSDictionary *conf = [FCFileManager readFileAtPathAsDictionary:confpath];
-	
-	if (conf == nil) {
-		NSLog(@"LYPopView ERROR\n\tCONFIGURATION FILE WAS NEVER FOUND.");
-	}
-	
-	return conf;
-}
-
 // MARK: | PRIVATE METHOD
-
-- (void)resetBounds {
-}
-
-- (void)dismiss {
-	
-	CGPoint center = vCont.center;
-	center.y = - vCont.bounds.size.height / 2;
-	
-	// ANIMATE OUT
-	[UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-		
-		self->cBg.alpha = 0;
-		self->vCont.center = center;
-		
-	} completion:^(BOOL finished) {
-		
-		// REMOVE SELF
-		[self removeFromSuperview];
-	}];
-}
-	
-// MARK: - OVERRIDE
-
-/*
-// ONLY OVERRIDE drawRect: IF YOU PERFORM CUSTOM DRAWING.
-// AN EMPTY IMPLEMENTATION ADVERSELY AFFECTS PERFORMANCE DURING ANIMATION.
-- (void)drawRect:(CGRect)rect {
-	// DRAWING CODE
-}
-*/
-
-- (void)setFrame:(CGRect)frame {
-	frame = [UIScreen mainScreen].bounds;
-	[super setFrame:frame];
-}
 
 // MARK: - DELEGATE
 

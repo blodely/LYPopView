@@ -28,25 +28,14 @@
 
 FOUNDATION_EXPORT NSString *const LIB_POPVIEW_BUNDLE_ID;
 
-@interface LYPopView : UIView {
-	
+@interface LYPopBaseView : UIView {
 	CGFloat padding;
 	CGFloat cornerRadius;
 	CGFloat maxHeight;
 	
 	__weak UIView *vCont;
 	__weak UIControl *cBg;
-	
-	__weak UIView *vTitle;
-	__weak UILabel *lblTitle;
-	__weak UIButton *btnClose;
 }
-
-
-/**
- Pop view title string
- */
-@property (nonatomic, strong) NSString *title;
 
 /**
  Pop view auto dismiss
@@ -72,10 +61,23 @@ FOUNDATION_EXPORT NSString *const LIB_POPVIEW_BUNDLE_ID;
 
 /**
  get configuration data
-
+ 
  @return dictionary data
  */
 - (NSDictionary *)configurations;
+
+@end
+
+@interface LYPopView : LYPopBaseView {
+	__weak UIView *vTitle;
+	__weak UILabel *lblTitle;
+	__weak UIButton *btnClose;
+}
+
+/**
+ Pop view title string
+ */
+@property (nonatomic, strong) NSString *title;
 
 @end
 
