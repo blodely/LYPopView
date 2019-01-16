@@ -49,18 +49,31 @@
                         <action selector="popHoverViewAction:" destination="-1" eventType="touchUpInside" id="J2o-nM-5d1"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3k4-QD-fHD">
+                    <rect key="frame" x="15" y="233" width="345" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Lqp-3c-qOc"/>
+                    </constraints>
+                    <state key="normal" title="privacy policy pop"/>
+                    <connections>
+                        <action selector="popPrivacyAction:" destination="-1" eventType="touchUpInside" id="66E-pP-qFM"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Miq-60-9rf" firstAttribute="top" secondItem="KiX-fJ-0IM" secondAttribute="bottom" constant="12" id="0L6-TF-gQV"/>
+                <constraint firstItem="3k4-QD-fHD" firstAttribute="top" secondItem="ZJ3-Xa-YyC" secondAttribute="bottom" constant="15" id="2ke-VW-YzT"/>
                 <constraint firstItem="Miq-60-9rf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="12" id="2mG-ud-9w4"/>
                 <constraint firstItem="KiX-fJ-0IM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="CJe-Jg-bVa"/>
                 <constraint firstAttribute="trailing" secondItem="Miq-60-9rf" secondAttribute="trailing" constant="12" id="Cir-ir-xP4"/>
                 <constraint firstItem="ZJ3-Xa-YyC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="Gl0-Hf-29Y"/>
                 <constraint firstAttribute="trailing" secondItem="ZJ3-Xa-YyC" secondAttribute="trailing" constant="16" id="IuY-lu-FDa"/>
                 <constraint firstItem="KiX-fJ-0IM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="U7U-oh-SxE"/>
+                <constraint firstAttribute="trailing" secondItem="3k4-QD-fHD" secondAttribute="trailing" constant="15" id="ayF-2J-l48"/>
                 <constraint firstAttribute="trailing" secondItem="KiX-fJ-0IM" secondAttribute="trailing" constant="16" id="bT1-0H-E8N"/>
                 <constraint firstItem="ZJ3-Xa-YyC" firstAttribute="top" secondItem="Miq-60-9rf" secondAttribute="bottom" constant="16" id="equ-Yo-cyK"/>
+                <constraint firstItem="3k4-QD-fHD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="jUF-nt-Bvn"/>
             </constraints>
         </view>
     </objects>

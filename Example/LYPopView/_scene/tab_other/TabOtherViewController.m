@@ -40,6 +40,17 @@
 	[hover show];
 }
 
+- (IBAction)popPrivacyAction:(id)sender {
+	
+	[[NSUserDefaults standardUserDefaults] setBool:NO forKey:LYPrivacyPolicyAgreed];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+	
+	LYPrivacyPop *pop = [LYPrivacyPop pop];
+	pop.lblTitle.text = @"Privacy Policy:";
+	pop.URLString = @"http://open.luoyu.space/privacy-policy.html";
+	[pop show];
+}
+
 // MARK: - INIT
 
 - (instancetype)init {
