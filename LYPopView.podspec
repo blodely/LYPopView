@@ -31,7 +31,7 @@ message, table, date, button, etc.
 	# s.public_header_files = 'Pod/Classes/**/*.h'
 	# s.frameworks = 'UIKit', 'MapKit'
 
-	s.frameworks = 'UIKit'
+	s.frameworks = 'UIKit', 'WebKit'
 
 	s.dependency 'LYCategory', '~> 1.2.38'
 	s.dependency 'FCFileManager', '~> 1.0.18'
