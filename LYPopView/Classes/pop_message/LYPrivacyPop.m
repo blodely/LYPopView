@@ -137,7 +137,6 @@ NSString *const LYPrivacyPolicyAgreed = @"space.luoyu.popview.privacy.policy.agr
 		NSMutableString *js = [[NSMutableString alloc] initWithCapacity:1];
 		[js appendString:@"document.documentElement.style.webkitTouchCallout='none';"];
 		[js appendString:@"document.documentElement.style.webkitUserSelect='none';"];
-		[js appendString:@"document.getElementsByTagName('h1')[0].style.fontSize='1.2em';"];
 		WKUserScript *script = [[WKUserScript alloc] initWithSource:js
 													  injectionTime:WKUserScriptInjectionTimeAtDocumentEnd
 												   forMainFrameOnly:YES];
@@ -181,6 +180,7 @@ NSString *const LYPrivacyPolicyAgreed = @"space.luoyu.popview.privacy.policy.agr
 		[button mas_makeConstraints:^(MASConstraintMaker *make) {
 			make.left.right.bottom.equalTo(self->vCont);
 			make.height.mas_equalTo(44);
+			make.top.equalTo(self->web.mas_bottom);
 		}];
 	}
 }
