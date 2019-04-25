@@ -63,7 +63,7 @@
 		<key>name</key>
 		<string>auto dismiss</string>
 		<key>conf-value</key>
-		<false/>
+		<true/>
 	</dict>
 	<key>popview-bgv-blur-switch</key>
 	<dict>
