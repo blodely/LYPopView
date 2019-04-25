@@ -39,7 +39,7 @@ FOUNDATION_EXPORT NSString *const LIB_POPVIEW_BUNDLE_ID;
 }
 
 /**
- Pop view auto dismiss
+ Pop view auto dismiss. Default value read from configuration.
  */
 @property (nonatomic, assign) BOOL autoDismiss;
 

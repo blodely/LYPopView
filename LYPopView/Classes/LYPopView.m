@@ -40,6 +40,16 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 
 @implementation LYPopBaseView
 
+// MARK: - ACTION
+
+- (void)backgroundTapped:(id)sender {
+	if (_autoDismiss) {
+		// GONNA IGNORE THIS
+	} else {
+		[self dismiss];
+	}
+}
+
 // MARK: - INIT
 
 + (instancetype)pop {
@@ -66,13 +76,14 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 	CGSize screen = [UIScreen mainScreen].bounds.size;
 	padding = [conf[@"popview-padding"][confValue] integerValue];
 	cornerRadius = [conf[@"popview-corner-radius"][confValue] integerValue];
+	_autoDismiss = [conf[@"popview-auto-dismiss"][confValue] boolValue];
 	
 	{
 		// MARK: DARK BG
 		UIControl *ctrlBg = [[UIControl alloc] init];
 		ctrlBg.frame = (CGRect){0, 0, screen.width, screen.height};
 		ctrlBg.backgroundColor = [UIColor colorWithWhite:0 alpha:0.382];
-		[ctrlBg addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchDown];
+		[ctrlBg addTarget:self action:@selector(backgroundTapped:) forControlEvents:UIControlEventTouchDown];
 		[self addSubview:ctrlBg];
 		cBg = ctrlBg;
 	}
