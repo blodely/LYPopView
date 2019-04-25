@@ -44,9 +44,9 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 
 - (void)backgroundTapped:(id)sender {
 	if (_autoDismiss) {
-		// GONNA IGNORE THIS
-	} else {
 		[self dismiss];
+	} else {
+		// GONNA IGNORE THIS
 	}
 }
 
