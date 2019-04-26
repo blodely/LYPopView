@@ -25,6 +25,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <LYCategory/LYCategory.h>
+
 
 FOUNDATION_EXPORT NSString *const LIB_POPVIEW_BUNDLE_ID;
 
@@ -36,12 +38,16 @@ FOUNDATION_EXPORT NSString *const LIB_POPVIEW_BUNDLE_ID;
 	
 	__weak UIView *vCont;
 	__weak UIControl *cBg;
+	
+	LYCCompletion blockDismissed;
 }
 
 /**
  Pop view auto dismiss. Default value read from configuration.
  */
 @property (nonatomic, assign) BOOL autoDismiss;
+
+- (void)dismissedCompleted:(void (^)(void))action;
 
 /**
  get instance
