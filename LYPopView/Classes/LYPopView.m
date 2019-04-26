@@ -204,6 +204,10 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 	return conf;
 }
 
+- (void)dismissedCompleted:(void (^)(void))action {
+	blockDismissed = action;
+}
+
 // MARK: | PRIVATE METHOD
 
 - (void)resetBounds {
