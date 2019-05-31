@@ -433,7 +433,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-LYPopView_Example/Pods-LYPopView_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-LYPopView_Example/Pods-LYPopView_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/ConfigKit/ConfigKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FCFileManager/FCFileManager.framework",
@@ -452,7 +452,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LYPopView_Example/Pods-LYPopView_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LYPopView_Example/Pods-LYPopView_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C0DF46F3A1622292D3EFCD69 /* [CP] Check Pods Manifest.lock */ = {
