@@ -1,5 +1,5 @@
 //
-//	LYActionPop.h
+//	LYPopViewBlockButton.h
 //	LYPOPVIEW
 //
 //	CREATED BY LUO YU ON 2019/07/09.
@@ -27,38 +27,8 @@
 #import <UIKit/UIKit.h>
 
 
-@interface LYActionPop : UIControl
+@interface LYPopViewBlockButton : UIButton
 
-/**
- initial method call
- */
-- (void)initial;
-
-/**
- instance getter
-
- @return object instance
- */
-+ (instancetype)pop;
-
-/**
- show pop.
- */
-- (void)show;
-
-/**
- dismiss pop.
- */
-- (void)dismiss;
-
-/**
- set cancel button title and action block
-
- @param cancelTitle title string
- @param action cancel callback action
- */
-- (void)cancelTitle:(NSString *)cancelTitle action:(void (^)(void))action;
-
-- (void)addButtonWithTitle:(NSString *)buttonTitle andAction:(void (^)(void))action;
+- (void)handleEvent:(UIControlEvents)event withAction:(void (^)(void))action;
 
 @end

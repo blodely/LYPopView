@@ -63,6 +63,20 @@
 	[ddsection showFromYaxis:CGRectGetMaxY(sender.frame) withHeight:self.view.frame.size.height - CGRectGetMaxY(sender.frame)];
 }
 
+- (IBAction)actionPopTapped:(id)sender {
+	LYActionPop *pop = [LYActionPop pop];
+	[pop cancelTitle:@"C a n c e l" action:^{
+		NSLog(@"LYActionPop Cancel Pressed");
+	}];
+	[pop addButtonWithTitle:@"First" andAction:^{
+		NSLog(@"LYActionPop First");
+	}];
+	[pop addButtonWithTitle:@"Second" andAction:^{
+		NSLog(@"LYActionPop Second");
+	}];
+	[pop show];
+}
+
 // MARK: - INIT
 
 - (instancetype)init {

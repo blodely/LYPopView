@@ -27,11 +27,13 @@
 #import "LYActionPop.h"
 #import <LYCategory/LYCategory.h>
 #import <Masonry/Masonry.h>
+#import <LYPopView/LYPopViewBlockButton.h>
 
 
 @interface LYActionPop () {
 	__weak UIView *vPaddingBottom;
 	__weak UIButton *btnCancel;
+	__weak UIView *vCont;
 	
 	CGFloat padding;
 	CGFloat heightItem;
@@ -101,6 +103,8 @@
 	{
 		// MARK: CANCEL BUTTON
 		UIButton *view = [UIButton buttonWithType:UIButtonTypeCustom];
+		[view roundedCornerRadius:padding];
+		view.backgroundColor = [UIColor whiteColor];
 		[view setTitleColor:self.tintColor forState:UIControlStateNormal];
 		view.titleLabel.font = [UIFont systemFontOfSize:20];
 		[view setTitle:@"Cancel" forState:UIControlStateNormal];
@@ -115,6 +119,21 @@
 		}];
 		
 		[btnCancel addTarget:self action:@selector(cancelButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+	}
+	
+	{
+		// MARK: BUTTONS CONTAINER
+		UIView *view = [[UIView alloc] init];
+		view.backgroundColor = [UIColor whiteColor];
+		[view roundedCornerRadius:padding];
+		[self addSubview:view];
+		vCont = view;
+		
+		[view mas_makeConstraints:^(MASConstraintMaker *make) {
+			make.bottom.equalTo(self->btnCancel.mas_top).offset(-self->padding);
+			make.leading.trailing.equalTo(self->btnCancel);
+			make.height.mas_equalTo(self->heightItem);
+		}];
 	}
 }
 
@@ -152,7 +171,7 @@
 	}];
 }
 
-// MARK: BLOCK
+// MARK: BUTTONS
 
 - (void)cancelTitle:(NSString *)cancelTitle action:(void (^)(void))action {
 	blockCancel = action;
@@ -163,6 +182,46 @@
 	} else {
 		[btnCancel setTitle:cancelTitle forState:UIControlStateNormal];
 	}
+}
+
+- (void)addButtonWithTitle:(NSString *)buttonTitle andAction:(void (^)(void))action {
+	
+	NSInteger previous = [[vCont subviews] count];
+	
+	{
+		// MARK: ADD BUTTON
+		LYPopViewBlockButton *view = [LYPopViewBlockButton buttonWithType:UIButtonTypeCustom];
+		[view setTitleColor:self.tintColor forState:UIControlStateNormal];
+		view.titleLabel.font = [UIFont systemFontOfSize:20];
+		[view setTitle:buttonTitle forState:UIControlStateNormal];
+		[vCont addSubview:view];
+		
+		[view mas_makeConstraints:^(MASConstraintMaker *make) {
+			make.left.right.equalTo(self->vCont);
+			make.height.mas_equalTo(self->heightItem);
+			make.bottom.equalTo(self->vCont.mas_bottom).offset(-previous * self->heightItem);
+		}];
+		
+		[view handleEvent:UIControlEventTouchUpInside withAction:action];
+		
+		{
+			if (previous > 0) {
+				UIView *line = [[UIView alloc] init];
+				line.backgroundColor = [UIColor groupTableViewBackgroundColor];
+				line.userInteractionEnabled = NO;
+				[vCont addSubview:line];
+				[line mas_makeConstraints:^(MASConstraintMaker *make) {
+					make.left.right.equalTo(self->vCont);
+					make.bottom.equalTo(view);
+					make.height.mas_equalTo(1 / SCALE);
+				}];
+			}
+		}
+	}
+	
+	[vCont mas_updateConstraints:^(MASConstraintMaker *make) {
+		make.height.mas_equalTo((previous + 1) * self->heightItem);
+	}];
 }
 
 @end
