@@ -110,6 +110,8 @@ FOUNDATION_EXPORT NSString *const LIB_POPVIEW_BUNDLE_ID;
 #import <LYPopView/LYHover.h>
 #import <LYPopView/LYPrivacyPop.h>
 
+#import <LYPopView/LYActionPop.h>
+
 #import <LYPopView/LYDropDown.h>
 #import <LYPopView/LYDropDownCell.h>
 #import <LYPopView/LYDropDownSection.h>
