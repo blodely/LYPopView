@@ -14,10 +14,10 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
-  - ConfigKit (1.2.13):
-    - FCFileManager (~> 1.0.18)
   - FCFileManager (1.0.20)
   - LYCategory (1.2.39)
+  - LYConfigKit (1.2.15):
+    - FCFileManager (~> 1.0.18)
   - LYPopView (1.0.1):
     - AFNetworking (~> 3.2.1)
     - FCFileManager (~> 1.0.18)
@@ -26,16 +26,15 @@ PODS:
   - Masonry (1.1.0)
 
 DEPENDENCIES:
-  - ConfigKit
+  - LYConfigKit
   - LYPopView (from `../`)
 
 SPEC REPOS:
-  https://github.com/blodely/LYSpecs.git:
-    - ConfigKit
   https://github.com/cocoapods/specs.git:
     - AFNetworking
     - FCFileManager
     - LYCategory
+    - LYConfigKit
     - Masonry
 
 EXTERNAL SOURCES:
@@ -44,12 +43,12 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  ConfigKit: 5f95a2739bc6c2d77d5ee8cf11469577e8fe668e
   FCFileManager: e0f73316e6aa2eb04d2ff4caa75fe7df1ae44270
   LYCategory: 97fe1511b84c7597a96155a080cd76ff49f523f0
+  LYConfigKit: da002332aa40480c1c387286f79c2c525fed109a
   LYPopView: c56933f6029500534b0df0aed8d2b172182fbc1f
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
 
-PODFILE CHECKSUM: e7f8fc8897ac6ef00363a1747d21435731590837
+PODFILE CHECKSUM: 7414f2a7b68d934004a5050c71bbcbb976e08a66
 
 COCOAPODS: 1.7.3

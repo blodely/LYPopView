@@ -12,7 +12,8 @@
 #import "TabTableViewController.h"
 #import "TabPickerViewController.h"
 #import "TabOtherViewController.h"
-#import <ConfigKit/ConfigKit.h>
+#import <LYConfigKit/LYConfigKit.h>
+
 
 @implementation LYAppDelegate
 
@@ -50,7 +51,7 @@
 	
 	[_window makeKeyAndVisible];
 	
-	[[ConfigKit kit] systemStyle];
+	[[LYConfigKit kit] systemStyle];
 	
     return YES;
 }
