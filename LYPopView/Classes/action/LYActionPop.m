@@ -202,7 +202,13 @@
 			make.bottom.equalTo(self->vCont.mas_bottom).offset(-previous * self->heightItem);
 		}];
 		
-		[view handleEvent:UIControlEventTouchUpInside withAction:action];
+		[view handleEvent:UIControlEventTouchUpInside withAction:^{
+			if (action != nil) {
+				action();
+			}
+			
+			[self dismiss];
+		}];
 		
 		{
 			if (previous > 0) {
