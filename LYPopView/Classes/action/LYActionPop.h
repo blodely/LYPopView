@@ -29,4 +29,16 @@
 
 @interface LYActionPop : UIControl
 
+/**
+ initial method call
+ */
+- (void)initial;
+
+/**
+ instance getter
+
+ @return object instance
+ */
++ (instancetype)pop;
+
 @end

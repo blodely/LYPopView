@@ -29,4 +29,25 @@
 
 @implementation LYActionPop
 
+// MARK: - ACTION
+// MARK: - INIT
+
+- (instancetype)init {
+	if (self = [super init]) {
+		[self initial];
+	}
+	return self;
+}
+
+- (void)initial {
+}
+
++ (instancetype)pop {
+	return [[[self class] alloc] init];
+}
+
+// MARK: - METHOD
+
+
+
 @end
