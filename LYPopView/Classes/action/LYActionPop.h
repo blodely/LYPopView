@@ -41,4 +41,16 @@
  */
 + (instancetype)pop;
 
+/**
+ show pop.
+ */
+- (void)show;
+
+/**
+ dismiss pop.
+ */
+- (void)dismiss;
+
+- (void)cancelTitle:(NSString *)cancelTitle action:(void (^)(void))action;
+
 @end
