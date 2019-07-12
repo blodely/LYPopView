@@ -54,6 +54,20 @@
 	[self dismiss];
 }
 
+- (void)backgroundTapped:(id)sender {
+	
+	if (_backgroundDismiss == NO) {
+		// NOT ALLOW BACKGROUND TAP TO DISMISS
+		return;
+	}
+	
+	if (blockCancel != nil) {
+		blockCancel();
+	}
+	
+	[self dismiss];
+}
+
 // MARK: - INIT
 
 - (instancetype)init {
@@ -79,6 +93,9 @@
 		self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
 		padding = 10;
 		heightItem = 55;
+		_backgroundDismiss = YES;
+		
+		[self addTarget:self action:@selector(backgroundTapped:) forControlEvents:UIControlEventTouchDown|UIControlEventTouchUpInside];
 	}
 	
 	{

@@ -29,6 +29,8 @@
 
 @interface LYActionPop : UIControl
 
+@property (nonatomic, assign) BOOL backgroundDismiss;
+
 /**
  initial method call
  */
