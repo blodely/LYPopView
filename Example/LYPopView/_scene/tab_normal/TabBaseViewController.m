@@ -74,6 +74,12 @@
 	[pop addButtonWithTitle:@"Second" andAction:^{
 		NSLog(@"LYActionPop Second");
 	}];
+	[pop addButtonWithTitle:@"Third" andAction:^{
+		NSLog(@"LYActionPop Third");
+	}];
+	[pop addButtonWithTitle:@"Fourth" andAction:^{
+		NSLog(@"LYActionPop 4th");
+	}];
 	[pop show];
 }
 

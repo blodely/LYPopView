@@ -232,10 +232,10 @@
 				UIView *line = [[UIView alloc] init];
 				line.backgroundColor = [UIColor groupTableViewBackgroundColor];
 				line.userInteractionEnabled = NO;
-				[vCont addSubview:line];
+				[view addSubview:line];
 				[line mas_makeConstraints:^(MASConstraintMaker *make) {
-					make.left.right.equalTo(self->vCont);
-					make.bottom.equalTo(view);
+					make.left.right.equalTo(view);
+					make.top.equalTo(view.mas_bottom);
 					make.height.mas_equalTo(1 / SCALE);
 				}];
 			}
