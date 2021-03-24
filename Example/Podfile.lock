@@ -1,27 +1,27 @@
 PODS:
-  - AFNetworking (3.2.1):
-    - AFNetworking/NSURLSession (= 3.2.1)
-    - AFNetworking/Reachability (= 3.2.1)
-    - AFNetworking/Security (= 3.2.1)
-    - AFNetworking/Serialization (= 3.2.1)
-    - AFNetworking/UIKit (= 3.2.1)
-  - AFNetworking/NSURLSession (3.2.1):
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.2.1)
-  - AFNetworking/Security (3.2.1)
-  - AFNetworking/Serialization (3.2.1)
-  - AFNetworking/UIKit (3.2.1):
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
   - FCFileManager (1.0.20)
-  - LYCategory (1.2.43)
-  - LYConfigKit (1.2.15):
+  - LYCategory (1.12.0)
+  - LYConfigKit (1.12.0):
     - FCFileManager (~> 1.0.18)
-  - LYPopView (1.0.1):
-    - AFNetworking (~> 3.2.1)
+  - LYPopView (1.12.0):
+    - AFNetworking (~> 4.0)
     - FCFileManager (~> 1.0.18)
-    - LYCategory (~> 1.2.38)
+    - LYCategory (~> 1.12)
     - Masonry (~> 1.1.0)
   - Masonry (1.1.0)
 
@@ -42,13 +42,13 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   FCFileManager: e0f73316e6aa2eb04d2ff4caa75fe7df1ae44270
-  LYCategory: 422fa6db757147b89014aa30dc5d9203709ce745
-  LYConfigKit: da002332aa40480c1c387286f79c2c525fed109a
-  LYPopView: c56933f6029500534b0df0aed8d2b172182fbc1f
+  LYCategory: 8f347904040c575ba421d12be0445236dda940a7
+  LYConfigKit: fb180aff486386bcd386090f4a49c3c5e93d71da
+  LYPopView: 5ea44cb5ed0e2f62fe6c2bb52cdba03bb57b5d8f
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
 
-PODFILE CHECKSUM: 01f885d8132d2edbef4474617cd1b4ed0ee486c8
+PODFILE CHECKSUM: 583a280b88fd8d8654c8bff4f1f023ec44b6131a
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.10.1
