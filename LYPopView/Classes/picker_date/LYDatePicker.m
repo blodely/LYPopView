@@ -62,8 +62,6 @@
 		[vCont addSubview:view];
 		_datepicker = view;
 		
-		[view border1Px];
-		
 		[view mas_makeConstraints:^(MASConstraintMaker *make) {
 			make.left.right.equalTo(self->vCont);
 			make.top.equalTo(self->vCont).offset(44);
