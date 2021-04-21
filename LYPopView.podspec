@@ -3,7 +3,7 @@
 
 Pod::Spec.new do |s|
 	s.name             = 'LYPopView'
-	s.version          = '1.12.0'
+	s.version          = '1.12.1'
 	s.summary          = 'pop view.'
 
 	s.description      = <<-DESC
@@ -36,7 +36,7 @@ Versions: 1.0.x=>iOS7; 1.12.x=>Xcode12.iOS9
 
 	s.frameworks = 'UIKit', 'WebKit'
 
-	s.dependency 'LYCategory', '~> 1.12'
+	s.dependency 'LYCategory', '~> 1.12.2'
 	s.dependency 'FCFileManager', '~> 1.0.20'
 	s.dependency 'AFNetworking', '~> 4.0'
 	s.dependency 'Masonry', '~> 1.1.0'
