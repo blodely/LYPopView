@@ -62,7 +62,7 @@
 - (void)initial {
 	
 	{
-		height = 216 + 44;
+		height = 216 + 44 + SAFE_BOTTOM;
 		
 		UIControl *ctlBg = [[UIControl alloc] initWithFrame:(CGRect){0, 0, WIDTH, HEIGHT}];
 		ctlBg.backgroundColor = [UIColor colorWithHex:@"#000000" andAlpha:0.618];
