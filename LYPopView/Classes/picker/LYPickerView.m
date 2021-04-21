@@ -26,6 +26,8 @@
 
 #import "LYPickerView.h"
 #import <LYCategory/LYCategory.h>
+#import <Masonry/Masonry.h>
+
 
 @interface LYPickerView () {
 	__weak UIControl *cBg;
@@ -64,34 +66,48 @@
 	{
 		height = 216 + 44 + SAFE_BOTTOM;
 		
-		UIControl *ctlBg = [[UIControl alloc] initWithFrame:(CGRect){0, 0, WIDTH, HEIGHT}];
-		ctlBg.backgroundColor = [UIColor colorWithHex:@"#000000" andAlpha:0.618];
-		[self addSubview:ctlBg];
-		cBg = ctlBg;
+		{
+			// MARK: BACKGROUND UICONTROL
+			UIControl *view = [[UIControl alloc] initWithFrame:(CGRect){0, 0, WIDTH, HEIGHT}];
+			view.backgroundColor = [UIColor colorWithHex:@"#000000" andAlpha:0.618];
+			[self addSubview:view];
+			cBg = view;
+		}
 		
-		UIView *viewCont = [[UIView alloc] initWithFrame:(CGRect){0, HEIGHT - height, WIDTH, height}];
-		viewCont.backgroundColor = [UIColor whiteColor];
-		[ctlBg addSubview:viewCont];
-		vCont = viewCont;
+		{
+			// MARK: CONTAINER VIEW
+			UIView *view = [[UIView alloc] initWithFrame:(CGRect){0, HEIGHT - height, WIDTH, height}];
+			view.backgroundColor = [UIColor whiteColor];
+			[cBg addSubview:view];
+			vCont = view;
+		}
 		
-		UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:(CGRect){8, 0, WIDTH - 16, 44}];
-		[viewCont addSubview:toolbar];
-		
-		UIBarButtonItem *itemCancel = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelInBar:)];
-		UIBarButtonItem *itemFlex = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-		UIBarButtonItem *itemConfirm = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneInBar:)];
-		
-		[toolbar setItems:@[itemCancel, itemFlex, itemConfirm,]];
+		{
+			// MARK: TOP TOOLBAR
+			UIToolbar *view = [[UIToolbar alloc] init];
+			[vCont addSubview:view];
+			
+			[view mas_makeConstraints:^(MASConstraintMaker *make) {
+				make.top.left.right.equalTo(self->vCont);
+				make.height.mas_equalTo(44);
+			}];
+			
+			{
+				// ITEMS
+				UIBarButtonItem *fix = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+				fix.width = 8;
+				
+				UIBarButtonItem *flex = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+				
+				UIBarButtonItem *cancel = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelInBar:)];
+				
+				UIBarButtonItem *confirm = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneInBar:)];
+				
+				[view setItems:@[fix, cancel, flex, confirm, fix,]];
+			}
+		}
 	}
 }
-
-/*
-// ONLY OVERRIDE drawRect: IF YOU PERFORM CUSTOM DRAWING.
-// AN EMPTY IMPLEMENTATION ADVERSELY AFFECTS PERFORMANCE DURING ANIMATION.
-- (void)drawRect:(CGRect)rect {
-	// DRAWING CODE
-}
-*/
 
 // MARK: - METHOD
 
@@ -121,7 +137,7 @@
 }
 
 - (void)dismiss {
-	[UIView animateWithDuration:0.25 delay:0	 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+	[UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 		self->vCont.frame = (CGRect){0, HEIGHT, WIDTH, self->height};
 		self->cBg.backgroundColor = [UIColor clearColor];
 	} completion:^(BOOL finished) {
