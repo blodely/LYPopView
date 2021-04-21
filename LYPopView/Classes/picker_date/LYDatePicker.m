@@ -26,6 +26,8 @@
 
 #import "LYDatePicker.h"
 #import <LYCategory/LYCategory.h>
+#import <Masonry/Masonry.h>
+
 
 @interface LYDatePicker () {
 	
@@ -51,10 +53,23 @@
 - (void)initial {
 	[super initial];
 	
-	UIDatePicker *datepic = [[UIDatePicker alloc] initWithFrame:(CGRect){0, 44, WIDTH, height - 44}];
-	[vCont addSubview:datepic];
-	_datepicker = datepic;
-	datepic.datePickerMode = UIDatePickerModeDate;
+	{
+		UIDatePicker *view = [[UIDatePicker alloc] init];
+		view.datePickerMode = UIDatePickerModeDate;
+		if (@available(iOS 13.4, *)) {
+			view.preferredDatePickerStyle = UIDatePickerStyleWheels;
+		}
+		[vCont addSubview:view];
+		_datepicker = view;
+		
+		[view border1Px];
+		
+		[view mas_makeConstraints:^(MASConstraintMaker *make) {
+			make.left.right.equalTo(self->vCont);
+			make.top.equalTo(self->vCont).offset(44);
+			make.height.mas_equalTo(height - 44 - SAFE_BOTTOM);
+		}];
+	}
 }
 
 + (void)showWithSelection:(didSelectDate)actionBlock {
