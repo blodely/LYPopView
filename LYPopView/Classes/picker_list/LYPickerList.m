@@ -26,6 +26,8 @@
 
 #import "LYPickerList.h"
 #import <LYCategory/LYCategory.h>
+#import <Masonry/Masonry.h>
+
 
 typedef void(^donePickListBlock)(NSDictionary *item, NSUInteger index);
 
@@ -74,13 +76,17 @@ typedef void(^donePickListBlock)(NSDictionary *item, NSUInteger index);
 	}
 	
 	{
-		UIPickerView *pickerview = [[UIPickerView alloc] init];
-		pickerview.delegate = self;
-		pickerview.dataSource = self;
-		[vCont addSubview:pickerview];
-		picker = pickerview;
+		UIPickerView *view = [[UIPickerView alloc] init];
+		view.delegate = self;
+		view.dataSource = self;
+		[vCont addSubview:view];
+		picker = view;
 		
-		picker.frame = (CGRect){0, 44, vCont.bounds.size.width, vCont.bounds.size.height - 44};
+		[view mas_makeConstraints:^(MASConstraintMaker *make) {
+			make.top.equalTo(self->vCont).offset(44);
+			make.left.right.equalTo(self->vCont);
+			make.height.mas_equalTo(height - 44 - SAFE_BOTTOM);
+		}];
 	}
 }
 
