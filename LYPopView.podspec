@@ -37,7 +37,7 @@ Versions: 1.0.x=>iOS7; 1.12.x=>Xcode12.iOS9
 	s.frameworks = 'UIKit', 'WebKit'
 
 	s.dependency 'LYCategory', '~> 1.12'
-	s.dependency 'FCFileManager', '~> 1.0.18'
+	s.dependency 'FCFileManager', '~> 1.0.20'
 	s.dependency 'AFNetworking', '~> 4.0'
 	s.dependency 'Masonry', '~> 1.1.0'
 
