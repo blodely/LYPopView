@@ -3,13 +3,16 @@
 
 Pod::Spec.new do |s|
 	s.name             = 'LYPopView'
-	s.version          = '1.12.2'
+	s.version          = '1.13.0'
 	s.summary          = 'pop view.'
 
 	s.description      = <<-DESC
 a pop view.
 message, table, date, button, etc.
-Versions: 1.0.x=>iOS7; 1.12.x=>Xcode12.iOS9
+Versions:
+  1.0.x=>iOS7;
+  1.12.x=>Xcode12.iOS9.
+  1.13.x => iOS 11+.
 					   DESC
 
 	s.homepage         = 'https://github.com/blodely/LYPopView'
@@ -21,7 +24,7 @@ Versions: 1.0.x=>iOS7; 1.12.x=>Xcode12.iOS9
 
 	s.social_media_url = 'https://weibo.com/blodely'
 
-	s.ios.deployment_target = '9.0'
+	s.ios.deployment_target = '11.0'
 
 	s.source_files = 'LYPopView/Classes/*', 'LYPopView/Classes/action/*', 'LYPopView/Classes/hover/*', 'LYPopView/Classes/dropdown/*', 'LYPopView/Classes/picker/*', 'LYPopView/Classes/picker_date/*', 'LYPopView/Classes/picker_list/*', 'LYPopView/Classes/pop_message/*', 'LYPopView/Classes/pop_table/*', 'LYPopView/Classes/pop_date/*', 'LYPopView/Classes/pop_image/*'
 
