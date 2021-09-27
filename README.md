@@ -11,6 +11,22 @@ iOS 7.0+
 
 ### Installation
 
+#### 1. from Cococapods
+
+Just add:
+
+```ruby
+pod 'LYPopView'
+```
+
+to you project `Podfile`.
+
+And then, run:`pod install`.
+
+When it's finished, open xcode workspace file.
+
+#### 2. from private pod specs repo
+
 LYPopView is available through [LYSpecs](https://github.com/blodely/LYSpecs). 
 
 To install
@@ -20,7 +36,7 @@ it, simply add the following line to your Podfile:
 source 'https://github.com/blodely/LYSpecs.git'
 source 'https://github.com/CocoaPods/Specs.git'
 
-pod "LYPopView"
+pod 'LYPopView'
 ```
 
 then, run
