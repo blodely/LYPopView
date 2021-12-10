@@ -28,7 +28,7 @@
 #import "NSBundle+PopView.h"
 #import <LYCategory/LYCategory.h>
 #import "FCFileManager.h"
-#import <Masonry/Masonry.h>
+//#import <Masonry/Masonry.h>
 
 
 NSString *const LIB_POPVIEW_BUNDLE_ID = @"org.cocoapods.LYPopView";
@@ -112,10 +112,12 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 			}
 			
 			UIVisualEffectView *effv = [[UIVisualEffectView alloc] initWithEffect:blureff];
+			effv.translatesAutoresizingMaskIntoConstraints = NO;
 			[viewCont addSubview:effv];
-			[effv mas_makeConstraints:^(MASConstraintMaker *make) {
-				make.edges.equalTo(viewCont).insets(UIEdgeInsetsMake(0, 0, 0, 0));
-			}];
+			[effv.leftAnchor constraintEqualToAnchor:viewCont.leftAnchor].active = YES;
+			[effv.rightAnchor constraintEqualToAnchor:viewCont.rightAnchor].active = YES;
+			[effv.topAnchor constraintEqualToAnchor:viewCont.topAnchor].active = YES;
+			[effv.bottomAnchor constraintEqualToAnchor:viewCont.bottomAnchor].active = YES;
 		} else {
 			// OTHERWISE, USE PLAIN BACKGROUND COLOR
 			viewCont.backgroundColor = [UIColor colorWithHex:conf[@"popview-window-bg-color"][confValue] andAlpha:1.0];
@@ -250,39 +252,41 @@ NSString *const NAME_CONF_POPVIEW = @"conf-pop-view-style";
 	{
 		// MARK: TITLE AREA
 		UIView *viewTitle = [[UIView alloc] init];
+		viewTitle.translatesAutoresizingMaskIntoConstraints = NO;
 		viewTitle.backgroundColor = enableBlur ? [UIColor clearColor] : [UIColor colorWithHex:conf[@"popview-theme-color"][confValue] andAlpha:1.0];
 		[vCont addSubview:viewTitle];
 		vTitle = viewTitle;
 		
-		[viewTitle mas_makeConstraints:^(MASConstraintMaker *make) {
-			make.left.right.top.equalTo(self->vCont);
-			make.height.mas_equalTo(44);
-		}];
+		[viewTitle.leftAnchor constraintEqualToAnchor:vCont.leftAnchor].active = YES;
+		[viewTitle.rightAnchor constraintEqualToAnchor:vCont.rightAnchor].active = YES;
+		[viewTitle.topAnchor constraintEqualToAnchor:vCont.topAnchor].active = YES;
+		[viewTitle.heightAnchor constraintEqualToConstant:44].active = YES;
 		
 		UILabel *labelTitle = [[UILabel alloc] init];
+		labelTitle.translatesAutoresizingMaskIntoConstraints = NO;
 		labelTitle.textColor = [UIColor colorWithHex:conf[@"popview-title-color"][confValue] andAlpha:1.0];
 		labelTitle.textAlignment = NSTextAlignmentCenter;
 		labelTitle.font = [UIFont systemFontOfSize:16];
 		[viewTitle addSubview:labelTitle];
 		lblTitle = labelTitle;
 		
-		[labelTitle mas_makeConstraints:^(MASConstraintMaker *make) {
-			make.left.equalTo(viewTitle).offset(10);
-			make.right.equalTo(viewTitle).offset(-10);
-			make.top.bottom.equalTo(viewTitle);
-		}];
+		[labelTitle.leftAnchor constraintEqualToAnchor:viewTitle.leftAnchor constant:10].active = YES;
+		[labelTitle.rightAnchor constraintEqualToAnchor:viewTitle.rightAnchor constant:-10].active = YES;
+		[labelTitle.topAnchor constraintEqualToAnchor:viewTitle.topAnchor].active = YES;
+		[labelTitle.bottomAnchor constraintEqualToAnchor:viewTitle.bottomAnchor].active = YES;
 		
 		UIButton *buttonClose = [UIButton buttonWithType:UIButtonTypeCustom];
+		buttonClose.translatesAutoresizingMaskIntoConstraints = NO;
 		[buttonClose setBackgroundImage:[[UIImage imageNamed:@"cross-48-gs" inBundle:[NSBundle popResourceBundle] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
 		[buttonClose setTintColor:[UIColor colorWithHex:conf[@"popview-title-color"][confValue] andAlpha:1.0]];
 		[buttonClose addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
 		[viewTitle addSubview:buttonClose];
 		btnClose = buttonClose;
 		
-		[buttonClose mas_makeConstraints:^(MASConstraintMaker *make) {
-			make.right.top.equalTo(viewTitle);
-			make.width.height.mas_equalTo(44);
-		}];
+		[buttonClose.rightAnchor constraintEqualToAnchor:viewTitle.rightAnchor].active = YES;
+		[buttonClose.topAnchor constraintEqualToAnchor:viewTitle.topAnchor].active = YES;
+		[buttonClose.widthAnchor constraintEqualToConstant:44].active = YES;
+		[buttonClose.heightAnchor constraintEqualToConstant:44].active = YES;
 	}
 }
 
