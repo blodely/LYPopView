@@ -28,6 +28,7 @@
 #import "NSBundle+PopView.h"
 #import <LYCategory/UIColor+Speed.h>
 
+
 @interface LYPopMessage () {
 	
 	__weak UILabel *lblMessage;

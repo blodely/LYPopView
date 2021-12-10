@@ -42,6 +42,5 @@ Versions:
 	s.dependency 'LYCategory', '~> 1.13'
 	s.dependency 'FCFileManager', '~> 1.0.20'
 	s.dependency 'AFNetworking', '~> 4.0'
-	s.dependency 'Masonry', '~> 1.1.0'
 
 end

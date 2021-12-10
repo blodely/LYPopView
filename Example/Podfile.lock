@@ -22,8 +22,6 @@ PODS:
     - AFNetworking (~> 4.0)
     - FCFileManager (~> 1.0.20)
     - LYCategory (~> 1.13)
-    - Masonry (~> 1.1.0)
-  - Masonry (1.1.0)
 
 DEPENDENCIES:
   - LYConfigKit
@@ -35,7 +33,6 @@ SPEC REPOS:
     - FCFileManager
     - LYCategory
     - LYConfigKit
-    - Masonry
 
 EXTERNAL SOURCES:
   LYPopView:
@@ -46,9 +43,8 @@ SPEC CHECKSUMS:
   FCFileManager: e0f73316e6aa2eb04d2ff4caa75fe7df1ae44270
   LYCategory: 106df397b4b514a8cbe7f228c34a503142d3b964
   LYConfigKit: fb180aff486386bcd386090f4a49c3c5e93d71da
-  LYPopView: 5a674bcb773f790f58120213eae98118a3509048
-  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  LYPopView: 8ec96b0a46814476ce0976c4f5563ad81a5f3e7c
 
-PODFILE CHECKSUM: 42087230b406db65bca2779c9adea4c38f12c8bd
+PODFILE CHECKSUM: 12c19edda5ad5b935cb8d18b30dd7af90b9a8087
 
 COCOAPODS: 1.11.2

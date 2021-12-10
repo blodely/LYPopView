@@ -26,7 +26,6 @@
 
 #import "LYDatePicker.h"
 #import <LYCategory/LYCategory.h>
-#import <Masonry/Masonry.h>
 
 
 @interface LYDatePicker () {
@@ -47,6 +46,7 @@
 	
 	{
 		UIDatePicker *view = [[UIDatePicker alloc] init];
+		view.translatesAutoresizingMaskIntoConstraints = NO;
 		view.datePickerMode = UIDatePickerModeDate;
 		if (@available(iOS 13.4, *)) {
 			view.preferredDatePickerStyle = UIDatePickerStyleWheels;
@@ -54,11 +54,10 @@
 		[vCont addSubview:view];
 		_datepicker = view;
 		
-		[view mas_makeConstraints:^(MASConstraintMaker *make) {
-			make.left.right.equalTo(self->vCont);
-			make.top.equalTo(self->vCont).offset(44);
-			make.height.mas_equalTo(height - 44 - SAFE_BOTTOM);
-		}];
+		[view.leftAnchor constraintEqualToAnchor:vCont.leftAnchor].active = YES;
+		[view.rightAnchor constraintEqualToAnchor:vCont.rightAnchor].active = YES;
+		[view.topAnchor constraintEqualToAnchor:vCont.topAnchor constant:44].active = YES;
+		[view.heightAnchor constraintEqualToConstant:(height - 44 - SAFE_BOTTOM)].active = YES;
 	}
 }
 

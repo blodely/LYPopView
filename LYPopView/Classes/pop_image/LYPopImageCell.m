@@ -25,7 +25,7 @@
 //
 
 #import "LYPopImageCell.h"
-#import <Masonry/Masonry.h>
+
 
 NSString *const LYPopImageCellIdentifier = @"LYPopImageCellIdentifier";
 
@@ -43,16 +43,17 @@ NSString *const LYPopImageCellIdentifier = @"LYPopImageCellIdentifier";
 	if (self = [super initWithFrame:frame]) {
 		
 		{
-			UIImageView *imageview = [[UIImageView alloc] init];
-			[self addSubview:imageview];
-			_ivImage = imageview;
+			UIImageView *view = [[UIImageView alloc] init];
+			view.translatesAutoresizingMaskIntoConstraints = NO;
+			view.contentMode = UIViewContentModeScaleAspectFit;
+			view.clipsToBounds = YES;
+			[self addSubview:view];
+			_ivImage = view;
 			
-			_ivImage.contentMode = UIViewContentModeScaleAspectFit;
-			_ivImage.clipsToBounds = YES;
-			
-			[_ivImage mas_makeConstraints:^(MASConstraintMaker *make) {
-				make.top.left.right.bottom.equalTo(self).with.offset(0);
-			}];
+			[view.topAnchor constraintEqualToAnchor:self.topAnchor].active = YES;
+			[view.bottomAnchor constraintEqualToAnchor:self.bottomAnchor].active = YES;
+			[view.leftAnchor constraintEqualToAnchor:self.leftAnchor].active = YES;
+			[view.rightAnchor constraintEqualToAnchor:self.rightAnchor].active = YES;
 		}
 	}
 	return self;

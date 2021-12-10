@@ -26,8 +26,6 @@
 
 #import "LYHover.h"
 #import <LYCategory/LYCategory.h>
-#import <Masonry/Masonry.h>
-
 
 
 @implementation LYHover
@@ -60,33 +58,30 @@
 	{
 		// MARK: CONTAINER VIEW
 		UIView *view = [[UIView alloc] init];
+		view.translatesAutoresizingMaskIntoConstraints = NO;
 		[self addSubview:view];
 		vCont = view;
 		
 		view.backgroundColor = [UIColor whiteColor];
 		
-		[view mas_makeConstraints:^(MASConstraintMaker *make) {
-			make.left.right.equalTo(self);
-			if (@available(iOS 11.0, *)) {
-				make.bottom.equalTo(self.mas_safeAreaLayoutGuideBottom);
-			} else {
-				make.bottom.equalTo(self);
-			}
-			make.height.mas_greaterThanOrEqualTo(216);
-		}];
+		[view.leftAnchor constraintEqualToAnchor:self.leftAnchor].active = YES;
+		[view.rightAnchor constraintEqualToAnchor:self.rightAnchor].active = YES;
+		[view.bottomAnchor constraintEqualToAnchor:self.safeAreaLayoutGuide.bottomAnchor].active = YES;
+		[view.heightAnchor constraintEqualToConstant:216].active = YES;
 	}
 	
 	if (@available(iOS 11.0, *)){
 		// MARK: FOOTER
 		UIView *view = [[UIView alloc] init];
-		[self addSubview:view];
+		view.translatesAutoresizingMaskIntoConstraints = NO;
 		view.backgroundColor = vCont.backgroundColor;
 		view.userInteractionEnabled = NO;
-		[view mas_makeConstraints:^(MASConstraintMaker *make) {
-			make.top.equalTo(self->vCont.mas_bottom);
-			make.leading.trailing.equalTo(self->vCont);
-			make.bottom.equalTo(self);
-		}];
+		[self addSubview:view];
+		
+		[view.topAnchor constraintEqualToAnchor:vCont.bottomAnchor].active = YES;
+		[view.leadingAnchor constraintEqualToAnchor:vCont.leadingAnchor].active = YES;
+		[view.trailingAnchor constraintEqualToAnchor:vCont.trailingAnchor].active = YES;
+		[view.bottomAnchor constraintEqualToAnchor:self.bottomAnchor].active = YES;
 	}
 }
 

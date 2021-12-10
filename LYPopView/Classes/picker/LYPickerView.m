@@ -26,7 +26,6 @@
 
 #import "LYPickerView.h"
 #import <LYCategory/LYCategory.h>
-#import <Masonry/Masonry.h>
 
 
 @interface LYPickerView () {
@@ -85,12 +84,13 @@
 		{
 			// MARK: TOP TOOLBAR
 			UIToolbar *view = [[UIToolbar alloc] init];
+			view.translatesAutoresizingMaskIntoConstraints = NO;
 			[vCont addSubview:view];
 			
-			[view mas_makeConstraints:^(MASConstraintMaker *make) {
-				make.top.left.right.equalTo(self->vCont);
-				make.height.mas_equalTo(44);
-			}];
+			[view.topAnchor constraintEqualToAnchor:vCont.topAnchor].active = YES;
+			[view.leftAnchor constraintEqualToAnchor:vCont.leftAnchor].active = YES;
+			[view.rightAnchor constraintEqualToAnchor:vCont.rightAnchor].active = YES;
+			[view.heightAnchor constraintEqualToConstant:44].active = YES;
 			
 			{
 				// ITEMS

@@ -28,6 +28,7 @@
 #import <LYCategory/LYCategory.h>
 #import "NSBundle+PopView.h"
 
+
 @interface LYPopDate () {
 	__weak UIButton *btnCancel;
 	__weak UIButton *btnConfirm;
@@ -75,49 +76,41 @@
 	CGRect frame = self.frame;
 	
 	{
-		UILabel *labelDate = [[UILabel alloc] init];
-		labelDate.frame = (CGRect){10, 0, frame.size.width - 10, 44};
-		labelDate.font = [UIFont systemFontOfSize:15];
-		labelDate.textColor = [UIColor blackColor];
-		labelDate.textAlignment = NSTextAlignmentLeft;
-		[vCont addSubview:labelDate];
-		_message = labelDate;
+		UILabel *view = [[UILabel alloc] init];
+		view.frame = (CGRect){10, 0, frame.size.width - 10, 44};
+		view.font = [UIFont systemFontOfSize:15];
+		view.textColor = [UIColor blackColor];
+		view.textAlignment = NSTextAlignmentLeft;
+		[vCont addSubview:view];
+		_message = view;
 	}
 	
 	{
-		UIDatePicker *datepicker = [[UIDatePicker alloc] init];
-		datepicker.frame = (CGRect){0, 44, frame.size.width, 216};
-		[vCont addSubview:datepicker];
-		_picker = datepicker;
-		_message.text = [datepicker.date stringWithFormat:_formatter andTimezone:_timezone];
+		UIDatePicker *view = [[UIDatePicker alloc] init];
+		view.frame = (CGRect){0, 44, frame.size.width, 216};
+		[vCont addSubview:view];
+		_picker = view;
+		_message.text = [view.date stringWithFormat:_formatter andTimezone:_timezone];
 	}
 	
 	{
-		UIButton *buttonCancel = [UIButton buttonWithType:UIButtonTypeCustom];
-		[buttonCancel setBackgroundColor:[UIColor colorWithHex:conf[@"popview-theme-color"][confValue] andAlpha:1.0]];
-		[buttonCancel addTarget:self action:@selector(cancelBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
-		[buttonCancel setTitle:@"取消" forState:UIControlStateNormal];
-		[vCont addSubview:buttonCancel];
-		btnCancel = buttonCancel;
+		UIButton *view = [UIButton buttonWithType:UIButtonTypeCustom];
+		[view setBackgroundColor:[UIColor colorWithHex:conf[@"popview-theme-color"][confValue] andAlpha:1.0]];
+		[view addTarget:self action:@selector(cancelBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+		[view setTitle:@"取消" forState:UIControlStateNormal];
+		[vCont addSubview:view];
+		btnCancel = view;
 	}
 	
 	{
-		UIButton *buttonConfirm = [UIButton buttonWithType:UIButtonTypeCustom];
-		[buttonConfirm setBackgroundColor:[UIColor colorWithHex:conf[@"popview-theme-color"][confValue] andAlpha:1.0]];
-		[buttonConfirm addTarget:self action:@selector(confirmBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
-		[buttonConfirm setTitle:@"确认" forState:UIControlStateNormal];
-		[vCont addSubview:buttonConfirm];
-		btnConfirm = buttonConfirm;
+		UIButton *view = [UIButton buttonWithType:UIButtonTypeCustom];
+		[view setBackgroundColor:[UIColor colorWithHex:conf[@"popview-theme-color"][confValue] andAlpha:1.0]];
+		[view addTarget:self action:@selector(confirmBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+		[view setTitle:@"确认" forState:UIControlStateNormal];
+		[vCont addSubview:view];
+		btnConfirm = view;
 	}
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 // MARK: - METHOD
 
