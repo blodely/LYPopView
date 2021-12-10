@@ -132,14 +132,6 @@ typedef void(^LYDropDownSectionSelectAction)(NSIndexPath *idp);
 
 @implementation LYDropDownSection
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-
 // MARK: - INIT
 
 - (instancetype)initWithFrame:(CGRect)frame {

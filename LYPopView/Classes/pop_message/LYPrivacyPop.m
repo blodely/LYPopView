@@ -28,7 +28,6 @@
 #import <LYPopView/LYPopView.h>
 #import <WebKit/WebKit.h>
 #import <LYCategory/LYCategory.h>
-#import <Masonry/Masonry.h>
 
 
 NSString *const LYPrivacyPolicyAgreed = @"space.luoyu.popview.privacy.policy.agreed";
@@ -59,12 +58,19 @@ NSString *const LYPrivacyPolicyAgreed = @"space.luoyu.popview.privacy.policy.agr
 	{
 		[vCont roundedCornerRadius:pd];
 		vCont.backgroundColor = [UIColor whiteColor];
-		[vCont mas_remakeConstraints:^(MASConstraintMaker *make) {
-			make.left.equalTo(self).offset(floorf(WIDTH * 0.1));
-			make.right.equalTo(self).offset(-floorf(WIDTH * 0.1));
-			make.height.mas_equalTo(self->maxHeight);
-			make.centerY.equalTo(self);
-		}];
+		
+		[vCont removeConstraints:vCont.constraints];
+		[vCont.leftAnchor constraintEqualToAnchor:self.leftAnchor constant:(floorf(WIDTH * 0.1))].active = YES;
+		[vCont.rightAnchor constraintEqualToAnchor:self.rightAnchor constant:(-floorf(WIDTH * 0.1))].active = YES;
+		[vCont.heightAnchor constraintEqualToConstant:maxHeight].active = YES;
+		[vCont.centerYAnchor constraintEqualToAnchor:self.centerYAnchor].active = YES;
+		
+//		[vCont mas_remakeConstraints:^(MASConstraintMaker *make) {
+//			make.left.equalTo(self).offset(floorf(WIDTH * 0.1));
+//			make.right.equalTo(self).offset(-floorf(WIDTH * 0.1));
+//			make.height.mas_equalTo(self->maxHeight);
+//			make.centerY.equalTo(self);
+//		}];
 		
 		[cBg removeTarget:self action:@selector(dismiss) forControlEvents:UIControlEventAllEvents];
 	}
@@ -72,64 +78,67 @@ NSString *const LYPrivacyPolicyAgreed = @"space.luoyu.popview.privacy.policy.agr
 	{
 		// MARK: TITLE
 		UILabel *label = [[UILabel alloc] init];
+		label.translatesAutoresizingMaskIntoConstraints = NO;
 		label.textColor = [UIColor darkTextColor];
 		label.numberOfLines = 0;
 		label.font = [UIFont boldSystemFontOfSize:17];
 		[vCont addSubview:label];
 		_lblTitle = label;
 		
-		[label mas_makeConstraints:^(MASConstraintMaker *make) {
-			make.top.left.equalTo(self->vCont).offset(pd + 2);
-			make.right.equalTo(self->vCont).offset(-pd);
-		}];
+		[label.topAnchor constraintEqualToAnchor:vCont.topAnchor constant:(pd + 2)].active = YES;
+		[label.leftAnchor constraintEqualToAnchor:vCont.leftAnchor constant:(pd + 2)].active = YES;
+		[label.rightAnchor constraintEqualToAnchor:vCont.rightAnchor constant:-pd].active = YES;
 		
 		UIView *line = [[UIView alloc] init];
+		line.translatesAutoresizingMaskIntoConstraints = NO;
 		line.userInteractionEnabled = NO;
 		line.clipsToBounds = YES;
 		line.backgroundColor = [UIColor groupTableViewBackgroundColor];
 		[vCont addSubview:line];
-		[line mas_makeConstraints:^(MASConstraintMaker *make) {
-			make.top.equalTo(label.mas_bottom).offset(pd);
-			make.left.right.equalTo(self->vCont);
-			make.height.mas_equalTo(1 / SCALE);
-//			make.leading.equalTo(label.mas_leading);
-//			make.width.mas_equalTo(40);
-//			make.height.mas_equalTo(2);
-		}];
+		
+		[line.topAnchor constraintEqualToAnchor:label.bottomAnchor constant:pd].active = YES;
+		[line.leftAnchor constraintEqualToAnchor:vCont.leftAnchor].active = YES;
+		[line.rightAnchor constraintEqualToAnchor:vCont.rightAnchor].active = YES;
+		[line.heightAnchor constraintEqualToConstant:(1 / SCALE)].active = YES;
 	}
 	
 	{
 		// loading view
 		UIView *view = [[UIView alloc] init];
+		view.translatesAutoresizingMaskIntoConstraints = NO;
 		[vCont addSubview:view];
 		vIndicator = view;
 		
 		UILabel *label = [[UILabel alloc] init];
+		label.translatesAutoresizingMaskIntoConstraints = NO;
 		label.font = [UIFont systemFontOfSize:15];
 		label.textAlignment = NSTextAlignmentCenter;
 		label.textColor = [UIColor grayColor];
 		label.text = NSLocalizedString(@"Loading", nil);
 		[view addSubview:label];
 		
-		UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+		UIActivityIndicatorView *indicator;
+		if (@available(iOS 13.0, *)) {
+			indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleMedium];
+		} else {
+			indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+		}
+		indicator.translatesAutoresizingMaskIntoConstraints = NO;
 		[view addSubview:indicator];
 		[indicator startAnimating];
 		
-		[view mas_makeConstraints:^(MASConstraintMaker *make) {
-			make.center.equalTo(self->vCont);
-			make.left.right.equalTo(self->vCont);
-		}];
+		[view.centerXAnchor constraintEqualToAnchor:vCont.centerXAnchor].active = YES;
+		[view.centerYAnchor constraintEqualToAnchor:vCont.centerYAnchor].active = YES;
+		[view.leftAnchor constraintEqualToAnchor:vCont.leftAnchor].active = YES;
+		[view.rightAnchor constraintEqualToAnchor:vCont.rightAnchor].active = YES;
 		
-		[label mas_makeConstraints:^(MASConstraintMaker *make) {
-			make.top.equalTo(view);
-			make.left.right.equalTo(view);
-		}];
+		[label.topAnchor constraintEqualToAnchor:view.topAnchor].active = YES;
+		[label.leftAnchor constraintEqualToAnchor:view.leftAnchor].active = YES;
+		[label.rightAnchor constraintEqualToAnchor:view.rightAnchor].active = YES;
 		
-		[indicator mas_makeConstraints:^(MASConstraintMaker *make) {
-			make.top.equalTo(label.mas_bottom).offset(6);
-			make.centerX.equalTo(view);
-			make.bottom.equalTo(view);
-		}];
+		[indicator.topAnchor constraintEqualToAnchor:label.bottomAnchor constant:6].active = YES;
+		[indicator.centerXAnchor constraintEqualToAnchor:view.centerXAnchor].active = YES;
+		[indicator.bottomAnchor constraintEqualToAnchor:view.bottomAnchor].active = YES;
 	}
 	
 	{
@@ -154,34 +163,36 @@ NSString *const LYPrivacyPolicyAgreed = @"space.luoyu.popview.privacy.policy.agr
 		
 		// CREATE WEB VIEW
 		WKWebView *webview = [[WKWebView alloc] initWithFrame:CGRectZero configuration:webconf];
+		webview.translatesAutoresizingMaskIntoConstraints = NO;
 		[vCont addSubview:webview];
 		web = webview;
 		web.navigationDelegate = self;
 		web.UIDelegate = self;
 		web.hidden = YES;
-		[webview mas_makeConstraints:^(MASConstraintMaker *make) {
-			make.top.equalTo(self->_lblTitle.mas_bottom).offset(pd * 2 + 2);
-			make.left.right.equalTo(self->vCont);
-		}];
+		
+		[webview.topAnchor constraintEqualToAnchor:_lblTitle.bottomAnchor constant:(pd * 2 + 2)].active = YES;
+		[webview.leftAnchor constraintEqualToAnchor:vCont.leftAnchor].active = YES;
+		[webview.rightAnchor constraintEqualToAnchor:vCont.rightAnchor].active = YES;
 	}
 	
 	{
 		// MARK: BUTTON CONFIRM
-		UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-		[button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-		button.titleLabel.font = [UIFont systemFontOfSize:18];
-		[button setContentEdgeInsets:UIEdgeInsetsMake(0, pd, 0, pd)];
-		[button setTitle:NSLocalizedString(@"Agree", nil) forState:UIControlStateNormal];
-		[vCont addSubview:button];
-		btnConfirm = button;
+		UIButton *view = [UIButton buttonWithType:UIButtonTypeCustom];
+		view.translatesAutoresizingMaskIntoConstraints = NO;
+		[view setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+		view.titleLabel.font = [UIFont systemFontOfSize:18];
+		[view setContentEdgeInsets:UIEdgeInsetsMake(0, pd, 0, pd)];
+		[view setTitle:NSLocalizedString(@"Agree", nil) forState:UIControlStateNormal];
+		[vCont addSubview:view];
+		btnConfirm = view;
 		
 		[btnConfirm addTarget:self action:@selector(confirmButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
 		
-		[button mas_makeConstraints:^(MASConstraintMaker *make) {
-			make.left.right.bottom.equalTo(self->vCont);
-			make.height.mas_equalTo(44);
-			make.top.equalTo(self->web.mas_bottom);
-		}];
+		[view.leftAnchor constraintEqualToAnchor:vCont.leftAnchor].active = YES;
+		[view.rightAnchor constraintEqualToAnchor:vCont.rightAnchor].active = YES;
+		[view.heightAnchor constraintEqualToConstant:44].active = YES;
+		[view.topAnchor constraintEqualToAnchor:web.bottomAnchor].active = YES;
+		[view.bottomAnchor constraintEqualToAnchor:vCont.bottomAnchor].active = YES;
 	}
 }
 

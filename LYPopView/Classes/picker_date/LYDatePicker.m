@@ -40,14 +40,6 @@
 
 @implementation LYDatePicker
 
-/*
-// ONLY OVERRIDE drawRect: IF YOU PERFORM CUSTOM DRAWING.
-// AN EMPTY IMPLEMENTATION ADVERSELY AFFECTS PERFORMANCE DURING ANIMATION.
-- (void)drawRect:(CGRect)rect {
-	// DRAWING CODE
-}
-*/
-
 // MARK: - INIT
 
 - (void)initial {

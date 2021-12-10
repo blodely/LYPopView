@@ -26,7 +26,6 @@
 
 #import "LYPickerSecList.h"
 #import <LYCategory/LYCategory.h>
-#import <Masonry/Masonry.h>
 
 
 typedef void(^donePickSecListBlock)(NSDictionary *item, NSIndexPath *idp);
@@ -74,14 +73,14 @@ typedef void(^donePickSecListBlock)(NSDictionary *item, NSIndexPath *idp);
 	
 	{
 		UIPickerView *view = [[UIPickerView alloc] init];
+		view.translatesAutoresizingMaskIntoConstraints = NO;
 		[vCont addSubview:view];
 		picker = view;
 		
-		[view mas_makeConstraints:^(MASConstraintMaker *make) {
-			make.top.equalTo(self->vCont).offset(44);
-			make.left.right.equalTo(self->vCont);
-			make.height.mas_equalTo(height - 44 - SAFE_BOTTOM);
-		}];
+		[view.topAnchor constraintEqualToAnchor:vCont.topAnchor constant:44].active = YES;
+		[view.leftAnchor constraintEqualToAnchor:vCont.leftAnchor].active = YES;
+		[view.rightAnchor constraintEqualToAnchor:vCont.rightAnchor].active = YES;
+		[view.heightAnchor constraintEqualToConstant:(height - 44 - SAFE_BOTTOM)].active = YES;
 		
 		picker.delegate = self;
 		picker.dataSource = self;

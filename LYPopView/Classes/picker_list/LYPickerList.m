@@ -26,7 +26,6 @@
 
 #import "LYPickerList.h"
 #import <LYCategory/LYCategory.h>
-#import <Masonry/Masonry.h>
 
 
 typedef void(^donePickListBlock)(NSDictionary *item, NSUInteger index);
@@ -43,13 +42,6 @@ typedef void(^donePickListBlock)(NSDictionary *item, NSUInteger index);
 
 @implementation LYPickerList
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 // MARK: - ACTION
 
@@ -77,16 +69,16 @@ typedef void(^donePickListBlock)(NSDictionary *item, NSUInteger index);
 	
 	{
 		UIPickerView *view = [[UIPickerView alloc] init];
+		view.translatesAutoresizingMaskIntoConstraints = NO;
 		view.delegate = self;
 		view.dataSource = self;
 		[vCont addSubview:view];
 		picker = view;
 		
-		[view mas_makeConstraints:^(MASConstraintMaker *make) {
-			make.top.equalTo(self->vCont).offset(44);
-			make.left.right.equalTo(self->vCont);
-			make.height.mas_equalTo(height - 44 - SAFE_BOTTOM);
-		}];
+		[view.topAnchor constraintEqualToAnchor:vCont.topAnchor constant:44].active = YES;
+		[view.leftAnchor constraintEqualToAnchor:vCont.leftAnchor].active = YES;
+		[view.rightAnchor constraintEqualToAnchor:vCont.rightAnchor].active = YES;
+		[view.heightAnchor constraintEqualToConstant:(height - 44 - SAFE_BOTTOM)].active = YES;
 	}
 }
 

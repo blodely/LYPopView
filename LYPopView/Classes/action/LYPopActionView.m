@@ -114,14 +114,6 @@ typedef void(^ buttonActionBlock)(void);
 	}
 }
 
-/*
-// ONLY OVERRIDE drawRect: IF YOU PERFORM CUSTOM DRAWING.
-// AN EMPTY IMPLEMENTATION ADVERSELY AFFECTS PERFORMANCE DURING ANIMATION.
-- (void)drawRect:(CGRect)rect {
-	// DRAWING CODE
-}
-*/
-
 // MARK: - PROPERTY
 
 // MARK: - METHOD

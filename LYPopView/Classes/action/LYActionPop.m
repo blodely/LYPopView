@@ -26,7 +26,6 @@
 
 #import "LYActionPop.h"
 #import <LYCategory/LYCategory.h>
-#import <Masonry/Masonry.h>
 #import <LYPopView/LYPopViewBlockButton.h>
 
 
@@ -101,25 +100,22 @@
 	{
 		// MARK: BOTTOM PADDING
 		UIView *view = [[UIView alloc] init];
+		view.translatesAutoresizingMaskIntoConstraints = NO;
 		view.userInteractionEnabled = NO;
 		view.backgroundColor = [UIColor clearColor];
 		[self addSubview:view];
 		vPaddingBottom = view;
 		
-		[view mas_makeConstraints:^(MASConstraintMaker *make) {
-			make.left.right.equalTo(self);
-			make.bottom.equalTo(self);
-			if (@available(iOS 11.0, *)) {
-				make.top.equalTo(self.mas_safeAreaLayoutGuideBottom).offset(-self->padding * 2);
-			} else {
-				make.top.equalTo(self.mas_bottom).offset(-self->padding * 2);
-			}
-		}];
+		[view.leftAnchor constraintEqualToAnchor:self.leftAnchor].active = YES;
+		[view.rightAnchor constraintEqualToAnchor:self.rightAnchor].active = YES;
+		[view.bottomAnchor constraintEqualToAnchor:self.bottomAnchor].active = YES;
+		[view.topAnchor constraintEqualToAnchor:self.safeAreaLayoutGuide.bottomAnchor constant:(-padding * 2)].active = YES;
 	}
 	
 	{
 		// MARK: CANCEL BUTTON
 		UIButton *view = [UIButton buttonWithType:UIButtonTypeCustom];
+		view.translatesAutoresizingMaskIntoConstraints = NO;
 		[view roundedCornerRadius:padding];
 		view.backgroundColor = [UIColor whiteColor];
 		[view setTitleColor:self.tintColor forState:UIControlStateNormal];
@@ -128,12 +124,10 @@
 		[self addSubview:view];
 		btnCancel = view;
 		
-		[view mas_makeConstraints:^(MASConstraintMaker *make) {
-			make.left.equalTo(self).offset(self->padding);
-			make.right.equalTo(self).offset(-self->padding);
-			make.bottom.equalTo(self->vPaddingBottom.mas_top);
-			make.height.mas_equalTo(self->heightItem);
-		}];
+		[view.leftAnchor constraintEqualToAnchor:self.leftAnchor constant:padding].active = YES;
+		[view.rightAnchor constraintEqualToAnchor:self.rightAnchor constant:-padding].active = YES;
+		[view.bottomAnchor constraintEqualToAnchor:vPaddingBottom.topAnchor].active = YES;
+		[view.heightAnchor constraintEqualToConstant:heightItem].active = YES;
 		
 		[btnCancel addTarget:self action:@selector(cancelButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
 	}
@@ -141,16 +135,16 @@
 	{
 		// MARK: BUTTONS CONTAINER
 		UIView *view = [[UIView alloc] init];
+		view.translatesAutoresizingMaskIntoConstraints = NO;
 		view.backgroundColor = [UIColor whiteColor];
 		[view roundedCornerRadius:padding];
 		[self addSubview:view];
 		vCont = view;
 		
-		[view mas_makeConstraints:^(MASConstraintMaker *make) {
-			make.bottom.equalTo(self->btnCancel.mas_top).offset(-self->padding);
-			make.leading.trailing.equalTo(self->btnCancel);
-			make.height.mas_equalTo(self->heightItem);
-		}];
+		[view.bottomAnchor constraintEqualToAnchor:btnCancel.topAnchor constant:-padding].active = YES;
+		[view.leadingAnchor constraintEqualToAnchor:btnCancel.leadingAnchor].active = YES;
+		[view.trailingAnchor constraintEqualToAnchor:btnCancel.trailingAnchor].active = YES;
+		[view.heightAnchor constraintEqualToConstant:heightItem].active = YES;
 	}
 }
 
@@ -208,16 +202,16 @@
 	{
 		// MARK: ADD BUTTON
 		LYPopViewBlockButton *view = [LYPopViewBlockButton buttonWithType:UIButtonTypeCustom];
+		view.translatesAutoresizingMaskIntoConstraints = NO;
 		[view setTitleColor:self.tintColor forState:UIControlStateNormal];
 		view.titleLabel.font = [UIFont systemFontOfSize:20];
 		[view setTitle:buttonTitle forState:UIControlStateNormal];
 		[vCont addSubview:view];
 		
-		[view mas_makeConstraints:^(MASConstraintMaker *make) {
-			make.left.right.equalTo(self->vCont);
-			make.height.mas_equalTo(self->heightItem);
-			make.bottom.equalTo(self->vCont.mas_bottom).offset(-previous * self->heightItem);
-		}];
+		[view.leftAnchor constraintEqualToAnchor:vCont.leftAnchor].active = YES;
+		[view.rightAnchor constraintEqualToAnchor:vCont.rightAnchor].active = YES;
+		[view.heightAnchor constraintEqualToConstant:heightItem].active = YES;
+		[view.bottomAnchor constraintEqualToAnchor:vCont.bottomAnchor constant:(-previous * heightItem)].active = YES;
 		
 		[view handleEvent:UIControlEventTouchUpInside withAction:^{
 			if (action != nil) {
@@ -230,21 +224,21 @@
 		{
 			if (previous > 0) {
 				UIView *line = [[UIView alloc] init];
+				line.translatesAutoresizingMaskIntoConstraints = NO;
 				line.backgroundColor = [UIColor groupTableViewBackgroundColor];
 				line.userInteractionEnabled = NO;
 				[view addSubview:line];
-				[line mas_makeConstraints:^(MASConstraintMaker *make) {
-					make.left.right.equalTo(view);
-					make.top.equalTo(view.mas_bottom);
-					make.height.mas_equalTo(1 / SCALE);
-				}];
+				
+				[line.leftAnchor constraintEqualToAnchor:view.leftAnchor].active = YES;
+				[line.rightAnchor constraintEqualToAnchor:view.rightAnchor].active = YES;
+				[line.topAnchor constraintEqualToAnchor:view.bottomAnchor].active = YES;
+				[line.heightAnchor constraintEqualToConstant:(1/SCALE)].active = YES;
 			}
 		}
 	}
 	
-	[vCont mas_updateConstraints:^(MASConstraintMaker *make) {
-		make.height.mas_equalTo((previous + 1) * self->heightItem);
-	}];
+	// vCont mas_updateConstraints:
+	[vCont.heightAnchor constraintEqualToConstant:((previous + 1) * heightItem)].active = YES;
 }
 
 @end
