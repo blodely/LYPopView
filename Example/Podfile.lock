@@ -15,13 +15,13 @@ PODS:
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
   - FCFileManager (1.0.20)
-  - LYCategory (1.13.1)
+  - LYCategory (1.13.6)
   - LYConfigKit (1.12.0):
     - FCFileManager (~> 1.0.18)
   - LYPopView (1.13.0):
     - AFNetworking (~> 4.0)
     - FCFileManager (~> 1.0.20)
-    - LYCategory (~> 1.13)
+    - LYCategory (~> 1.13.6)
 
 DEPENDENCIES:
   - LYConfigKit
@@ -41,9 +41,9 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   FCFileManager: e0f73316e6aa2eb04d2ff4caa75fe7df1ae44270
-  LYCategory: 106df397b4b514a8cbe7f228c34a503142d3b964
+  LYCategory: 7c1726540f50e8f66d8cafe1e525d1c02d48449c
   LYConfigKit: fb180aff486386bcd386090f4a49c3c5e93d71da
-  LYPopView: 8ec96b0a46814476ce0976c4f5563ad81a5f3e7c
+  LYPopView: b3a2465fdee0410b196d360ad30a5a9d8ba9cb2a
 
 PODFILE CHECKSUM: 12c19edda5ad5b935cb8d18b30dd7af90b9a8087
 
