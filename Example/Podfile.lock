@@ -15,13 +15,13 @@ PODS:
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
   - FCFileManager (1.0.20)
-  - LYCategory (1.13.6)
+  - LYCategory (1.14.0)
   - LYConfigKit (1.12.0):
     - FCFileManager (~> 1.0.18)
-  - LYPopView (1.13.0):
-    - AFNetworking (~> 4.0)
+  - LYPopView (1.14.0):
+    - AFNetworking (~> 4.0.1)
     - FCFileManager (~> 1.0.20)
-    - LYCategory (~> 1.13.6)
+    - LYCategory (~> 1.14.0)
 
 DEPENDENCIES:
   - LYConfigKit
@@ -39,12 +39,12 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
+  AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
   FCFileManager: e0f73316e6aa2eb04d2ff4caa75fe7df1ae44270
-  LYCategory: 7c1726540f50e8f66d8cafe1e525d1c02d48449c
+  LYCategory: beedf5ec55523967766e9afc4e0b2ab30dc074bc
   LYConfigKit: fb180aff486386bcd386090f4a49c3c5e93d71da
-  LYPopView: b3a2465fdee0410b196d360ad30a5a9d8ba9cb2a
+  LYPopView: f6da03e46e428bcf98cda60cf9853c2a96336eeb
 
-PODFILE CHECKSUM: 12c19edda5ad5b935cb8d18b30dd7af90b9a8087
+PODFILE CHECKSUM: f78a3c3663c88a3e8d1b4e9a01e6d643b7b82d6d
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3
